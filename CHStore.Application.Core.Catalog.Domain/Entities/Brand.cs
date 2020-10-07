@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CHStore.Application.Core.Catalog.Domain.Entities
 {
-    public class Category : Entity
+    public class Brand : Entity
     {
         #region Properties
 
@@ -16,7 +16,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
 
         #region Constructors
 
-        public Category(long id, string name) : base(id)
+        public Brand(long id, string name) : base(id)
         {
             Name = name;
         }
@@ -28,7 +28,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
         public void ChangeName(string name)
         {
             if (string.IsNullOrEmpty(name))
-                throw new DomainException("O Nome da categoria não pode ser vazio");
+                throw new DomainException("O Nome da marca não pode ser vazio");
 
             Name = name;
         }

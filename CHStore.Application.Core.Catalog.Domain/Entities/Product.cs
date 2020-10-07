@@ -7,6 +7,10 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
 {
     public class Product : Entity
     {
+        #region Properties
+
+        public long CategoryId { get; set; }
+        public long BrandId { get; set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }
@@ -17,9 +21,18 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
         public ProductSize Size { get; private set; }
 
         public Category Category { get; private set; }
+        public Brand Brand { get; private set; }
+
+
+        #endregion
+
+        #region Constructors
+
+        protected Product() { }
 
         public Product(
             long id,
+            long categoryId,
             string name,
             string description,
             decimal price,
@@ -31,6 +44,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Category category
         ) : base(id)
         {
+            CategoryId = categoryId;
             Name = name;
             Description = description;
             Price = price;
@@ -42,6 +56,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Category = category;
         }
 
+        #endregion
 
         #region Methods
 
@@ -88,6 +103,25 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
         public void Activate() => Active = true;
 
         public void Deactivate() => Active = false;
+
+        public void ChangeUrlImage(string urlImage)
+        {
+            if (string.IsNullOrEmpty(urlImage))
+                throw new DomainException("A Url da Imagem do produto não pode ser vazia");
+
+            UrlImage = urlImage;
+        }
+
+        public void ChangeCategory(Category category)
+        {
+            if(category is null)
+                throw new DomainException("A Categoria do produto não pode ser vazia");
+
+            Category = category;
+            CategoryId = category.Id;
+        }
+
+        public void ChangeSize(ProductSize size) => Size = size;
 
         #endregion
     }
