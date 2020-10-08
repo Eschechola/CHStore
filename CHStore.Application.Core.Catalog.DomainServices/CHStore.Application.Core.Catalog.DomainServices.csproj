@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

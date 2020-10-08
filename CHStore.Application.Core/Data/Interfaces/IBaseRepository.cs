@@ -9,9 +9,9 @@ namespace CHStore.Application.Core.Data.Interfaces
 
         Task<T> Update(T item);
 
-        Task Remove(int id);
+        Task Remove(long id);
 
-        Task<T> Get(int id);
+        Task<T> Get(long id);
 
         Task<IList<T>> Get();
     }

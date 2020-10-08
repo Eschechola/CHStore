@@ -14,7 +14,7 @@ namespace CHStore.Application.Core.Data.Repositories
             _context = context;
         }
 
-        public  async Task<T> Get(int id)
+        public  async Task<T> Get(long id)
         {
             return await _context.Set<T>()
                 .FindAsync(id);
@@ -35,7 +35,7 @@ namespace CHStore.Application.Core.Data.Repositories
             return obj;
         }
 
-        public async Task Remove(int id)
+        public async Task Remove(long id)
         {
              _context.Set<T>().Remove(await Get(id));
              await _context.SaveChangesAsync();
