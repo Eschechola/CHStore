@@ -7,9 +7,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Interfaces
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
-        Task<IList<Product>> SearchByCategory(long categoryId);
-        Task<IList<Product>> SearchByBrand(long brandId);
-        Task<IList<Product>> SearchByName(string name);
-        Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice);
+        Task<IList<Product>> SearchByCategory(long categoryId, bool searchActives = true);
+        Task<IList<Product>> SearchByBrand(long brandId, bool searchActives = true);
+        Task<IList<Product>> SearchByName(string name, bool searchActives = true);
+        Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true);
     }
 }

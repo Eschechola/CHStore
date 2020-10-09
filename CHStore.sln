@@ -13,19 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Catalog", "2 - Catalog"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Sales", "3 - Sales", "{6C934586-B683-417E-8AEE-50176466D711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Core", "CHStore.Application.Core\CHStore.Application.Core.csproj", "{5E4E2EBA-F730-4CA0-9E1F-BB7E80FD1EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core", "CHStore.Application.Core\CHStore.Application.Core.csproj", "{5E4E2EBA-F730-4CA0-9E1F-BB7E80FD1EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Core.Catalog.Domain", "CHStore.Application.Core.Catalog.Domain\CHStore.Application.Core.Catalog.Domain.csproj", "{F9D831AF-0A8F-46E0-863F-FE7779BC8EC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.Domain", "CHStore.Application.Core.Catalog.Domain\CHStore.Application.Core.Catalog.Domain.csproj", "{F9D831AF-0A8F-46E0-863F-FE7779BC8EC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Core.Catalog.DomainServices", "CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Core.Catalog.DomainServices.csproj", "{3D6E861D-3596-4931-BDEC-E57F8257F3B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.DomainServices", "CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Core.Catalog.DomainServices.csproj", "{3D6E861D-3596-4931-BDEC-E57F8257F3B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Core.Catalog.Infra.Data", "CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.Data.csproj", "{4717B975-FE9E-44EE-8E8B-77050D644F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.Infra.Data", "CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.Data.csproj", "{4717B975-FE9E-44EE-8E8B-77050D644F3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{432DE87B-4F28-4604-8BC7-642DEC0CDFB9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Domain", "2.2 - Domain", "{432DE87B-4F28-4604-8BC7-642DEC0CDFB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{26B25BB8-EE8E-4DBC-8930-F66D37B338F6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Services", "2.1 - Services", "{26B25BB8-EE8E-4DBC-8930-F66D37B338F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{BA7AA449-3B18-48AD-8D68-AC1F090D3ED2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3 - Infra", "2.3 - Infra", "{BA7AA449-3B18-48AD-8D68-AC1F090D3ED2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,11 @@
-﻿using CHStore.Application.Core.Data.Repositories;
-using CHStore.Application.Core.Catalog.Domain.Entities;
-using CHStore.Application.Core.Catalog.Infra.Data.Context;
-using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using CHStore.Application.Core.Data.Repositories;
+using CHStore.Application.Core.Catalog.Domain.Entities;
+using CHStore.Application.Core.Catalog.Infra.Data.Context;
+using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 
 namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
 {
@@ -20,11 +20,12 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice)
+        public async Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
         {
             var products = await (from prd in _context.Products
 
-                                 where 
+                                 where
+                                    prd.Active == searchActives &&
                                     prd.Price >= minimumPrice &&
                                     prd.Price <= maximumPrice
 
@@ -33,23 +34,25 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             return products;
         }
 
-        public async Task<IList<Product>> SearchByBrand(long brandId)
+        public async Task<IList<Product>> SearchByBrand(long brandId, bool searchActives = true)
         {
             var products = await (from prd in _context.Products
 
                                   where
-                                     prd.BrandId == brandId
+                                    prd.Active == searchActives &&
+                                    prd.BrandId == brandId
 
                                   select prd).ToListAsync();
 
             return products;
         }
 
-        public async Task<IList<Product>> SearchByCategory(long categoryId)
+        public async Task<IList<Product>> SearchByCategory(long categoryId, bool searchActives = true)
         {
             var products = await (from prd in _context.Products
 
                                   where
+                                     prd.Active == searchActives &&
                                      prd.CategoryId == categoryId
 
                                   select prd).ToListAsync();
@@ -57,12 +60,13 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             return products;
         }
 
-        public async Task<IList<Product>> SearchByName(string name)
+        public async Task<IList<Product>> SearchByName(string name, bool searchActives = true)
         {
             var products = await (from prd in _context.Products
 
                                   where
-                                     prd.Name.ToLower().Contains(name.ToLower())
+                                     prd.Active == searchActives &&
+                                     prd.Name.ToLower().Contains(name)
 
                                   select prd).ToListAsync();
 
