@@ -25,7 +25,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("biglong")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
@@ -43,7 +43,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("biglong")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
@@ -61,7 +61,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("biglong")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
@@ -71,10 +71,10 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .HasDefaultValue(false);
 
                     b.Property<long>("BrandId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("biglong");
 
                     b.Property<long>("CategoryId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("biglong");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -97,13 +97,13 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .HasColumnType("DATETIME")
                         .HasDefaultValue(new DateTime(2020, 10, 7, 18, 27, 23, 70, DateTimeKind.Local).AddTicks(1397));
 
-                    b.Property<int>("Size")
+                    b.Property<long>("Size")
                         .HasColumnName("size")
-                        .HasColumnType("INT");
+                        .HasColumnType("long");
 
-                    b.Property<int>("Stock")
+                    b.Property<long>("Stock")
                         .HasColumnName("stock")
-                        .HasColumnType("INT");
+                        .HasColumnType("long");
 
                     b.Property<string>("UrlImage")
                         .IsRequired()

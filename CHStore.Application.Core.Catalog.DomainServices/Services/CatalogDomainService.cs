@@ -1,19 +1,20 @@
 ﻿using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
 using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
+using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CHStore.Application.Core.Catalog.DomainServices.Services
 {
-    public class CatalogService : ICatalogService
+    public class CatalogDomainService : ICatalogDomainService
     {
         private readonly IBrandRepository _brandRepository;
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CatalogService(
+        public CatalogDomainService(
             IBrandRepository brandRepository,
             IProductRepository productRepository,
             ICategoryRepository categoryRepository
@@ -70,6 +71,38 @@ namespace CHStore.Application.Core.Catalog.DomainServices.Services
         {
             name.FormatToSearchParammeter();
             return await _productRepository.SearchByName(name, searchActives);
+        }
+
+
+        public async Task<bool> DebitStock(long productId, long mount = 1)
+        {
+            if (mount <= 1)
+                throw new DomainException("A Quantidade para ser debitada deve ser maior ou igual a 1.");
+
+            var product = await _productRepository.Get(productId);
+
+            if (!product.HasStock(mount))
+                throw new DomainException("Não há estoque suficiente para ser debitado.");
+
+            product.DecreaseStock(mount);
+
+            await _productRepository.Update(product);
+
+            return true;
+        }
+
+        public async Task<bool> IncreaseStock(long productId, long mount = 1)
+        {
+            if (mount <= 1)
+                throw new DomainException("A Quantidade para ser aumentada deve ser maior ou igual a 1.");
+
+            var product = await _productRepository.Get(productId);
+
+            product.IncreaseStock(mount);
+
+            await _productRepository.Update(product);
+
+            return true;
         }
 
         #endregion

@@ -4,7 +4,7 @@ using CHStore.Application.Core.Catalog.Domain.Entities;
 
 namespace CHStore.Application.Core.Catalog.DomainServices.Interfaces
 {
-    public interface ICatalogService
+    public interface ICatalogDomainService
     {
         Task<Product> AddProduct(Product product);
         Task<Product> UpdateProduct(Product product);
@@ -15,6 +15,8 @@ namespace CHStore.Application.Core.Catalog.DomainServices.Interfaces
         Task<IList<Product>> SearchProductsByBrand(long brandId, bool searchActives = true);
         Task<IList<Product>> SearchProductsByName(string name, bool searchActives = true);
         Task<IList<Product>> SearchProductsBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true);
+        Task<bool> DebitStock(long productId, long mount = 1);
+        Task<bool> IncreaseStock(long productId, long mount = 1);
 
         Task<Category> AddCategory(Category category);
         Task<Category> UpdateCategory(Category category);

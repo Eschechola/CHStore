@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Core.Catalog.Domain.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj" />
     <ProjectReference Include="..\CHStore.Application.Core\CHStore.Application.Core.csproj" />
   </ItemGroup>
 

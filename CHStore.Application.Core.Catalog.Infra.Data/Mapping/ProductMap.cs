@@ -43,12 +43,12 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
 
             builder.Property(x => x.Size)
                 .IsRequired()
-                .HasColumnType("INT")
+                .HasColumnType("long")
                 .HasColumnName("size");
 
             builder.Property(x => x.Stock)
                 .IsRequired()
-                .HasColumnType("INT")
+                .HasColumnType("long")
                 .HasColumnName("stock");
 
             builder.Property(x => x.UrlImage)

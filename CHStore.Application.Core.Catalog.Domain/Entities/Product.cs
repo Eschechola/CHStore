@@ -123,6 +123,11 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
 
         public void ChangeSize(ProductSize size) => Size = size;
 
+        public bool HasStock(long mount)
+        {
+            return Stock >= mount;
+        }
+
         #endregion
     }
 }
