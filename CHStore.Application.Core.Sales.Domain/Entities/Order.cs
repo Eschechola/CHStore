@@ -8,6 +8,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 {
     public class Order : Entity
     {
+        public long UserId { get; private set; }
         public long TransportCompanyId { get; private set; }
         public long CouponId { get; private set; }
         public decimal TotalPrice { get; private set; }
@@ -16,9 +17,8 @@ namespace CHStore.Application.Sales.Domain.Entities
         public DateTime RequestDate { get; private set; }
         public DateTime FinishDate { get; private set; }
         public PaymentMethod PaymentMethod { get; private set; }
-        public OrderStatus Status { get; private set; }
-
-
+        
+        public Status Status { get; private set; }
         public Coupon Coupon { get; private set; }
         public TransportCompany TransportCompany { get; private set; }
         public IList<Product> Products { get; private set; }
@@ -30,7 +30,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             decimal freightPrice,
             DateTime requestDate,
             PaymentMethod paymentMethod,
-            OrderStatus status
+            Status status
         )
         {
             Products = products;
@@ -64,7 +64,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             return totalValue;
         }
 
-        public void ChangeOrderStatus(OrderStatus status) => Status = status;
+        public void ChangeOrderStatus(Status status) => Status = status;
 
         public void ChangeFinishDate(DateTime finishDate) => FinishDate = finishDate;
     }
