@@ -8,18 +8,23 @@ namespace CHStore.Application.Sales.Domain.Entities
     {
         public string Code { get; private set; }
         public decimal DiscountPercentage { get; private set; }
+        public bool Active { get; private set; }
         public DateTime InitialDate { get; private set; }
         public DateTime FinalDate { get; private set; }
+
+        public Order Order { get; private set; }
 
         public Coupon(
             string code,
             decimal discountPercentage,
+            bool active,
             DateTime initialDate,
             DateTime finalDate
         )
         {
             Code = code;
             DiscountPercentage = discountPercentage;
+            Active = active;
             InitialDate = initialDate;
             FinalDate = finalDate;
         }
@@ -42,5 +47,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public void ChangeInitialDate(DateTime initialDate) => InitialDate = initialDate;
         public void ChangeFinalDate(DateTime finalDate) => FinalDate = finalDate;
+        public void ActivateCoupon() => Active = true;
+        public void DeactivateCoupon() => Active = false;
     }
 }

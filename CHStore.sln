@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.DomainServices", "CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Catalog.DomainServices.csproj", "{3D6E861D-3596-4931-BDEC-E57F8257F3B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.Infra.Data", "CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.Data.csproj", "{4717B975-FE9E-44EE-8E8B-77050D644F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.Infra", "CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.csproj", "{4717B975-FE9E-44EE-8E8B-77050D644F3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Domain", "2.2 - Domain", "{432DE87B-4F28-4604-8BC7-642DEC0CDFB9}"
 EndProject
@@ -33,11 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - Domain", "3.2 - Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - Infra", "3.3 - Infra", "{1A722C42-7470-44EF-94F6-C4B447859FCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Sales.Domain", "CHStore.Application.Core.Sales.Domain\CHStore.Application.Sales.Domain.csproj", "{543CA7CB-4B9C-4337-8320-7AC9DD62E001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Domain", "CHStore.Application.Core.Sales.Domain\CHStore.Application.Sales.Domain.csproj", "{543CA7CB-4B9C-4337-8320-7AC9DD62E001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Sales.Infra", "CHStore.Application.Sales.Infra\CHStore.Application.Sales.Infra.csproj", "{7E642D08-ACD8-4B53-B09D-9D6A89B9B785}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Infra", "CHStore.Application.Sales.Infra\CHStore.Application.Sales.Infra.csproj", "{7E642D08-ACD8-4B53-B09D-9D6A89B9B785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Application.Sales.DomainServices", "CHStore.Application.Sales.DomainServices\CHStore.Application.Sales.DomainServices.csproj", "{C306F853-FAB2-4AC3-B6E6-0621521A0BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.DomainServices", "CHStore.Application.Sales.DomainServices\CHStore.Application.Sales.DomainServices.csproj", "{C306F853-FAB2-4AC3-B6E6-0621521A0BAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

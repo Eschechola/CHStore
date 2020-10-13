@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Sales.Domain.Entities;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
-    public interface ITransportCompanyRepository
-    {
-    }
+    public interface ITransportCompanyRepository : IBaseRepository<TransportCompany>
+    {}
 }

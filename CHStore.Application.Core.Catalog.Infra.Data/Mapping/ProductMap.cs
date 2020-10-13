@@ -13,6 +13,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
 
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
+
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(300)
@@ -22,7 +25,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.Property(x => x.Active)        
                 .IsRequired()
                 .HasDefaultValue(false)
-                .HasColumnName("fl_active")
+                .HasColumnName("FL_Active")
                 .HasColumnType("BIT");
 
             builder.Property(x => x.Description)

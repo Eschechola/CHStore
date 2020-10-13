@@ -8,6 +8,8 @@ namespace CHStore.Application.Sales.Domain.Entities
 {
     public class Order : Entity
     {
+        #region Properties
+
         public long UserId { get; private set; }
         public long TransportCompanyId { get; private set; }
         public long CouponId { get; private set; }
@@ -17,23 +19,33 @@ namespace CHStore.Application.Sales.Domain.Entities
         public DateTime RequestDate { get; private set; }
         public DateTime FinishDate { get; private set; }
         public PaymentMethod PaymentMethod { get; private set; }
-        
-        public Status Status { get; private set; }
+
+        #endregion
+
+        #region Navigation Properties
+
+        public IList<Status> Status { get; private set; }
         public Coupon Coupon { get; private set; }
+        public User User { get; private set; }
         public TransportCompany TransportCompany { get; private set; }
-        public IList<Product> Products { get; private set; }
+        public IList<OrderProduct> OrderProducts { get; private set; }
+
+        #endregion
+
+        #region Constructors
+        protected Order(){}
 
         public Order(
-            IList<Product> products,
+            IList<OrderProduct> orderProducts,
             Coupon coupon,
             TransportCompany transportCompany,
             decimal freightPrice,
             DateTime requestDate,
             PaymentMethod paymentMethod,
-            Status status
+            IList<Status> status
         )
         {
-            Products = products;
+            OrderProducts = orderProducts;
             CouponId = coupon.Id;
             TransportCompanyId = transportCompany.Id;
             Coupon = coupon;
@@ -43,29 +55,37 @@ namespace CHStore.Application.Sales.Domain.Entities
             PaymentMethod = paymentMethod;
             Status = status;
 
-            ProductsPrice = GetProductsPrice(products);
-            TotalPrice = GetTotalPrice(products, coupon, freightPrice);
+            ProductsPrice = GetProductsPrice(orderProducts);
+            TotalPrice = GetTotalPrice(orderProducts, coupon, freightPrice);
         }
 
-        private decimal GetProductsPrice(IList<Product> products)
+        #endregion
+
+        #region Methods
+
+        private decimal GetProductsPrice(IList<OrderProduct> orderProducts)
         {
-            return products.Sum(x => x.Price * x.Mount);
+            return orderProducts.Sum(x => x.Product.Price * x.Mount);
         }
 
-        private decimal GetTotalPrice(IList<Product> products, Coupon coupon, decimal freightPrice)
+        private decimal GetTotalPrice(IList<OrderProduct> orderProducts, Coupon coupon, decimal freightPrice)
         {
             //desconto de acordo com a % do cupom de desconto
 
-            var totalValue = products.Sum(x => x.Price * x.Mount);
+            var totalValue = orderProducts.Sum(x => x.Product.Price * x.Mount);
 
-            totalValue -= totalValue - (coupon.DiscountPercentage / 100);
+            if(coupon != null)
+                totalValue -= totalValue - (coupon.DiscountPercentage / 100);
+            
             totalValue += freightPrice;
 
             return totalValue;
         }
 
-        public void ChangeOrderStatus(Status status) => Status = status;
+        public void ChangeOrderStatus(Status status) => Status.Add(status);
 
         public void ChangeFinishDate(DateTime finishDate) => FinishDate = finishDate;
+
+        #endregion
     }
 }

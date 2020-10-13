@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.Data.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.csproj" />
   </ItemGroup>
 
 </Project>

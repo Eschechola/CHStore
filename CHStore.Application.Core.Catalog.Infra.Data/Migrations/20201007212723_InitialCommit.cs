@@ -45,7 +45,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                     description = table.Column<string>(type: "VARCHAR(MAX)", nullable: false),
                     price = table.Column<double>(type: "FLOAT", nullable: false),
                     stock = table.Column<long>(type: "long", nullable: false),
-                    fl_active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false),
+                    FL_Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false),
                     register_date = table.Column<DateTime>(type: "DATETIME", nullable: false, defaultValue: new DateTime(2020, 10, 7, 18, 27, 23, 70, DateTimeKind.Local).AddTicks(1397)),
                     url_image = table.Column<string>(type: "VARCHAR(MAX)", nullable: false),
                     size = table.Column<long>(type: "long", nullable: false)

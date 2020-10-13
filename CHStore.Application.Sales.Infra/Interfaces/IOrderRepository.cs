@@ -1,10 +1,17 @@
-﻿using System;
+﻿using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Sales.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
-    public interface IOrderRepository
+    public interface IOrderRepository : IBaseRepository<Order>
     {
+        Task<IList<Order>> SearchOrdersByUserId(long userId);
+        Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
+        Task<IList<Order>> SearchByStatus(Status status);
     }
 }

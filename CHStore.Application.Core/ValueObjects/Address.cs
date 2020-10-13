@@ -4,17 +4,20 @@ using CHStore.Application.Core.Exceptions;
 
 namespace CHStore.Application.Core.ValueObjects
 {
-    public class Address : Entity
+    public class Address
     {
-        public long Number { get; private set; }
+        public string Number { get; private set; }
         public string Street { get; private set; }
         public string ZipCode { get; private set; }
         public string Complement { get; private set; }
         public TimeSpan OpeningTime { get; private set; }
         public TimeSpan ClosingTime { get; private set; }
 
+
+        protected Address(){}
+
         public Address(
-            long number,
+            string number,
             string street,
             string zipCode,
             TimeSpan openingTime,
@@ -30,9 +33,9 @@ namespace CHStore.Application.Core.ValueObjects
             ClosingTime = closingTime;
         }
 
-        public void ChangeNumber(long number)
+        public void ChangeNumber(string number)
         {
-            if (number < 0)
+            if (string.IsNullOrEmpty(number))
                 throw new DomainException("O Número da transportadora é inválido!");
 
             Number = number;

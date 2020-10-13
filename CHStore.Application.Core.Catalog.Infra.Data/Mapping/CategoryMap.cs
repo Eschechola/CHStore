@@ -11,7 +11,10 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.ToTable("Category");
 
             builder.HasKey(x => x.Id);
-            
+
+            builder.Property(x => x.Id)
+                .UseIdentityColumn();
+
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(80)

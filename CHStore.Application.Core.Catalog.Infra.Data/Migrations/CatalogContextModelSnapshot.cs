@@ -23,7 +23,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("biglong")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
@@ -41,7 +43,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("biglong")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
@@ -59,20 +63,22 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("biglong")
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("fl_active")
+                        .HasColumnName("FL_Active")
                         .HasColumnType("BIT")
                         .HasDefaultValue(false);
 
                     b.Property<long>("BrandId")
-                        .HasColumnType("biglong");
+                        .HasColumnType("bigint");
 
                     b.Property<long>("CategoryId")
-                        .HasColumnType("biglong");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -93,9 +99,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("register_date")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 7, 18, 27, 23, 70, DateTimeKind.Local).AddTicks(1397));
+                        .HasDefaultValue(new DateTime(2020, 10, 13, 1, 7, 9, 984, DateTimeKind.Local).AddTicks(6993));
 
-                    b.Property<long>("Size")
+                    b.Property<int>("Size")
                         .HasColumnName("size")
                         .HasColumnType("long");
 

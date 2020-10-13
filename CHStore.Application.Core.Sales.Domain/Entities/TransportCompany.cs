@@ -8,28 +8,43 @@ namespace CHStore.Application.Sales.Domain.Entities
     {
         public string Name { get; private set; }
         public string CNPJ { get; private set; }
+        public string Email { get; private set; }
+        public string Phone { get; private set; }
         public string WebSiteUrl { get; set; }
         public string TrackingUrl { get; private set; }
         public string ApiUrl { get; private set; }
-        public Address Address { get; private set; }
+        public bool Active { get; private set; }
 
-        public TransportCompany(
+
+        public Address Address { get; private set; }
+        public Order Order { get; private set; }
+
+
+        protected TransportCompany(){}
+
+        public TransportCompany
+        (
             string name,
             string cnpj,
+            string email,
+            string phone,
             string webSiteUrl,
             string trackingUrl,
             string apiUrl,
+            bool active,
             Address address
         )
         {
             Name = name;
             CNPJ = cnpj;
+            Email = email;
+            Phone = phone;
             WebSiteUrl = webSiteUrl;
             TrackingUrl = trackingUrl;
             ApiUrl = apiUrl;
+            Active = active;
             Address = address;
         }
-
 
         public void ChangeName(string name)
         {
@@ -62,5 +77,8 @@ namespace CHStore.Application.Sales.Domain.Entities
 
             ApiUrl = apiUrl;
         }
+
+        public void ActivateTransportCompany() => Active = true;
+        public void DeactivateTransportCompany() => Active = false;
     }
 }
