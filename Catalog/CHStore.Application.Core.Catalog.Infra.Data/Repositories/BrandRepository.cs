@@ -18,6 +18,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
+        }
+
         public async Task<IList<Brand>> SearchByName(string name)
         {
             return await _context.Brands

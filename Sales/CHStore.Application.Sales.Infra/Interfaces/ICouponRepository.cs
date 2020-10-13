@@ -6,7 +6,7 @@ using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
-    public interface ICouponRepository : IBaseRepository<Coupon>
+    public interface ICouponRepository : IBaseRepository<Coupon>, IDisposable
     {
         Task<IList<Coupon>> SearchCouponByCode(string code);
         Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives = true);

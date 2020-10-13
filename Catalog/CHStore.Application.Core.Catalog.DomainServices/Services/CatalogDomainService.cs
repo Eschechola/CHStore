@@ -3,12 +3,13 @@ using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
 using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CHStore.Application.Core.Catalog.DomainServices.Services
 {
-    public class CatalogDomainService : ICatalogDomainService
+    public class CatalogDomainService : ICatalogDomainService, IDisposable
     {
         private readonly IBrandRepository _brandRepository;
         private readonly IProductRepository _productRepository;
@@ -165,6 +166,18 @@ namespace CHStore.Application.Core.Catalog.DomainServices.Services
         {
             name.FormatToSearchParammeter();
             return await _brandRepository.SearchByName(name);
+        }
+
+        #endregion
+
+
+        #region Dispose
+
+        public void Dispose()
+        {
+            _brandRepository?.Dispose();
+            _productRepository?.Dispose();
+            _categoryRepository?.Dispose();
         }
 
         #endregion

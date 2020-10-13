@@ -18,6 +18,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
+        }
+
         public async Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
         {
             return await _context.Products

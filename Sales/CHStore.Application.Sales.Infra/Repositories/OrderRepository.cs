@@ -18,6 +18,11 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             _context = context;
         }
 
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
+        }
+
         public async Task<IList<Order>> SearchByStatus(Status status)
         {
             return await _context.Orders

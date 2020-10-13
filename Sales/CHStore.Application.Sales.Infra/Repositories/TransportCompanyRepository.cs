@@ -12,5 +12,10 @@ namespace CHStore.Application.Sales.Infra.Interfaces
         {
             _context = context;
         }
+
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
+        }
     }
 }

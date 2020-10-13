@@ -8,13 +8,13 @@ using CHStore.Application.Core.Exceptions;
 
 namespace CHStore.Application.Sales.DomainServices.Services
 {
-    public class SalesService : ISalesService
+    public class SalesDomainService : ISalesDomainService, IDisposable
     {
         private readonly ICouponRepository _couponRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly ITransportCompanyRepository _transportCompanyRepository;
 
-        public SalesService
+        public SalesDomainService
         (
             ICouponRepository couponRepository,
             IOrderRepository orderRepository,
@@ -149,6 +149,17 @@ namespace CHStore.Application.Sales.DomainServices.Services
         {
             transportCompany.DeactivateTransportCompany();
             await UpdateTransportCompany(transportCompany);
+        }
+
+        #endregion
+
+        #region Dispose
+
+        public void Dispose()
+        {
+            _couponRepository?.Dispose();
+            _transportCompanyRepository?.Dispose();
+            _orderRepository?.Dispose();
         }
 
         #endregion

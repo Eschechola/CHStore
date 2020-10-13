@@ -5,7 +5,7 @@ using System;
 
 namespace CHStore.Application.Sales.DomainServices.Interfaces
 {
-    public interface ISalesService
+    public interface ISalesDomainService
     {
         Task<Order> CreateOrder(Order order);
         Task<Order> GetOrder(long orderId);

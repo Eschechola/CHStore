@@ -18,6 +18,11 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             _context = context;
         }
 
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
+        }
+
         public async Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate)
         {
             return await _context.Coupons
