@@ -1,4 +1,5 @@
-﻿using CHStore.Application.Sales.Infra.Mapping;
+﻿using CHStore.Application.Sales.Domain.Entities;
+using CHStore.Application.Sales.Infra.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace CHStore.Application.Sales.Infra.Context
@@ -11,6 +12,10 @@ namespace CHStore.Application.Sales.Infra.Context
         public SalesContext(DbContextOptions<SalesContext> options) : base(options)
         { }
 
+        public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<TransportCompany> TransportCompanies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

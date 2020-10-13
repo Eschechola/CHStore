@@ -2,7 +2,6 @@
 using CHStore.Application.Sales.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CHStore.Application.Sales.Infra.Interfaces

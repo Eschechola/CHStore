@@ -20,14 +20,14 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
 
         public async Task<IList<Brand>> SearchByName(string name)
         {
-            var brands = await (from brd in _context.Brands
-
-                                  where
-                                    brd.Name.ToLower().Contains(name)
-
-                                  select brd).ToListAsync();
-
-            return brands;
+            return await _context.Brands
+                         .AsNoTracking()
+                         .Where
+                         (
+                            x =>
+                                x.Name.ToLower().Contains(name)
+                         )
+                         .ToListAsync();
         }
     }
 }

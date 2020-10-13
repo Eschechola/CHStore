@@ -9,7 +9,8 @@ namespace CHStore.Application.Sales.Infra.Interfaces
     public interface ICouponRepository : IBaseRepository<Coupon>
     {
         Task<IList<Coupon>> SearchCouponByCode(string code);
-        Task<IList<Coupon>> SearchCouponByCode(string code, bool active);
-        Task<IList<Order>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives = true);
+        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate, bool searchActives = true);
     }
 }

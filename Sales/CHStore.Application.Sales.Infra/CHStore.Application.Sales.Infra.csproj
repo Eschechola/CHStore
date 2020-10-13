@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201013063938_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201013063938_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201013064428_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201013064428_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201013064727_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201013064727_InitialMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj" />
-    <ProjectReference Include="..\CHStore.Application.Core\CHStore.Application.Core.csproj" />
+    <ProjectReference Include="..\..\Core\CHStore.Application.Core\CHStore.Application.Core.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Core.Sales.Domain\CHStore.Application.Sales.Domain.csproj" />
   </ItemGroup>
 
 </Project>

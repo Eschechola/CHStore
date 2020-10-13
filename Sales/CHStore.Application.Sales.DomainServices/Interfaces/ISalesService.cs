@@ -9,8 +9,8 @@ namespace CHStore.Application.Sales.DomainServices.Interfaces
     {
         Task<Order> CreateOrder(Order order);
         Task<Order> GetOrder(long orderId);
-        Task<Order> GetAllOrders();
-        Task<Order> UpdateStatus(long orderId, Status status);
+        Task<IList<Order>> GetAllOrders();
+        Task<Order> UpdateOrderStatus(long orderId, Status status);
         Task<IList<Order>> SearchOrdersByUserId(long userId);
         Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
         Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
@@ -19,10 +19,10 @@ namespace CHStore.Application.Sales.DomainServices.Interfaces
         Task<Coupon> AddCoupon(Coupon coupon);
         Task<Coupon> UpdateCoupon(Coupon coupon);
         Task<IList<Coupon>> GetCoupons();
-        Task<Coupon> GetCoupons(long couponId);
+        Task<Coupon> GetCoupon(long couponId);
         Task<IList<Coupon>> SearchCouponByCode(string code);
-        Task<IList<Coupon>> SearchCouponByCode(string code, bool active);
-        Task<IList<Order>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives);
+        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
         Task ActivateCoupon(Coupon coupon);
         Task DeactivateCoupon(Coupon coupon);
 

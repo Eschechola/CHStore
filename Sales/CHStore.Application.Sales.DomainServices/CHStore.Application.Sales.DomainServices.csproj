@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CHStore.Application.Core.Sales.Domain\CHStore.Application.Sales.Domain.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Sales.Infra\CHStore.Application.Sales.Infra.csproj" />
   </ItemGroup>
 
 </Project>
