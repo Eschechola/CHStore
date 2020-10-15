@@ -1,11 +1,11 @@
-﻿using CHStore.Application.Core.Catalog.Domain.Entities;
+﻿using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
 using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CHStore.Application.Core.Catalog.DomainServices.Services
 {

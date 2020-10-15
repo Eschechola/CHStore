@@ -22,7 +22,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             DateTime finalDate
         )
         {
-            Code = code;
+            Code = code.ToUpper();
             DiscountPercentage = discountPercentage;
             Active = active;
             InitialDate = initialDate;

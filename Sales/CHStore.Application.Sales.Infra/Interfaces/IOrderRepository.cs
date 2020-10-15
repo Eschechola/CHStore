@@ -8,7 +8,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
 {
     public interface IOrderRepository : IBaseRepository<Order>, IDisposable
     {
-        Task<IList<Order>> SearchOrdersByUserId(long userId);
+        Task<IList<Order>> SearchOrdersByCustomerId(long customerId);
         Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
         Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
         Task<IList<Order>> SearchByStatus(Status status);

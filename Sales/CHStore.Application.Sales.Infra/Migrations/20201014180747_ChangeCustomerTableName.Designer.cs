@@ -4,14 +4,16 @@ using CHStore.Application.Sales.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CHStore.Application.Sales.Infra.Migrations
 {
     [DbContext(typeof(SalesContext))]
-    partial class SalesContextModelSnapshot : ModelSnapshot
+    [Migration("20201014180747_ChangeCustomerTableName")]
+    partial class ChangeCustomerTableName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,13 +50,13 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("FinalDate")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 953, DateTimeKind.Local).AddTicks(4142));
+                        .HasDefaultValue(new DateTime(2020, 10, 14, 15, 7, 47, 248, DateTimeKind.Local).AddTicks(5223));
 
                     b.Property<DateTime>("InitialDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("InitialDate")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 952, DateTimeKind.Local).AddTicks(3629));
+                        .HasDefaultValue(new DateTime(2020, 10, 14, 15, 7, 47, 247, DateTimeKind.Local).AddTicks(5091));
 
                     b.HasKey("Id");
 
@@ -88,9 +90,6 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     b.Property<long>("CouponId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CustomerId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("FinishDate")
                         .HasColumnType("datetime2");
 
@@ -110,7 +109,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("RequestDate")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 961, DateTimeKind.Local).AddTicks(6845));
+                        .HasDefaultValue(new DateTime(2020, 10, 14, 15, 7, 47, 256, DateTimeKind.Local).AddTicks(7484));
 
                     b.Property<double>("TotalPrice")
                         .HasColumnName("TotalPrice")
@@ -119,15 +118,18 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     b.Property<long>("TransportCompanyId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CouponId")
                         .IsUnique();
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("TransportCompanyId")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -188,7 +190,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("DateModified")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 962, DateTimeKind.Local).AddTicks(4529));
+                        .HasDefaultValue(new DateTime(2020, 10, 14, 15, 7, 47, 257, DateTimeKind.Local).AddTicks(5053));
 
                     b.Property<long>("OrderId")
                         .HasColumnType("bigint");
@@ -267,15 +269,15 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CHStore.Application.Sales.Domain.Entities.Customer", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CHStore.Application.Sales.Domain.Entities.TransportCompany", "TransportCompany")
                         .WithOne("Order")
                         .HasForeignKey("CHStore.Application.Sales.Domain.Entities.Order", "TransportCompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHStore.Application.Sales.Domain.Entities.Customer", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

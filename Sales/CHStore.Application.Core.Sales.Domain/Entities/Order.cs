@@ -10,7 +10,7 @@ namespace CHStore.Application.Sales.Domain.Entities
     {
         #region Properties
 
-        public long UserId { get; private set; }
+        public long CustomerId { get; private set; }
         public long TransportCompanyId { get; private set; }
         public long CouponId { get; private set; }
         public decimal TotalPrice { get; private set; }
@@ -26,7 +26,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public IList<Status> Status { get; private set; }
         public Coupon Coupon { get; private set; }
-        public User User { get; private set; }
+        public Customer User { get; private set; }
         public TransportCompany TransportCompany { get; private set; }
         public IList<OrderProduct> OrderProducts { get; private set; }
 

@@ -4,21 +4,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CHStore.Application.Sales.Infra.Mapping
 {
-    public class UserMap : IEntityTypeConfiguration<User>
+    public class CustomerMap : IEntityTypeConfiguration<Customer>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Customer> builder)
         {
-            builder.ToTable("User");
+            builder.ToTable("Customer");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn();
 
-            // 1 : N => Usuário : Pedido
+            // 1 : N => Cliente : Pedido
             builder.HasMany(x => x.Orders)
                 .WithOne(y => y.User)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.CustomerId);
 
             builder.Property(x => x.Name)
                 .IsRequired()

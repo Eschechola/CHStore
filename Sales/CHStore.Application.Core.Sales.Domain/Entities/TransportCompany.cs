@@ -35,13 +35,13 @@ namespace CHStore.Application.Sales.Domain.Entities
             Address address
         )
         {
-            Name = name;
+            Name = name.ToUpper();
             CNPJ = cnpj;
-            Email = email;
+            Email = email.ToUpper();
             Phone = phone;
-            WebSiteUrl = webSiteUrl;
-            TrackingUrl = trackingUrl;
-            ApiUrl = apiUrl;
+            WebSiteUrl = webSiteUrl.ToLower();
+            TrackingUrl = trackingUrl.ToLower();
+            ApiUrl = apiUrl.ToLower();
             Active = active;
             Address = address;
         }

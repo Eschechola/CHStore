@@ -73,7 +73,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                                 .ToListAsync();
         }
 
-        public async Task<IList<Order>> SearchOrdersByUserId(long userId)
+        public async Task<IList<Order>> SearchOrdersByCustomerId(long customerId)
         {
             return await _context.Orders
                                 .AsNoTracking()
@@ -85,7 +85,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                                 .Where
                                 (
                                     x =>
-                                        x.UserId == userId
+                                        x.CustomerId == customerId
                                 )
                                 .ToListAsync();
         }

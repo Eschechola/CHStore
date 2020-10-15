@@ -20,8 +20,8 @@ namespace CHStore.Application.Core.ValueObjects
             string number,
             string street,
             string zipCode,
-            TimeSpan openingTime,
-            TimeSpan closingTime,
+            TimeSpan openingTime = new TimeSpan(),
+            TimeSpan closingTime = new TimeSpan(),
             string complement = ""
         )
         {

@@ -56,9 +56,9 @@ namespace CHStore.Application.Sales.DomainServices.Services
             return await _orderRepository.Get();
         }
 
-        public async Task<IList<Order>> SearchOrdersByUserId(long userId)
+        public async Task<IList<Order>> SearchOrdersByCustomerId(long customerId)
         {
-            return await _orderRepository.SearchOrdersByUserId(userId);
+            return await _orderRepository.SearchOrdersByCustomerId(customerId);
         }
 
         public async Task<IList<Order>> SearchByStatus(Status status)

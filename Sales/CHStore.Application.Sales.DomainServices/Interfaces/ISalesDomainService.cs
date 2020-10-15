@@ -11,7 +11,7 @@ namespace CHStore.Application.Sales.DomainServices.Interfaces
         Task<Order> GetOrder(long orderId);
         Task<IList<Order>> GetAllOrders();
         Task<Order> UpdateOrderStatus(long orderId, Status status);
-        Task<IList<Order>> SearchOrdersByUserId(long userId);
+        Task<IList<Order>> SearchOrdersByCustomerId(long customerId);
         Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
         Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
         Task<IList<Order>> SearchByStatus(Status status);
