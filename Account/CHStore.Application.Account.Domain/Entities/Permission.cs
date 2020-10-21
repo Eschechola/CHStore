@@ -1,6 +1,6 @@
 ﻿using CHStore.Application.Core.Data;
 
-namespace CHStore.Application.Users.Domain.Entities
+namespace CHStore.Application.Account.Domain.Entities
 {
     public class Permission : Entity
     {
