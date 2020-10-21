@@ -13,12 +13,14 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
 
             // 1 : N => Cliente : Pedido
             builder.HasMany(x => x.Orders)
                 .WithOne(y => y.User)
-                .HasForeignKey(x => x.CustomerId);
+                .HasForeignKey(x => x.CustomerId)
+                .HasConstraintName("fk_customer_id");
 
             builder.Property(x => x.Name)
                 .IsRequired()

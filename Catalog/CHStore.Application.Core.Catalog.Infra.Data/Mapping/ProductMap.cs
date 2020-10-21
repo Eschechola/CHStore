@@ -14,7 +14,16 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
+
+            builder.Property(x => x.BrandId)
+               .HasColumnType("BIGINT")
+               .HasColumnName("fk_brand_id");
+
+            builder.Property(x => x.CategoryId)
+               .HasColumnType("BIGINT")
+               .HasColumnName("fk_category_id");
 
             builder.Property(x => x.Name)
                 .IsRequired()
@@ -25,7 +34,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.Property(x => x.Active)        
                 .IsRequired()
                 .HasDefaultValue(false)
-                .HasColumnName("FL_Active")
+                .HasColumnName("fl_active")
                 .HasColumnType("BIT");
 
             builder.Property(x => x.Description)

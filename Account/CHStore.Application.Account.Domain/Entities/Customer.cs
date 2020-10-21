@@ -10,6 +10,8 @@ namespace CHStore.Application.Account.Domain.Entities
         public string CNPJ { get; private set; }
         public CustomerDocumentType DocumentType { get; private set; }
 
+        protected Customer(){}
+
         public Customer(
             string name,
             string email,

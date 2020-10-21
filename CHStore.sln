@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Domain", "Catalog\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj", "{87C9C31A-1AE6-46F2-B5F7-4C927A518438}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core.Catalog.Infra", "Catalog\CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Core.Catalog.Infra.csproj", "{3D384947-1FD5-41C8-8904-92AF2BAD5FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Infra", "Catalog\CHStore.Application.Core.Catalog.Infra.Data\CHStore.Application.Catalog.Infra.csproj", "{3D384947-1FD5-41C8-8904-92AF2BAD5FC8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.DomainServices", "Sales\CHStore.Application.Sales.DomainServices\CHStore.Application.Sales.DomainServices.csproj", "{8702E341-FAB9-4B50-8DDD-24AF99F5FA00}"
 EndProject

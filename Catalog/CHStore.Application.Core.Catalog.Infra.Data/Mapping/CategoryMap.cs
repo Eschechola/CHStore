@@ -13,7 +13,8 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
 
             builder.Property(x => x.Name)
                 .IsRequired()
@@ -25,7 +26,8 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder
                 .HasMany(c => c.Products)
                 .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId);
+                .HasForeignKey(p => p.CategoryId)
+                .HasConstraintName("fk_category_id");
         }
     }
 }

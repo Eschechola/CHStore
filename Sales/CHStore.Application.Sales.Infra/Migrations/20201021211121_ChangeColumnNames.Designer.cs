@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CHStore.Application.Sales.Infra.Migrations
 {
     [DbContext(typeof(SalesContext))]
-    [Migration("20201015201407_ChangeUserToCustomerEntity")]
-    partial class ChangeUserToCustomerEntity
+    [Migration("20201021211121_ChangeColumnNames")]
+    partial class ChangeColumnNames
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,14 +25,14 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("BIGINT")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("FL_Active")
+                        .HasColumnName("fl_active")
                         .HasColumnType("BIT")
                         .HasDefaultValue(false);
 
@@ -43,20 +43,20 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasMaxLength(50);
 
                     b.Property<double>("DiscountPercentage")
-                        .HasColumnName("DiscountPercentage")
+                        .HasColumnName("discount_percentage")
                         .HasColumnType("FLOAT");
 
                     b.Property<DateTime>("FinalDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("FinalDate")
+                        .HasColumnName("final_date")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 953, DateTimeKind.Local).AddTicks(4142));
+                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 11, 21, 715, DateTimeKind.Local).AddTicks(7302));
 
                     b.Property<DateTime>("InitialDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("InitialDate")
+                        .HasColumnName("initial_date")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 952, DateTimeKind.Local).AddTicks(3629));
+                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 11, 21, 714, DateTimeKind.Local).AddTicks(6531));
 
                     b.HasKey("Id");
 
@@ -82,13 +82,13 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("BIGINT")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("CouponId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("BIGINT");
 
                     b.Property<long>("CustomerId")
                         .HasColumnType("bigint");
@@ -97,29 +97,29 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<double>("FreightPrice")
-                        .HasColumnName("FreightPrice")
+                        .HasColumnName("freight_price")
                         .HasColumnType("FLOAT");
 
-                    b.Property<int>("PaymentMethod")
-                        .HasColumnName("PaymentMethod")
+                    b.Property<long>("PaymentMethod")
+                        .HasColumnName("payment_method")
                         .HasColumnType("BIGINT");
 
                     b.Property<double>("ProductsPrice")
-                        .HasColumnName("ProductsPrice")
+                        .HasColumnName("products_price")
                         .HasColumnType("FLOAT");
 
                     b.Property<DateTime>("RequestDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("RequestDate")
+                        .HasColumnName("request_date")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 961, DateTimeKind.Local).AddTicks(6845));
+                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 11, 21, 725, DateTimeKind.Local).AddTicks(1739));
 
                     b.Property<double>("TotalPrice")
-                        .HasColumnName("TotalPrice")
+                        .HasColumnName("total_price")
                         .HasColumnType("FLOAT");
 
                     b.Property<long>("TransportCompanyId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("BIGINT");
 
                     b.HasKey("Id");
 
@@ -142,10 +142,10 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Mount")
-                        .HasColumnType("BIGINT");
+                        .HasColumnType("int");
 
                     b.Property<long>("OrderId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("BIGINT");
 
                     b.Property<long>("ProductId")
                         .HasColumnType("bigint");
@@ -181,22 +181,22 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("BIGINT")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateModified")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("DateModified")
+                        .HasColumnName("date_modified")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 15, 17, 14, 6, 962, DateTimeKind.Local).AddTicks(4529));
+                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 11, 21, 725, DateTimeKind.Local).AddTicks(9399));
 
                     b.Property<long>("OrderId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("BIGINT");
 
-                    b.Property<int>("OrderStatus")
-                        .HasColumnName("OrderStatus")
+                    b.Property<long>("OrderStatus")
+                        .HasColumnName("order_status")
                         .HasColumnType("BIGINT");
 
                     b.HasKey("Id");
@@ -210,50 +210,50 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("BIGINT")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("FL_Active")
+                        .HasColumnName("fl_active")
                         .HasColumnType("BIT")
                         .HasDefaultValue(false);
 
                     b.Property<string>("ApiUrl")
                         .IsRequired()
-                        .HasColumnName("ApiUrl")
+                        .HasColumnName("api_url")
                         .HasColumnType("VARCHAR(500)");
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasColumnName("CNPJ")
+                        .HasColumnName("cnpj")
                         .HasColumnType("VARCHAR(14)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnName("Email")
+                        .HasColumnName("email")
                         .HasColumnType("VARCHAR(200)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnName("Name")
+                        .HasColumnName("name")
                         .HasColumnType("VARCHAR(200)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnName("Phone")
+                        .HasColumnName("phone")
                         .HasColumnType("VARCHAR(20)");
-
-                    b.Property<string>("TrackingUrl")
-                        .IsRequired()
-                        .HasColumnName("TrackingUrl")
-                        .HasColumnType("VARCHAR(500)");
 
                     b.Property<string>("SiteUrl")
                         .IsRequired()
-                        .HasColumnName("SiteUrl")
+                        .HasColumnName("WebSiteUrl")
+                        .HasColumnType("VARCHAR(500)");
+
+                    b.Property<string>("TrackingUrl")
+                        .IsRequired()
+                        .HasColumnName("tracking_url")
                         .HasColumnType("VARCHAR(500)");
 
                     b.HasKey("Id");
@@ -266,6 +266,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     b.HasOne("CHStore.Application.Sales.Domain.Entities.Coupon", "Coupon")
                         .WithOne("Order")
                         .HasForeignKey("CHStore.Application.Sales.Domain.Entities.Order", "CouponId")
+                        .HasConstraintName("fk_coupon_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -278,6 +279,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     b.HasOne("CHStore.Application.Sales.Domain.Entities.TransportCompany", "TransportCompany")
                         .WithOne("Order")
                         .HasForeignKey("CHStore.Application.Sales.Domain.Entities.Order", "TransportCompanyId")
+                        .HasConstraintName("fk_transport_company_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -287,6 +289,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     b.HasOne("CHStore.Application.Sales.Domain.Entities.Order", "Order")
                         .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
+                        .HasConstraintName("fk_order_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -312,34 +315,34 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         {
                             b1.Property<long>("TransportCompanyId")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
+                                .HasColumnType("BIGINT")
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<TimeSpan>("ClosingTime")
-                                .HasColumnName("ClosingTime")
+                                .HasColumnName("closing_time")
                                 .HasColumnType("TIME");
 
                             b1.Property<string>("Complement")
-                                .HasColumnName("Complement")
+                                .HasColumnName("complement")
                                 .HasColumnType("VARCHAR(100)");
 
                             b1.Property<string>("Number")
                                 .IsRequired()
-                                .HasColumnName("Number")
+                                .HasColumnName("number")
                                 .HasColumnType("VARCHAR(15)");
 
                             b1.Property<TimeSpan>("OpeningTime")
-                                .HasColumnName("OpeningTime")
+                                .HasColumnName("opening_time")
                                 .HasColumnType("TIME");
 
                             b1.Property<string>("Street")
                                 .IsRequired()
-                                .HasColumnName("Street")
+                                .HasColumnName("street")
                                 .HasColumnType("VARCHAR(300)");
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
-                                .HasColumnName("ZipCode")
+                                .HasColumnName("zip_code")
                                 .HasColumnType("VARCHAR(16)");
 
                             b1.HasKey("TransportCompanyId");

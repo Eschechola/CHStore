@@ -48,7 +48,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                     CNPJ = table.Column<string>(type: "VARCHAR(14)", nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(200)", nullable: false),
                     Phone = table.Column<string>(type: "VARCHAR(20)", nullable: false),
-                    WebSiteUrl = table.Column<string>(type: "VARCHAR(500)", nullable: false),
+                    SiteUrl = table.Column<string>(type: "VARCHAR(500)", nullable: false),
                     TrackingUrl = table.Column<string>(type: "VARCHAR(500)", nullable: false),
                     ApiUrl = table.Column<string>(type: "VARCHAR(500)", nullable: false),
                     FL_Active = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false),

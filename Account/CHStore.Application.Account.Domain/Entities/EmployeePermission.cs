@@ -10,6 +10,8 @@ namespace CHStore.Application.Account.Domain.Entities
         public Employee Employee { get; private set; }
         public Permission Permission { get; private set; }
 
+        protected EmployeePermission() { }
+
         public EmployeePermission(
             long employeeId,
             long permissionId,

@@ -14,13 +14,14 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
 
             builder.Property(x => x.Active)
                 .IsRequired()
                 .HasDefaultValue(false)
                 .HasColumnType("BIT")
-                .HasColumnName("FL_Active");
+                .HasColumnName("fl_active");
 
             builder.Property(x => x.Code)
                 .IsRequired()
@@ -31,19 +32,19 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.Property(x => x.DiscountPercentage)
                 .IsRequired()
                 .HasColumnType("FLOAT")
-                .HasColumnName("DiscountPercentage");
+                .HasColumnName("discount_percentage");
 
             builder.Property(x => x.InitialDate)
                 .IsRequired()
                 .HasDefaultValue(DateTime.Now)
                 .HasColumnType("DATETIME")
-                .HasColumnName("InitialDate");
+                .HasColumnName("initial_date");
 
             builder.Property(x => x.FinalDate)
                 .IsRequired()
                 .HasDefaultValue(DateTime.Now)
                 .HasColumnType("DATETIME")
-                .HasColumnName("FinalDate");
+                .HasColumnName("final_date");
         }
     }
 }

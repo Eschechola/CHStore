@@ -10,7 +10,7 @@ namespace CHStore.Application.Sales.Domain.Entities
         public string CNPJ { get; private set; }
         public string Email { get; private set; }
         public string Phone { get; private set; }
-        public string WebSiteUrl { get; set; }
+        public string SiteUrl { get; set; }
         public string TrackingUrl { get; private set; }
         public string ApiUrl { get; private set; }
         public bool Active { get; private set; }
@@ -28,7 +28,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             string cnpj,
             string email,
             string phone,
-            string webSiteUrl,
+            string SiteUrl,
             string trackingUrl,
             string apiUrl,
             bool active,
@@ -39,7 +39,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             CNPJ = cnpj;
             Email = email.ToUpper();
             Phone = phone;
-            WebSiteUrl = webSiteUrl.ToLower();
+            SiteUrl = SiteUrl.ToLower();
             TrackingUrl = trackingUrl.ToLower();
             ApiUrl = apiUrl.ToLower();
             Active = active;
@@ -54,12 +54,12 @@ namespace CHStore.Application.Sales.Domain.Entities
             Name = name;
         }
 
-        public void ChangeWebSiteUrl(string webSiteUrl)
+        public void ChangeSiteUrl(string SiteUrl)
         {
-            if (string.IsNullOrEmpty(webSiteUrl))
+            if (string.IsNullOrEmpty(SiteUrl))
                 throw new DomainException("A URL do site da tranportadora não pode ser vazio");
 
-            Name = webSiteUrl;
+            Name = SiteUrl;
         }
 
         public void ChangeTrackingUrl(string trackingUrl)

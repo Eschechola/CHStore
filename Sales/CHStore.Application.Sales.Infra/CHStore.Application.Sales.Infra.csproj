@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20201013064428_InitialMigration.Designer.cs" />
     <Compile Remove="Migrations\20201013064727_InitialMigration.cs" />
     <Compile Remove="Migrations\20201013064727_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201021210943_ChangeColumnTypes.cs" />
+    <Compile Remove="Migrations\20201021210943_ChangeColumnTypes.Designer.cs" />
+    <Compile Remove="Migrations\20201021211100_ChangeColumnNames.cs" />
+    <Compile Remove="Migrations\20201021211100_ChangeColumnNames.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

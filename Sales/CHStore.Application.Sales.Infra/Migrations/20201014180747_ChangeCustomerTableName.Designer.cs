@@ -99,7 +99,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
                     b.Property<int>("PaymentMethod")
                         .HasColumnName("PaymentMethod")
-                        .HasColumnType("INT");
+                        .HasColumnType("BIGINT");
 
                     b.Property<double>("ProductsPrice")
                         .HasColumnName("ProductsPrice")
@@ -142,7 +142,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Mount")
-                        .HasColumnType("int");
+                        .HasColumnType("BIGINT");
 
                     b.Property<long>("OrderId")
                         .HasColumnType("bigint");
@@ -197,7 +197,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
                     b.Property<int>("OrderStatus")
                         .HasColumnName("OrderStatus")
-                        .HasColumnType("INT");
+                        .HasColumnType("BIGINT");
 
                     b.HasKey("Id");
 
@@ -251,9 +251,9 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasColumnName("TrackingUrl")
                         .HasColumnType("VARCHAR(500)");
 
-                    b.Property<string>("WebSiteUrl")
+                    b.Property<string>("SiteUrl")
                         .IsRequired()
-                        .HasColumnName("WebSiteUrl")
+                        .HasColumnName("SiteUrl")
                         .HasColumnType("VARCHAR(500)");
 
                     b.HasKey("Id");

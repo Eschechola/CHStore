@@ -13,48 +13,49 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
 
             builder.Property(x => x.Active)
                 .IsRequired()
                 .HasDefaultValue(false)
                 .HasColumnType("BIT")
-                .HasColumnName("FL_Active");
+                .HasColumnName("fl_active");
 
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasColumnType("VARCHAR(200)")
-                .HasColumnName("Name");
+                .HasColumnName("name");
 
             builder.Property(x => x.TrackingUrl)
                 .IsRequired()
                 .HasColumnType("VARCHAR(500)")
-                .HasColumnName("TrackingUrl");
+                .HasColumnName("tracking_url");
 
-            builder.Property(x => x.WebSiteUrl)
+            builder.Property(x => x.SiteUrl)
                 .IsRequired()
                 .HasColumnType("VARCHAR(500)")
-                .HasColumnName("WebSiteUrl");
+                .HasColumnName("site_url");
 
             builder.Property(x => x.ApiUrl)
                 .IsRequired()
                 .HasColumnType("VARCHAR(500)")
-                .HasColumnName("ApiUrl");
+                .HasColumnName("api_url");
 
             builder.Property(x => x.CNPJ)
                 .IsRequired()
                 .HasColumnType("VARCHAR(14)")
-                .HasColumnName("CNPJ");
+                .HasColumnName("cnpj");
 
             builder.Property(x => x.Email)
                 .IsRequired()
                 .HasColumnType("VARCHAR(200)")
-                .HasColumnName("Email");
+                .HasColumnName("email");
 
             builder.Property(x => x.Phone)
                 .IsRequired()
                 .HasColumnType("VARCHAR(20)")
-                .HasColumnName("Phone");
+                .HasColumnName("phone");
 
             builder.OwnsOne(x => x.Address,
                 ad =>
@@ -62,29 +63,29 @@ namespace CHStore.Application.Sales.Infra.Mapping
                     ad.Property(a => a.Street)
                         .IsRequired()
                         .HasColumnType("VARCHAR(300)")
-                        .HasColumnName("Street");
+                        .HasColumnName("street");
                     
                     ad.Property(a => a.ZipCode)
                         .IsRequired()
                         .HasColumnType("VARCHAR(16)")
-                        .HasColumnName("ZipCode");
+                        .HasColumnName("zip_code");
                     
                     ad.Property(a => a.Number)
                         .IsRequired()
                         .HasColumnType("VARCHAR(15)")
-                        .HasColumnName("Number");
+                        .HasColumnName("number");
                     
                     ad.Property(a => a.Complement)
                         .HasColumnType("VARCHAR(100)")
-                        .HasColumnName("Complement");
+                        .HasColumnName("complement");
                     
                     ad.Property(a => a.OpeningTime)
                         .HasColumnType("TIME")
-                        .HasColumnName("OpeningTime");
+                        .HasColumnName("opening_time");
 
                     ad.Property(a => a.ClosingTime)
                         .HasColumnType("TIME")
-                        .HasColumnName("ClosingTime");
+                        .HasColumnName("closing_time");
                 }
             );
         }

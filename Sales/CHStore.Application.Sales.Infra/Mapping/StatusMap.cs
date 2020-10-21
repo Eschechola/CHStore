@@ -14,19 +14,24 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
+
+            builder.Property(x => x.OrderId)
+               .HasColumnType("BIGINT")
+               .HasColumnName("fk_order_id");
 
             builder.Property(x => x.DateModified)
                 .IsRequired()
                 .HasDefaultValue(DateTime.Now)
                 .HasColumnType("DATETIME")
-                .HasColumnName("DateModified");
+                .HasColumnName("date_modified");
 
             builder.Property(x => x.OrderStatus)
                 .IsRequired()
                 .HasConversion<int>()
-                .HasColumnType("INT")
-                .HasColumnName("OrderStatus");
+                .HasColumnType("BIGINT")
+                .HasColumnName("order_status");
         }
     }
 }

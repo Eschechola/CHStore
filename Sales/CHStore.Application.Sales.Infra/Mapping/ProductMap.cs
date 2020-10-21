@@ -13,17 +13,18 @@ namespace CHStore.Application.Sales.Infra.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn();
+                .UseIdentityColumn()
+                .HasColumnType("BIGINT");
 
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(300)
-                .HasColumnName("Name")
+                .HasColumnName("name")
                 .HasColumnType("VARCHAR(300)");
 
             builder.Property(x => x.Price)
                 .IsRequired()
-                .HasColumnName("Price")
+                .HasColumnName("price")
                 .HasColumnType("FLOAT");
         }
     }

@@ -4,14 +4,16 @@ using CHStore.Application.Core.Catalog.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
 {
     [DbContext(typeof(CatalogContext))]
-    partial class CatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20201021211541_ChangeColumnNames")]
+    partial class ChangeColumnNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,11 +77,9 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .HasDefaultValue(false);
 
                     b.Property<long>("BrandId")
-                        .HasColumnName("fk_brand_id")
                         .HasColumnType("BIGINT");
 
                     b.Property<long>("CategoryId")
-                        .HasColumnName("fk_category_id")
                         .HasColumnType("BIGINT");
 
                     b.Property<string>("Description")
@@ -101,7 +101,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("register_date")
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 25, 44, 82, DateTimeKind.Local).AddTicks(8554));
+                        .HasDefaultValue(new DateTime(2020, 10, 21, 18, 15, 41, 576, DateTimeKind.Local).AddTicks(2043));
 
                     b.Property<int>("Size")
                         .HasColumnName("size")
