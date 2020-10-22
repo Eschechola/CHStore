@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CHStore.Application.Account.Domain\CHStore.Application.Account.Domain.csproj" />
   </ItemGroup>
 
 </Project>

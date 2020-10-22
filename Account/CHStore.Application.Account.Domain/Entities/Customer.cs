@@ -6,6 +6,7 @@ namespace CHStore.Application.Account.Domain.Entities
 {
     public class Customer : Account
     {
+        public bool Active { get; private set; }
         public string CPF { get; private set; }
         public string CNPJ { get; private set; }
         public CustomerDocumentType DocumentType { get; private set; }
@@ -27,5 +28,8 @@ namespace CHStore.Application.Account.Domain.Entities
             CNPJ = cnpj;
             DocumentType = documentType;
         }
+
+        public void ActiveCustomer() => Active = true;
+        public void DeactiveCustomer() => Active = false;
     }
 }

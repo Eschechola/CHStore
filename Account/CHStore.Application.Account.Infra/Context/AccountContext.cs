@@ -15,7 +15,7 @@ namespace CHStore.Application.Account.Infra.Context
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
-        public virtual DbSet<Permission> EmployeesPermissions { get; set; }
+        public virtual DbSet<EmployeePermission> EmployeesPermissions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

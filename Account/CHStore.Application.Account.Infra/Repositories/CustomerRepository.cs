@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CHStore.Application.Account.Infra.Context;
+using CHStore.Application.Core.Data.Repositories;
+using CHStore.Application.Account.Domain.Entities;
+using CHStore.Application.Account.Infra.Interfaces;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
-    class CustomerRepository
+    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
+        private readonly AccountContext _context;
+        
+        public CustomerRepository(AccountContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }

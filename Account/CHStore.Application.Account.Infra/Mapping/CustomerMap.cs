@@ -59,6 +59,11 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasColumnName("cnpj")
                 .HasColumnType("VARCHAR(14)");
 
+            builder.Property(x => x.Active)
+                .IsRequired()
+                .HasDefaultValue(true)
+                .HasColumnName("fl_active")
+                .HasColumnType("BIT");
 
             builder.OwnsOne(x => x.Address,
                 ad =>

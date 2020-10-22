@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CHStore.Application.Account.Domain.Entities;
+using CHStore.Application.Account.Infra.Context;
+using CHStore.Application.Account.Infra.Interfaces;
+using CHStore.Application.Core.Data.Repositories;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
-    class PermissionRepository
+    public class PermissionRepository : BaseRepository<Permission>, IPermissionRepository
     {
+        private readonly AccountContext _context;
+
+        public PermissionRepository(AccountContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }
