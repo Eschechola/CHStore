@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CHStore.Application.Account.Domain\CHStore.Application.Account.Domain.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Account.Infra\CHStore.Application.Account.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
