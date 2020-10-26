@@ -4,80 +4,80 @@
     border:0;
 }
 
+*:focus {
+    outline: 0 !important;
+}
+
 .login {
-    display: flex;
-    position: absolute;
-    background: white;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    position: absolute;
+    background: #0F102B;
     align-content: center;
     justify-content: center;
     align-items: center;
-}
-
-.login-content{
-    display: flex;
     flex-direction: column;
-    min-width: 500px;
-    min-height: 80vh;
 }
 
-.login-image {
-    flex: 2;
-    width: 100%;   
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+.login-form {
+    width: 400px;
+    height: 380px;
+    background: #23243D;
+    border-radius: 30px;
+    margin-top: 20px;
 }
 
-.login-image img{
-    border-radius: 100%;
-    border: 2px solid dimgray;
-}
-
-.login-fields{
-    flex: 3;
-    width: 100%;
-}
-
-.input-form {
-    padding-left: 20px !important;
+.login-form h4{
+    color: white;
     margin-left: 50%;
-    transform: translate(-50%);
-    border: 1px solid dimgray;
-    padding: 8px;
-    outline: 0;
-    min-width: 350px;
-    color: #3d3d3d;
-    transition: 0.5s;
-    border-radius: 20px;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+    margin-top: 30px;
 }
 
-.input-form:focus{
-    border-color: mediumaquamarine;
-    transition: 0.5s;
-} 
+.login-form input{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    margin-top: 40px;
+    padding: 10px;
+    background: #434458;
+    outline: 0;
+    border: 1px solid transparent;
+    color: #f3f3f3;
+    border-radius: 30px;
+    padding-left: 15px;
+}
 
-.mg-05{
-    margin-top: 5%;
+.login-form input:focus{
+    border: 1px solid transparent;
+    outline: 0;
 }
 
 .btn-send {
-    width: 200px;
+    margin-top: 40px;
     margin-left: 50%;
-    margin-top: 10%;
     transform: translateX(-50%);
-    padding: 12px;
-    background-color: cadetblue;
-    color: white;
-    border-radius: 50px;
+    width: 120px;
+    padding: 5px;
+    border-radius: 20px;
+    font-weight: bold;
+    background: #fff;
+    border: none;
+    outline: none;
+    color: #0F102B;
+    border-color: transparent !important;
     transition: 0.5s;
-    outline: 0;
 }
 
-.btn-send:hover{
-    background:#004541;
+.forgot-password {
+    margin-top: 15px;
+    color: #434458;
+}
+
+.forgot-password:hover{
     transition: 0.5s;
-    outline: 0;
+    color: #303140;
 }

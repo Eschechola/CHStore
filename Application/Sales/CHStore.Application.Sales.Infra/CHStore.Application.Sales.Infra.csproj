@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CHStore.Application.Core\CHStore.Application.Core.csproj" />
-    <ProjectReference Include="..\CHStore.Application.Core.Sales.Domain\CHStore.Application.Sales.Domain.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Sales.Domain\CHStore.Application.Sales.Domain.csproj" />
   </ItemGroup>
 
 </Project>

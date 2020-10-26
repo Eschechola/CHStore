@@ -6,7 +6,7 @@ using CHStore.Application.Sales.DomainServices.Interfaces;
 using CHStore.Application.Sales.Infra.Interfaces;
 using CHStore.Application.Core.Exceptions;
 
-namespace CHStore.Application.Sales.DomainServices.Services
+namespace CHStore.Application.Sales.DomainServices
 {
     public class SalesDomainService : ISalesDomainService, IDisposable
     {

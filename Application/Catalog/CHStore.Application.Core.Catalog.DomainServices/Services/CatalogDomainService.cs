@@ -7,7 +7,7 @@ using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
 
-namespace CHStore.Application.Core.Catalog.DomainServices.Services
+namespace CHStore.Application.Core.Catalog.DomainServices
 {
     public class CatalogDomainService : ICatalogDomainService, IDisposable
     {

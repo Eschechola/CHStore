@@ -4,19 +4,25 @@
 }
 
 <section class="login">
-    <div class="login-content">
-        <div class="login-image">
-            <img src="~/images/home-bg.svg" />
-        </div>
+    <div class="login-form">
+        <form method="post">
+            <h4>
+                SEJA BEM-VINDO AO
+                <br />
+                CH STORE
+            </h4>
 
-        <div class="login-fields">
-            <form method="POST">
-                <input type="text" name="login" class="input-form" placeholder="Digite seu email, senha ou CPF" />
+            <input type="text" name="login" placeholder="Digite seu usuário, email ou CPF" />
 
-                <input type="password" name="password" class="input-form mg-05" placeholder="Senha" />
+            <br />
 
-                <button class="btn-send">Enviar</button>
-            </form>
-        </div>
+            <input type="password" name="password" placeholder="Digite sua senha" />
+
+            <br />
+
+            <button class="btn-send" type="submit">ENTRAR</button>
+        </form>
     </div>
+
+    <a href="#" class="forgot-password">ESQUECEU SUA SENHA?</a>
 </section>

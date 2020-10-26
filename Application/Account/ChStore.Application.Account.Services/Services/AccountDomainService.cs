@@ -6,7 +6,7 @@ using CHStore.Application.Account.Infra.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
 
-namespace CHStore.Application.Account.DomainServices.Services
+namespace CHStore.Application.Account.DomainServices
 {
     public class AccountDomainService : IAccountDomainService
     {
