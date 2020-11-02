@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using CHStore.Application.Core.Catalog.Domain.Entities;
 
 namespace CHStore.Application.Core.Catalog.DomainServices.Interfaces
 {
-    public interface ICatalogDomainService
+    public interface ICatalogDomainService : IDisposable
     {
         Task<Product> AddProduct(Product product);
         Task<Product> UpdateProduct(Product product);

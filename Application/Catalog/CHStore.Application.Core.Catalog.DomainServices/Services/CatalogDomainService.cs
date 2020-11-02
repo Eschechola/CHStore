@@ -30,11 +30,13 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Product> AddProduct(Product product)
         {
+            //product.Validate();
             return await _productRepository.Add(product);
         }
 
         public async Task<Product> UpdateProduct(Product product)
         {
+            //product.Validate();
             return await _productRepository.Update(product);
         }
 
@@ -113,6 +115,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Category> AddCategory(Category category)
         {
+            //category.Validate();
             return await _categoryRepository.Add(category);
         }
 
@@ -128,6 +131,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Category> UpdateCategory(Category category)
         {
+            //category.Validate();
             return await _categoryRepository.Update(category);
         }
 
@@ -144,6 +148,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Brand> AddBrand(Brand brand)
         {
+            //brand.Validate();
             return await _brandRepository.Add(brand);
         }
 
@@ -159,6 +164,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Brand> UpdateBrand(Brand brand)
         {
+            //brand.Validate();
             return await _brandRepository.Update(brand);
         }
 

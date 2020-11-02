@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Catalog.DomainServices.csproj" />
+    <ProjectReference Include="..\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

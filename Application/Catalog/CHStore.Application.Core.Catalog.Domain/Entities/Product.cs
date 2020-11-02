@@ -9,8 +9,8 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
     {
         #region Properties
 
-        public long CategoryId { get; set; }
-        public long BrandId { get; set; }
+        public long CategoryId { get; private set; }
+        public long BrandId { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }
