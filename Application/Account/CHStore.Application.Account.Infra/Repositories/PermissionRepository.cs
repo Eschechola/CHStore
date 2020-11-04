@@ -1,6 +1,7 @@
 ﻿using CHStore.Application.Account.Domain.Entities;
 using CHStore.Application.Account.Infra.Context;
 using CHStore.Application.Account.Infra.Interfaces;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Data.Repositories;
 
 namespace CHStore.Application.Account.Infra.Repositories
@@ -12,6 +13,13 @@ namespace CHStore.Application.Account.Infra.Repositories
         public PermissionRepository(AccountContext context) : base(context)
         {
             _context = context;
+        }
+
+        public IUnitOfWork UnitOfWork => _context;
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
 }

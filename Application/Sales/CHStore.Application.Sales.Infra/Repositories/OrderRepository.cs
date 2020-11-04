@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using CHStore.Application.Sales.Infra.Context;
 using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Core.Data.Repositories;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
@@ -18,10 +19,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             _context = context;
         }
 
-        public void Dispose()
-        {
-            _context?.DisposeAsync();
-        }
+        public IUnitOfWork UnitOfWork => _context;
 
         public async Task<IList<Order>> SearchByStatus(Status status)
         {
@@ -88,6 +86,11 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                                         x.CustomerId == customerId
                                 )
                                 .ToListAsync();
+        }
+
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Account.Infra.Mapping;
 using CHStore.Application.Account.Domain.Entities;
 
 namespace CHStore.Application.Account.Infra.Context
 {
-    public class AccountContext : DbContext
+    public class AccountContext : DbContext, IUnitOfWork
     {
         public AccountContext()
         { }
@@ -28,6 +30,11 @@ namespace CHStore.Application.Account.Infra.Context
             builder.ApplyConfiguration(new EmployeeMap());
             builder.ApplyConfiguration(new PermissionMap());
             builder.ApplyConfiguration(new EmployeePermissionMap());
+        }
+
+        public async Task<bool> Commit()
+        {
+            return await base.SaveChangesAsync() > 0;
         }
     }
 }

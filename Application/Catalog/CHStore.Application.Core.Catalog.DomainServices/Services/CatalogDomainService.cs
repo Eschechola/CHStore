@@ -31,13 +31,19 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<Product> AddProduct(Product product)
         {
             //product.Validate();
-            return await _productRepository.Add(product);
+            await _productRepository.Add(product);
+            await _productRepository.UnitOfWork.Commit();
+
+            return product;
         }
 
         public async Task<Product> UpdateProduct(Product product)
         {
             //product.Validate();
-            return await _productRepository.Update(product);
+            await _productRepository.Update(product);
+            await _productRepository.UnitOfWork.Commit();
+
+            return product;
         }
 
         public async Task<Product> GetProduct(long productId)
@@ -53,6 +59,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task RemoveProduct(long productId)
         {
             await _productRepository.Remove(productId);
+            await _productRepository.UnitOfWork.Commit();
         }
 
         public async Task<IList<Product>> SearchProductsBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
@@ -91,7 +98,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
             await _productRepository.Update(product);
 
-            return true;
+            return await _productRepository.UnitOfWork.Commit();
         }
 
         public async Task<bool> IncreaseStock(long productId, long mount = 1)
@@ -105,7 +112,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
             await _productRepository.Update(product);
 
-            return true;
+            return await _productRepository.UnitOfWork.Commit();
         }
 
         #endregion
@@ -116,7 +123,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<Category> AddCategory(Category category)
         {
             //category.Validate();
-            return await _categoryRepository.Add(category);
+            await _categoryRepository.Add(category);
+            await _categoryRepository.UnitOfWork.Commit();
+
+            return category;
         }
 
         public async Task<IList<Category>> GetCategories()
@@ -132,7 +142,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<Category> UpdateCategory(Category category)
         {
             //category.Validate();
-            return await _categoryRepository.Update(category);
+            await _categoryRepository.Update(category);
+            await _categoryRepository.UnitOfWork.Commit();
+
+            return category;
         }
 
         public async Task<IList<Category>> SearchCategoriesByName(string name)
@@ -149,7 +162,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<Brand> AddBrand(Brand brand)
         {
             //brand.Validate();
-            return await _brandRepository.Add(brand);
+            await _brandRepository.Add(brand);
+            await _brandRepository.UnitOfWork.Commit();
+
+            return brand;
         }
 
         public async Task<Brand> GetBrand(long brandId)
@@ -165,7 +181,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<Brand> UpdateBrand(Brand brand)
         {
             //brand.Validate();
-            return await _brandRepository.Update(brand);
+            await _brandRepository.Update(brand);
+            await _brandRepository.UnitOfWork.Commit();
+
+            return brand;
         }
 
         public async Task<IList<Brand>> SearchBrandsByName(string name)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
@@ -18,9 +19,12 @@ namespace CHStore.Application.Account.Infra.Repositories
             _context = context;
         }
 
+        public IUnitOfWork UnitOfWork => _context;
+
         public async Task<Customer> Get(string term)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(
                                                     x =>
                                                         x.Email.ToLower() == term ||
@@ -34,6 +38,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<Customer> GetByCPF(string cpf)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(x => x.CPF == cpf)
                                           .ToListAsync();
 
@@ -43,6 +48,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<Customer> GetByEmail(string username)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(x => x.Email.ToLower() == username)
                                           .ToListAsync();
             
@@ -52,6 +58,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Customer>> Search(string term)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(
                                                     x =>
                                                         x.Email.ToLower().Contains(term) ||
@@ -66,6 +73,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Customer>> SearchByCNPJ(string cnpj)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(x => x.CNPJ.Contains(cnpj))
                                           .ToListAsync();
 
@@ -75,6 +83,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Customer>> SearchByCPF(string cpf)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(x => x.CPF.Contains(cpf))
                                           .ToListAsync();
 
@@ -84,10 +93,16 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Customer>> SearchByEmail(string email)
         {
             var customers = await _context.Customers
+                                          .AsNoTracking()
                                           .Where(x => x.Email.ToLower().Contains(email))
                                           .ToListAsync();
 
             return customers;
+        }
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
 }

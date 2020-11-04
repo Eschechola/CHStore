@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CHStore.Application.Account.Domain.Entities;
 
 namespace CHStore.Application.Account.DomainServices.Interfaces
 {
-    public interface IAccountDomainService
+    public interface IAccountDomainService : IDisposable
     {
         Task<Employee> CreateEmployee(Employee employee);
         Task<Employee> UpdateEmployee(Employee employee);

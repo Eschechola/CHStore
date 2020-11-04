@@ -2,10 +2,11 @@
 using CHStore.Application.Account.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace CHStore.Application.Account.Infra.Interfaces
 {
-    public interface IEmployeeRepository : IBaseRepository<Employee>
+    public interface IEmployeeRepository : IBaseRepository<Employee>, IDisposable
     {
         Task<Employee> Get(string term); 
         Task<Employee> GetByUsername(string username);

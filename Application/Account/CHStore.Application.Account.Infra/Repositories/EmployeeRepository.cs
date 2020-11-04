@@ -6,6 +6,7 @@ using CHStore.Application.Account.Infra.Interfaces;
 using CHStore.Application.Core.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
@@ -18,9 +19,12 @@ namespace CHStore.Application.Account.Infra.Repositories
             _context = context;
         }
 
+        public IUnitOfWork UnitOfWork => _context;
+
         public async Task<Employee> Get(string term)
         {
             var employees = await _context.Employees
+                                          .AsNoTracking()
                                           .Where(
                                                x =>
                                                    x.CPF == term ||
@@ -35,6 +39,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<Employee> GetByCPF(string cpf)
         {
             var employees = await _context.Employees
+                                         .AsNoTracking()
                                          .Where(x => x.CPF == cpf)
                                          .ToListAsync();
 
@@ -44,6 +49,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<Employee> GetByEmail(string email)
         {
             var employees = await _context.Employees
+                                         .AsNoTracking()
                                          .Where(x => x.Email.ToLower() == email.ToLower())
                                          .ToListAsync();
 
@@ -53,6 +59,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<Employee> GetByUsername(string username)
         {
             var employees = await _context.Employees
+                                         .AsNoTracking()
                                          .Where(x => x.Username == username)
                                          .ToListAsync();
 
@@ -62,6 +69,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<EmployeePermission>> GetEmployeePermissions(long employeeId)
         {
             var permissions = await _context.EmployeesPermissions
+                                      .AsNoTracking()
                                       .Where(x => x.EmployeeId == employeeId)
                                       .Include(x => x.Permission)
                                       .ToListAsync();
@@ -72,6 +80,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Employee>> Search(string term)
         {
             var employees = await _context.Employees
+                                           .AsNoTracking()
                                            .Where(
                                                 x => 
                                                     x.CPF.Contains(term) ||
@@ -87,6 +96,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Employee>> SearchByCPF(string cpf)
         {
             var employees = await _context.Employees
+                                           .AsNoTracking()
                                            .Where(x => x.CPF == cpf)
                                            .ToListAsync();
 
@@ -96,6 +106,7 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Employee>> SearchByEmail(string email)
         {
             var employees = await _context.Employees
+                                          .AsNoTracking()
                                           .Where(x => x.Email.ToLower().Contains(email))
                                           .ToListAsync();
 
@@ -105,10 +116,16 @@ namespace CHStore.Application.Account.Infra.Repositories
         public async Task<IList<Employee>> SearchByUsername(string username)
         {
             var employees = await _context.Employees
+                                          .AsNoTracking()
                                           .Where(x => x.Username.ToLower().Contains(username))
                                           .ToListAsync();
 
             return employees;
+        }
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
 }

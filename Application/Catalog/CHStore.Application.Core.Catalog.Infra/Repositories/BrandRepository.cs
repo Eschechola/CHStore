@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
 {
@@ -18,10 +19,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
-        public void Dispose()
-        {
-            _context?.DisposeAsync();
-        }
+        public IUnitOfWork UnitOfWork => _context;
 
         public async Task<IList<Brand>> SearchByName(string name)
         {
@@ -33,6 +31,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
                                 x.Name.ToLower().Contains(name)
                          )
                          .ToListAsync();
+        }
+
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
         }
     }
 }

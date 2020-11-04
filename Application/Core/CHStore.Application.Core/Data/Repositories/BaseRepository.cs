@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using CHStore.Application.Core.Data.Interfaces;
@@ -13,6 +14,8 @@ namespace CHStore.Application.Core.Data.Repositories
         {
             _context = context;
         }
+
+        IUnitOfWork IBaseRepository<T>.UnitOfWork => null;
 
         public  async Task<T> Get(long id)
         {
@@ -30,7 +33,6 @@ namespace CHStore.Application.Core.Data.Repositories
         public async Task<T> Add(T obj)
         {
             await _context.Set<T>().AddAsync(obj);
-            await _context.SaveChangesAsync();
 
             return obj;
         }
@@ -38,13 +40,11 @@ namespace CHStore.Application.Core.Data.Repositories
         public async Task Remove(long id)
         {
              _context.Set<T>().Remove(await Get(id));
-             await _context.SaveChangesAsync();
         }
 
         public async Task<T> Update(T obj)
         {
             _context.Entry(obj).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
 
             return obj;
         }

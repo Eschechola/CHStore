@@ -31,7 +31,11 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Order> CreateOrder(Order order)
         {
-            return await _orderRepository.Add(order);
+            //order.Validate();
+            await _orderRepository.Add(order);
+            await _orderRepository.UnitOfWork.Commit();
+
+            return order;
         }
 
         public async Task<Order> UpdateOrderStatus(long orderId, Status status)
@@ -43,7 +47,10 @@ namespace CHStore.Application.Sales.DomainServices
 
             order.Status.Add(status);
 
-            return await _orderRepository.Update(order);
+            await _orderRepository.Update(order);
+            await _orderRepository.UnitOfWork.Commit();
+
+            return order;
         }
 
         public async Task<Order> GetOrder(long orderId)
@@ -81,12 +88,18 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Coupon> AddCoupon(Coupon coupon)
         {
-            return await _couponRepository.Add(coupon);
+            await _couponRepository.Add(coupon);
+            await _couponRepository.UnitOfWork.Commit();
+
+            return coupon;
         }
 
         public async Task<Coupon> UpdateCoupon(Coupon coupon)
         {
-            return await _couponRepository.Update(coupon);
+            await _couponRepository.Update(coupon);
+            await _couponRepository.UnitOfWork.Commit();
+
+            return coupon;
         }
 
         public async Task<Coupon> GetCoupon(long couponId)
@@ -132,12 +145,18 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<TransportCompany> AddTransportCompany(TransportCompany transportCompany)
         {
-            return await _transportCompanyRepository.Add(transportCompany);
+            await _transportCompanyRepository.Add(transportCompany);
+            await _transportCompanyRepository.UnitOfWork.Commit();
+
+            return transportCompany;
         }
 
         public async Task<TransportCompany> UpdateTransportCompany(TransportCompany transportCompany)
         {
-            return await _transportCompanyRepository.Update(transportCompany);
+            await _transportCompanyRepository.Update(transportCompany);
+            await _transportCompanyRepository.UnitOfWork.Commit();
+
+            return transportCompany;
         }
 
         public async Task ActivateTransportCompany(TransportCompany transportCompany)

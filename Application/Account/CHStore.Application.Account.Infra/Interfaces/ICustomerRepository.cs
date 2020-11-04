@@ -2,10 +2,11 @@
 using CHStore.Application.Account.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace CHStore.Application.Account.Infra.Interfaces
 {
-    public interface ICustomerRepository : IBaseRepository<Customer>
+    public interface ICustomerRepository : IBaseRepository<Customer>, IDisposable
     {
         Task<Customer> Get(string term);
         Task<Customer> GetByCPF(string cpf);

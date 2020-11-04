@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Data.Repositories;
 using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Core.Catalog.Infra.Data.Context;
@@ -18,10 +19,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
-        public void Dispose()
-        {
-            _context?.DisposeAsync();
-        }
+        public IUnitOfWork UnitOfWork => _context;
 
         public async Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
         {
@@ -70,6 +68,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
                                         x.Name.ToLower() == name &&
                                         x.Active == searchActives
                                  ).ToListAsync();
+        }
+
+        public void Dispose()
+        {
+            _context?.DisposeAsync();
         }
     }
 }

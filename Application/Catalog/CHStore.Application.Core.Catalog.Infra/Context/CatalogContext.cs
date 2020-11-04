@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Core.Catalog.Infra.Data.Mapping;
+using CHStore.Application.Core.Data.Interfaces;
+using System.Threading.Tasks;
 
 namespace CHStore.Application.Core.Catalog.Infra.Data.Context
 {
-    public class CatalogContext : DbContext
+    public class CatalogContext : DbContext, IUnitOfWork
     {
         public CatalogContext()
         {}
@@ -26,6 +28,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Context
             builder.ApplyConfiguration(new ProductMap());
             builder.ApplyConfiguration(new CategoryMap());
             builder.ApplyConfiguration(new BrandMap());
+        }
+
+        public async Task<bool> Commit()
+        {
+            return await base.SaveChangesAsync() > 0;
         }
     }
 }

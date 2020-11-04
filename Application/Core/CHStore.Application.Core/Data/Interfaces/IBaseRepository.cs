@@ -5,6 +5,8 @@ namespace CHStore.Application.Core.Data.Interfaces
 {
     public interface IBaseRepository<T> where T : Entity
     {
+        IUnitOfWork UnitOfWork { get; }
+
         Task<T> Add(T item);
 
         Task<T> Update(T item);

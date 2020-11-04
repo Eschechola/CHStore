@@ -30,12 +30,18 @@ namespace CHStore.Application.Account.DomainServices
 
         public async Task<Employee> CreateEmployee(Employee employee)
         {
-            return await _employeeRepository.Add(employee);
+            await _employeeRepository.Add(employee);
+            await _employeeRepository.UnitOfWork.Commit();
+
+            return employee;
         }
 
         public async Task<Employee> UpdateEmployee(Employee employee)
         {
-            return await _employeeRepository.Update(employee);
+            await _employeeRepository.Update(employee);
+            await _employeeRepository.UnitOfWork.Commit();
+
+            return employee;
         }
 
         public async Task<bool> AuthenticateEmployee(string login, string password)
@@ -66,6 +72,7 @@ namespace CHStore.Application.Account.DomainServices
             employee.AddPermission(employeePermission);
 
             await _employeeRepository.Update(employee);
+            await _employeeRepository.UnitOfWork.Commit();
         }
 
         public async Task RemoveEmployeePermission(long employeeId, Permission permission)
@@ -78,7 +85,8 @@ namespace CHStore.Application.Account.DomainServices
             var employeePermission = new EmployeePermission(employeeId, permission.Id);
             employee.RemovePermission(employeePermission);
 
-           await _employeeRepository.Update(employee);
+            await _employeeRepository.Update(employee);
+            await _employeeRepository.UnitOfWork.Commit();
         }
 
         public async Task<IList<Employee>> SearchEmployee(string term)
@@ -94,11 +102,17 @@ namespace CHStore.Application.Account.DomainServices
 
         public async Task<Customer> CreateCustomer(Customer customer)
         {
-            return await _customerRepository.Add(customer);
+            await _customerRepository.Add(customer);
+            await _customerRepository.UnitOfWork.Commit();
+
+            return customer;
         }
         public async Task<Customer> UpdateCustomer(Customer customer)
         {
-            return await _customerRepository.Update(customer);
+            await _customerRepository.Update(customer);
+            await _customerRepository.UnitOfWork.Commit();
+
+            return customer;
         }
 
         public async Task<IList<Customer>> SearchCustomer(string term)
@@ -127,6 +141,17 @@ namespace CHStore.Application.Account.DomainServices
         public async Task<IList<Permission>> GetAllPermissions()
         {
             return await _permissionRepository.Get();
+        }
+
+        #endregion
+
+        #region Dispose
+
+        public void Dispose()
+        {
+            _customerRepository?.Dispose();
+            _permissionRepository?.Dispose();
+            _employeeRepository?.Dispose();
         }
 
         #endregion

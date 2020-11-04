@@ -1,10 +1,12 @@
-﻿using CHStore.Application.Sales.Domain.Entities;
+﻿using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Sales.Infra.Mapping;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace CHStore.Application.Sales.Infra.Context
 {
-    public class SalesContext : DbContext
+    public class SalesContext : DbContext, IUnitOfWork
     {
         public SalesContext()
         { }
@@ -28,6 +30,11 @@ namespace CHStore.Application.Sales.Infra.Context
             builder.ApplyConfiguration(new OrderMap());
             builder.ApplyConfiguration(new StatusMap());
             builder.ApplyConfiguration(new TransportCompanyMap());
+        }
+
+        public async Task<bool> Commit()
+        {
+            return await base.SaveChangesAsync() > 0;
         }
     }
 }
