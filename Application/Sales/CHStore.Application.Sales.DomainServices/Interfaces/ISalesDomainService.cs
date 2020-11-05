@@ -14,17 +14,17 @@ namespace CHStore.Application.Sales.DomainServices.Interfaces
         Task<IList<Order>> SearchOrdersByCustomerId(long customerId);
         Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
         Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
-        Task<IList<Order>> SearchByStatus(Status status);
+        Task<IList<Order>> SearchOrderByStatus(Status status);
 
-        Task<Coupon> AddCoupon(Coupon coupon);
-        Task<Coupon> UpdateCoupon(Coupon coupon);
-        Task<IList<Coupon>> GetCoupons();
-        Task<Coupon> GetCoupon(long couponId);
-        Task<IList<Coupon>> SearchCouponByCode(string code);
-        Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives);
-        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
-        Task ActivateCoupon(Coupon coupon);
-        Task DeactivateCoupon(Coupon coupon);
+        Task<Voucher> AddVoucher(Voucher voucher);
+        Task<Voucher> UpdateVoucher(Voucher voucher);
+        Task<IList<Voucher>> GetVouchers();
+        Task<Voucher> GetVoucher(long voucherId);
+        Task<IList<Voucher>> SearchVoucherByCode(string code);
+        Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives);
+        Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task ActivateVoucher(Voucher voucher);
+        Task DeactivateVoucher(Voucher voucher);
 
         Task<TransportCompany> AddTransportCompany(TransportCompany transportCompany);
         Task<TransportCompany> UpdateTransportCompany(TransportCompany transportCompany);

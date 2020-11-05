@@ -10,7 +10,7 @@ namespace CHStore.Application.Sales.Domain.Entities
         public string CNPJ { get; private set; }
         public string Email { get; private set; }
         public string Phone { get; private set; }
-        public string SiteUrl { get; set; }
+        public string SiteUrl { get; private set; }
         public string TrackingUrl { get; private set; }
         public string ApiUrl { get; private set; }
         public bool Active { get; private set; }

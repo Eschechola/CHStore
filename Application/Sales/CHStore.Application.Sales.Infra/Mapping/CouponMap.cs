@@ -5,11 +5,11 @@ using System;
 
 namespace CHStore.Application.Sales.Infra.Mapping
 {
-    public class CouponMap : IEntityTypeConfiguration<Coupon>
+    public class VoucherMap : IEntityTypeConfiguration<Voucher>
     {
-        public void Configure(EntityTypeBuilder<Coupon> builder)
+        public void Configure(EntityTypeBuilder<Voucher> builder)
         {
-            builder.ToTable("Coupon");
+            builder.ToTable("Voucher");
 
             builder.HasKey(x => x.Id);
 

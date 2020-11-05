@@ -26,7 +26,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             return await _context.Orders
                                 .AsNoTracking()
                                 .Include(order => order.Status)
-                                .Include(order => order.Coupon)
+                                .Include(order => order.Voucher)
                                 .Include(order => order.TransportCompany)
                                 .Include(order => order.OrderProducts)
                                 .Where
@@ -42,7 +42,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             return await _context.Orders
                                 .AsNoTracking()
                                 .Include(order => order.Status)
-                                .Include(order => order.Coupon)
+                                .Include(order => order.Voucher)
                                 .Include(order => order.TransportCompany)
                                 .Include(order => order.OrderProducts)
                                 .Where
@@ -59,7 +59,7 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             return await _context.Orders
                                 .AsNoTracking()
                                 .Include(order => order.Status)
-                                .Include(order => order.Coupon)
+                                .Include(order => order.Voucher)
                                 .Include(order => order.TransportCompany)
                                 .Include(order => order.OrderProducts)
                                 .Where
@@ -76,10 +76,10 @@ namespace CHStore.Application.Sales.Infra.Interfaces
             return await _context.Orders
                                 .AsNoTracking()
                                 .Include(order => order.Status)
-                                .Include(order => order.Coupon)
+                                .Include(order => order.Voucher)
                                 .Include(order => order.TransportCompany)
                                 .Include(order => order.OrderProducts)
-                                .Include(order => order.User)
+                                .Include(order => order.Customer)
                                 .Where
                                 (
                                     x =>

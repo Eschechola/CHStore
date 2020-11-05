@@ -12,7 +12,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public long CustomerId { get; private set; }
         public long TransportCompanyId { get; private set; }
-        public long CouponId { get; private set; }
+        public long VoucherId { get; private set; }
         public decimal TotalPrice { get; private set; }
         public decimal ProductsPrice { get; private set; }
         public decimal FreightPrice { get; private set; }
@@ -25,8 +25,8 @@ namespace CHStore.Application.Sales.Domain.Entities
         #region Navigation Properties
 
         public IList<Status> Status { get; private set; }
-        public Coupon Coupon { get; private set; }
-        public Customer User { get; private set; }
+        public Voucher Voucher { get; private set; }
+        public Customer Customer { get; private set; }
         public TransportCompany TransportCompany { get; private set; }
         public IList<OrderProduct> OrderProducts { get; private set; }
 
@@ -37,7 +37,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public Order(
             IList<OrderProduct> orderProducts,
-            Coupon coupon,
+            Voucher voucher,
             TransportCompany transportCompany,
             decimal freightPrice,
             DateTime requestDate,
@@ -46,9 +46,9 @@ namespace CHStore.Application.Sales.Domain.Entities
         )
         {
             OrderProducts = orderProducts;
-            CouponId = coupon.Id;
+            VoucherId = voucher.Id;
             TransportCompanyId = transportCompany.Id;
-            Coupon = coupon;
+            Voucher = voucher;
             TransportCompany = transportCompany;
             FreightPrice = freightPrice;
             RequestDate = requestDate;
@@ -56,7 +56,7 @@ namespace CHStore.Application.Sales.Domain.Entities
             Status = status;
 
             ProductsPrice = GetProductsPrice(orderProducts);
-            TotalPrice = GetTotalPrice(orderProducts, coupon, freightPrice);
+            TotalPrice = GetTotalPrice(orderProducts, voucher, freightPrice);
         }
 
         #endregion
@@ -68,14 +68,14 @@ namespace CHStore.Application.Sales.Domain.Entities
             return orderProducts.Sum(x => x.Product.Price * x.Mount);
         }
 
-        private decimal GetTotalPrice(IList<OrderProduct> orderProducts, Coupon coupon, decimal freightPrice)
+        private decimal GetTotalPrice(IList<OrderProduct> orderProducts, Voucher voucher, decimal freightPrice)
         {
             //desconto de acordo com a % do cupom de desconto
 
             var totalValue = orderProducts.Sum(x => x.Product.Price * x.Mount);
 
-            if(coupon != null)
-                totalValue -= totalValue - (coupon.DiscountPercentage / 100);
+            if(voucher != null)
+                totalValue -= totalValue - (voucher.DiscountPercentage / 100);
             
             totalValue += freightPrice;
 

@@ -4,7 +4,7 @@ using CHStore.Application.Core.Exceptions;
 
 namespace CHStore.Application.Sales.Domain.Entities
 {
-    public class Coupon : Entity
+    public class Voucher : Entity
     {
         public string Code { get; private set; }
         public decimal DiscountPercentage { get; private set; }
@@ -14,7 +14,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public Order Order { get; private set; }
 
-        public Coupon(
+        public Voucher(
             string code,
             decimal discountPercentage,
             bool active,
@@ -47,7 +47,7 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public void ChangeInitialDate(DateTime initialDate) => InitialDate = initialDate;
         public void ChangeFinalDate(DateTime finalDate) => FinalDate = finalDate;
-        public void ActivateCoupon() => Active = true;
-        public void DeactivateCoupon() => Active = false;
+        public void ActivateVoucher() => Active = true;
+        public void DeactivateVoucher() => Active = false;
     }
 }

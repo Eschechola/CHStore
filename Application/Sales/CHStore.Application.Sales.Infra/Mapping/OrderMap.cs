@@ -32,11 +32,11 @@ namespace CHStore.Application.Sales.Infra.Mapping
                 .HasForeignKey(x => x.OrderId);
 
             // 1 : 1 => Pedido : Cupom
-            builder.HasOne(x => x.Coupon)
+            builder.HasOne(x => x.Voucher)
                 .WithOne(y => y.Order)
-                .HasForeignKey<Order>(y => y.CouponId);
+                .HasForeignKey<Order>(y => y.VoucherId);
 
-            builder.Property(x => x.CouponId)
+            builder.Property(x => x.VoucherId)
                .HasColumnType("BIGINT")
                .HasColumnName("fk_coupon_id");
 

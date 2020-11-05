@@ -10,13 +10,13 @@ namespace CHStore.Application.Sales.DomainServices
 {
     public class SalesDomainService : ISalesDomainService, IDisposable
     {
-        private readonly ICouponRepository _couponRepository;
+        private readonly IVoucherRepository _couponRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly ITransportCompanyRepository _transportCompanyRepository;
 
         public SalesDomainService
         (
-            ICouponRepository couponRepository,
+            IVoucherRepository couponRepository,
             IOrderRepository orderRepository,
             ITransportCompanyRepository transportCompanyRepository
         )
@@ -68,7 +68,7 @@ namespace CHStore.Application.Sales.DomainServices
             return await _orderRepository.SearchOrdersByCustomerId(customerId);
         }
 
-        public async Task<IList<Order>> SearchByStatus(Status status)
+        public async Task<IList<Order>> SearchOrderByStatus(Status status)
         {
             return await _orderRepository.SearchByStatus(status);
         }
@@ -84,59 +84,59 @@ namespace CHStore.Application.Sales.DomainServices
 
         #endregion
 
-        #region Coupon
+        #region Voucher
 
-        public async Task<Coupon> AddCoupon(Coupon coupon)
+        public async Task<Voucher> AddVoucher(Voucher voucher)
         {
-            await _couponRepository.Add(coupon);
+            await _couponRepository.Add(voucher);
             await _couponRepository.UnitOfWork.Commit();
 
-            return coupon;
+            return voucher;
         }
 
-        public async Task<Coupon> UpdateCoupon(Coupon coupon)
+        public async Task<Voucher> UpdateVoucher(Voucher voucher)
         {
-            await _couponRepository.Update(coupon);
+            await _couponRepository.Update(voucher);
             await _couponRepository.UnitOfWork.Commit();
 
-            return coupon;
+            return voucher;
         }
 
-        public async Task<Coupon> GetCoupon(long couponId)
+        public async Task<Voucher> GetVoucher(long voucherId)
         {
-            return await _couponRepository.Get(couponId);
+            return await _couponRepository.Get(voucherId);
         }
 
-        public async Task<IList<Coupon>> GetCoupons()
+        public async Task<IList<Voucher>> GetVouchers()
         {
             return await _couponRepository.Get();
         }
 
-        public async Task ActivateCoupon(Coupon coupon)
+        public async Task ActivateVoucher(Voucher voucher)
         {
-            coupon.ActivateCoupon();
-            await UpdateCoupon(coupon);
+            voucher.ActivateVoucher();
+            await UpdateVoucher(voucher);
         }
         
-        public async Task DeactivateCoupon(Coupon coupon)
+        public async Task DeactivateVoucher(Voucher voucher)
         {
-            coupon.DeactivateCoupon();
-            await UpdateCoupon(coupon);
+            voucher.DeactivateVoucher();
+            await UpdateVoucher(voucher);
         }
         
-        public async Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate)
+        public async Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate)
         {
-            return await _couponRepository.SearchCouponBetweenDates(initialDate, finalDate);
+            return await _couponRepository.SearchVoucherBetweenDates(initialDate, finalDate);
         }
 
-        public async Task<IList<Coupon>> SearchCouponByCode(string code)
+        public async Task<IList<Voucher>> SearchVoucherByCode(string code)
         {
-            return await _couponRepository.SearchCouponByCode(code);
+            return await _couponRepository.SearchVoucherByCode(code);
         }
 
-        public async Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives)
+        public async Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives)
         {
-            return await _couponRepository.SearchCouponByCode(code, searchActives);
+            return await _couponRepository.SearchVoucherByCode(code, searchActives);
         }
 
         #endregion

@@ -8,7 +8,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Coupon",
+                name: "Voucher",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -21,7 +21,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coupon", x => x.Id);
+                    table.PrimaryKey("PK_Voucher", x => x.Id);
                 });
 
             //migrationBuilder.CreateTable(
@@ -85,7 +85,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<long>(nullable: false),
                     TransportCompanyId = table.Column<long>(nullable: false),
-                    CouponId = table.Column<long>(nullable: false),
+                    VoucherId = table.Column<long>(nullable: false),
                     TotalPrice = table.Column<double>(type: "FLOAT", nullable: false),
                     ProductsPrice = table.Column<double>(type: "FLOAT", nullable: false),
                     FreightPrice = table.Column<double>(type: "FLOAT", nullable: false),
@@ -97,9 +97,9 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 {
                     table.PrimaryKey("PK_Order", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Order_Coupon_CouponId",
-                        column: x => x.CouponId,
-                        principalTable: "Coupon",
+                        name: "FK_Order_Voucher_VoucherId",
+                        column: x => x.VoucherId,
+                        principalTable: "Voucher",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -165,9 +165,9 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_CouponId",
+                name: "IX_Order_VoucherId",
                 table: "Order",
-                column: "CouponId",
+                column: "VoucherId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -209,7 +209,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Coupon");
+                name: "Voucher");
 
             migrationBuilder.DropTable(
                 name: "TransportCompany");

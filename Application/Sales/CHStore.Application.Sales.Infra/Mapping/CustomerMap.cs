@@ -18,7 +18,7 @@ namespace CHStore.Application.Sales.Infra.Mapping
 
             // 1 : N => Cliente : Pedido
             builder.HasMany(x => x.Orders)
-                .WithOne(y => y.User)
+                .WithOne(y => y.Customer)
                 .HasForeignKey(x => x.CustomerId)
                 .HasConstraintName("fk_customer_id");
 

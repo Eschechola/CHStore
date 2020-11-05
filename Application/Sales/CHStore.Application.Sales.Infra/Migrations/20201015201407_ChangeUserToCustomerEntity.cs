@@ -47,7 +47,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "InitialDate",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 15, 17, 14, 6, 952, DateTimeKind.Local).AddTicks(3629),
@@ -57,7 +57,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "FinalDate",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 15, 17, 14, 6, 953, DateTimeKind.Local).AddTicks(4142),
@@ -122,7 +122,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "InitialDate",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 14, 15, 7, 47, 247, DateTimeKind.Local).AddTicks(5091),
@@ -132,7 +132,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "FinalDate",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 14, 15, 7, 47, 248, DateTimeKind.Local).AddTicks(5223),

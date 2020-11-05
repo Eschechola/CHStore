@@ -1,6 +1,6 @@
 ﻿using System;
 using CHStore.Application.Core.ValueObjects;
-using CHStore.Application.Users.Domain.Enums;
+using CHStore.Application.Accounts.Domain.Enums;
 
 namespace CHStore.Application.Account.Domain.Entities
 {

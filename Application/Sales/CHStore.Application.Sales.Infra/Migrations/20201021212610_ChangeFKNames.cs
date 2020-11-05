@@ -44,7 +44,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 newName: "fk_customer_id");
 
             migrationBuilder.RenameColumn(
-                name: "CouponId",
+                name: "VoucherId",
                 table: "Order",
                 newName: "fk_coupon_id");
 
@@ -59,7 +59,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 newName: "IX_Order_fk_customer_id");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Order_CouponId",
+                name: "IX_Order_VoucherId",
                 table: "Order",
                 newName: "IX_Order_fk_coupon_id");
 
@@ -93,7 +93,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "initial_date",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 21, 18, 26, 10, 184, DateTimeKind.Local).AddTicks(5876),
@@ -103,7 +103,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "final_date",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 21, 18, 26, 10, 185, DateTimeKind.Local).AddTicks(6847),
@@ -112,10 +112,10 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 oldDefaultValue: new DateTime(2020, 10, 21, 18, 11, 21, 715, DateTimeKind.Local).AddTicks(7302));
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Order_Coupon_fk_coupon_id",
+                name: "FK_Order_Voucher_fk_coupon_id",
                 table: "Order",
                 column: "fk_coupon_id",
-                principalTable: "Coupon",
+                principalTable: "Voucher",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
@@ -155,7 +155,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Order_Coupon_fk_coupon_id",
+                name: "FK_Order_Voucher_fk_coupon_id",
                 table: "Order");
 
             migrationBuilder.DropForeignKey(
@@ -202,7 +202,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
             migrationBuilder.RenameColumn(
                 name: "fk_coupon_id",
                 table: "Order",
-                newName: "CouponId");
+                newName: "VoucherId");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Order_fk_transport_company_id",
@@ -217,7 +217,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
             migrationBuilder.RenameIndex(
                 name: "IX_Order_fk_coupon_id",
                 table: "Order",
-                newName: "IX_Order_CouponId");
+                newName: "IX_Order_VoucherId");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "date_modified",
@@ -249,7 +249,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "initial_date",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 21, 18, 11, 21, 714, DateTimeKind.Local).AddTicks(6531),
@@ -259,7 +259,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "final_date",
-                table: "Coupon",
+                table: "Voucher",
                 type: "DATETIME",
                 nullable: false,
                 defaultValue: new DateTime(2020, 10, 21, 18, 11, 21, 715, DateTimeKind.Local).AddTicks(7302),
@@ -270,8 +270,8 @@ namespace CHStore.Application.Sales.Infra.Migrations
             migrationBuilder.AddForeignKey(
                 name: "fk_coupon_id",
                 table: "Order",
-                column: "CouponId",
-                principalTable: "Coupon",
+                column: "VoucherId",
+                principalTable: "Voucher",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 

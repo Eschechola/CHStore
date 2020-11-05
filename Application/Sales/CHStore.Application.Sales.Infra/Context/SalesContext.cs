@@ -14,7 +14,7 @@ namespace CHStore.Application.Sales.Infra.Context
         public SalesContext(DbContextOptions<SalesContext> options) : base(options)
         { }
 
-        public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<TransportCompany> TransportCompanies { get; set; }
@@ -26,7 +26,7 @@ namespace CHStore.Application.Sales.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new CouponMap());
+            builder.ApplyConfiguration(new VoucherMap());
             builder.ApplyConfiguration(new OrderMap());
             builder.ApplyConfiguration(new StatusMap());
             builder.ApplyConfiguration(new TransportCompanyMap());

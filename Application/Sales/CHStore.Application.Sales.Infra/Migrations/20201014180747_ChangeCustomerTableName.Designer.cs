@@ -21,7 +21,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CHStore.Application.Sales.Domain.Entities.Coupon", b =>
+            modelBuilder.Entity("CHStore.Application.Sales.Domain.Entities.Voucher", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Coupon");
+                    b.ToTable("Voucher");
                 });
 
             modelBuilder.Entity("CHStore.Application.Sales.Domain.Entities.Customer", b =>
@@ -87,7 +87,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("CouponId")
+                    b.Property<long>("VoucherId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("FinishDate")
@@ -123,7 +123,7 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CouponId")
+                    b.HasIndex("VoucherId")
                         .IsUnique();
 
                     b.HasIndex("TransportCompanyId")
@@ -263,9 +263,9 @@ namespace CHStore.Application.Sales.Infra.Migrations
 
             modelBuilder.Entity("CHStore.Application.Sales.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("CHStore.Application.Sales.Domain.Entities.Coupon", "Coupon")
+                    b.HasOne("CHStore.Application.Sales.Domain.Entities.Voucher", "Voucher")
                         .WithOne("Order")
-                        .HasForeignKey("CHStore.Application.Sales.Domain.Entities.Order", "CouponId")
+                        .HasForeignKey("CHStore.Application.Sales.Domain.Entities.Order", "VoucherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

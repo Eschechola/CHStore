@@ -10,20 +10,20 @@ using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
-    public class CouponRepository : BaseRepository<Coupon>, ICouponRepository
+    public class VoucherRepository : BaseRepository<Voucher>, IVoucherRepository
     {
         private readonly SalesContext _context;
 
-        public CouponRepository(SalesContext context) : base(context)
+        public VoucherRepository(SalesContext context) : base(context)
         {
             _context = context;
         }
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate)
+        public async Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate)
         {
-            return await _context.Coupons
+            return await _context.Vouchers
                          .AsNoTracking()
                          .Where
                          (
@@ -34,9 +34,9 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                          .ToListAsync();
         }
 
-        public async Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate, bool searchActives = true)
+        public async Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate, bool searchActives = true)
         {
-            return await _context.Coupons
+            return await _context.Vouchers
                          .AsNoTracking()
                          .Where
                          (
@@ -48,9 +48,9 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                          .ToListAsync();
         }
 
-        public async Task<IList<Coupon>> SearchCouponByCode(string code)
+        public async Task<IList<Voucher>> SearchVoucherByCode(string code)
         {
-            return await _context.Coupons
+            return await _context.Vouchers
                          .AsNoTracking()
                          .Where
                          (
@@ -60,9 +60,9 @@ namespace CHStore.Application.Sales.Infra.Interfaces
                          .ToListAsync();
         }
 
-        public async Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives = true)
+        public async Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives = true)
         {
-            return await _context.Coupons
+            return await _context.Vouchers
                          .AsNoTracking()
                          .Where
                          (

@@ -1,4 +1,4 @@
-﻿namespace CHStore.Application.Users.Domain.Enums
+﻿namespace CHStore.Application.Accounts.Domain.Enums
 {
     public enum CustomerDocumentType
     {

@@ -6,11 +6,11 @@ using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
-    public interface ICouponRepository : IBaseRepository<Coupon>, IDisposable
+    public interface IVoucherRepository : IBaseRepository<Voucher>, IDisposable
     {
-        Task<IList<Coupon>> SearchCouponByCode(string code);
-        Task<IList<Coupon>> SearchCouponByCode(string code, bool searchActives = true);
-        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate);
-        Task<IList<Coupon>> SearchCouponBetweenDates(DateTime initialDate, DateTime finalDate, bool searchActives = true);
+        Task<IList<Voucher>> SearchVoucherByCode(string code);
+        Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives = true);
+        Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate, bool searchActives = true);
     }
 }
