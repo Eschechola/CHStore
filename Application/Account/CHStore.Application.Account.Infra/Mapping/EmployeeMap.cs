@@ -18,7 +18,7 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasColumnType("BIGINT");
 
             // 1 : N => Permissão de funcionario : Permissão
-            builder.HasMany(x => x.Permissions)
+            builder.HasMany(x => x.EmployeePermissions)
                 .WithOne(y => y.Employee)
                 .HasForeignKey(x => x.EmployeeId)
                 .HasConstraintName("fk_employee_id");

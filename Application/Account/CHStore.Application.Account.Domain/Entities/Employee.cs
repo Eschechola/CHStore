@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CHStore.Application.Core.ValueObjects;
 
 namespace CHStore.Application.Account.Domain.Entities
@@ -9,7 +10,10 @@ namespace CHStore.Application.Account.Domain.Entities
         public string Username { get; private set; }
         public string CPF { get; private set; }
 
-        public IList<EmployeePermission> Permissions { get; private set; }
+
+        private readonly List<EmployeePermission> _employeePermissions;
+
+        public IReadOnlyCollection<EmployeePermission> EmployeePermissions => _employeePermissions;
 
         protected Employee(){}
 
@@ -20,14 +24,39 @@ namespace CHStore.Application.Account.Domain.Entities
             string password,
             string cpf,
             Address address,
-            IList<EmployeePermission> permissions
+            List<EmployeePermission> permissions
         ) : base(name, email, password, address)
         {
             Username = username;
             CPF = cpf;
+            _employeePermissions = permissions;
         }
 
-        public void AddPermission(EmployeePermission permission) => Permissions.Add(permission);
-        public void RemovePermission(EmployeePermission permission) => Permissions.Remove(permission);
+        public void AddPermission(EmployeePermission employeePermission)
+        {
+            var permissionExists = _employeePermissions
+                                   .Where(
+                                            x =>
+                                                x.EmployeeId == employeePermission.EmployeeId &&
+                                                x.PermissionId == employeePermission.PermissionId
+                                    )
+                                   .FirstOrDefault();
+
+            if (permissionExists == null)
+                _employeePermissions.Add(employeePermission);
+        }
+        public void RemovePermission(EmployeePermission employeePermission)
+        {
+            var permissionExists = _employeePermissions
+                                   .Where(
+                                            x =>
+                                                x.EmployeeId == employeePermission.EmployeeId &&
+                                                x.PermissionId == employeePermission.PermissionId
+                                    )
+                                   .FirstOrDefault();
+
+            if (permissionExists == null)
+                _employeePermissions.Remove(employeePermission);
+        }
     }
 }

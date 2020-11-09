@@ -7,7 +7,7 @@ namespace CHStore.Application.Account.Domain.Entities
     {
         public string Name { get; private set; }
 
-        public IList<EmployeePermission> EmployeePermissions { get; private set; }
+        public IList<EmployeePermission> EmployeePermissions { get; set; }
 
         protected Permission(){}
 

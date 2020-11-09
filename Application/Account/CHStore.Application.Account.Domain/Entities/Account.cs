@@ -52,6 +52,5 @@ namespace CHStore.Application.Account.Domain.Entities
 
             Email = email.ToUpper();
         }
-
     }
 }

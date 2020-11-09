@@ -19,6 +19,9 @@ namespace CHStore.Application.Sales.Domain.Entities
         public DateTime RequestDate { get; private set; }
         public DateTime FinishDate { get; private set; }
         public PaymentMethod PaymentMethod { get; private set; }
+        
+        private readonly List<OrderProduct> _orderProducts;
+        public IReadOnlyCollection<OrderProduct> OrderProducts => _orderProducts;
 
         #endregion
 
@@ -28,7 +31,6 @@ namespace CHStore.Application.Sales.Domain.Entities
         public Voucher Voucher { get; private set; }
         public Customer Customer { get; private set; }
         public TransportCompany TransportCompany { get; private set; }
-        public IList<OrderProduct> OrderProducts { get; private set; }
 
         #endregion
 
@@ -36,16 +38,16 @@ namespace CHStore.Application.Sales.Domain.Entities
         protected Order(){}
 
         public Order(
-            IList<OrderProduct> orderProducts,
+            List<OrderProduct> orderProducts,
             Voucher voucher,
             TransportCompany transportCompany,
             decimal freightPrice,
             DateTime requestDate,
             PaymentMethod paymentMethod,
-            IList<Status> status
+            List<Status> status
         )
         {
-            OrderProducts = orderProducts;
+            _orderProducts = orderProducts;
             VoucherId = voucher.Id;
             TransportCompanyId = transportCompany.Id;
             Voucher = voucher;
@@ -55,31 +57,80 @@ namespace CHStore.Application.Sales.Domain.Entities
             PaymentMethod = paymentMethod;
             Status = status;
 
-            ProductsPrice = GetProductsPrice(orderProducts);
-            TotalPrice = GetTotalPrice(orderProducts, voucher, freightPrice);
+            CalculateProductsPrice();
+            CalculateTotalPrice();
         }
 
         #endregion
 
         #region Methods
 
-        private decimal GetProductsPrice(IList<OrderProduct> orderProducts)
+        public void AddProduct(OrderProduct orderProduct)
         {
-            return orderProducts.Sum(x => x.Product.Price * x.Mount);
+            var productExists = OrderProducts
+                .Where(x => x.ProductId == orderProduct.ProductId)
+                .FirstOrDefault();
+
+            if (productExists == null)
+                _orderProducts.Add(orderProduct);
+
+            CalculateProductsPrice();
+            CalculateTotalPrice();
         }
 
-        private decimal GetTotalPrice(IList<OrderProduct> orderProducts, Voucher voucher, decimal freightPrice)
+        public void RemoveProduct(OrderProduct orderProduct)
+        {
+            var productExists = OrderProducts
+                .Where(x => x.ProductId == orderProduct.ProductId)
+                .FirstOrDefault();
+
+            if (productExists == null)
+                _orderProducts.Remove(orderProduct);
+
+            CalculateProductsPrice();
+            CalculateTotalPrice();
+        }
+
+        public void UpdateProduct(OrderProduct orderProduct)
+        {
+            var productExists = OrderProducts
+                .Where(x => x.ProductId == orderProduct.ProductId)
+                .FirstOrDefault();
+
+            if (productExists == null)
+            {
+                _orderProducts.Remove(productExists);
+                AddProduct(orderProduct);
+            }
+
+            CalculateProductsPrice();
+            CalculateTotalPrice();
+        }
+
+        public void CalculateProductsPrice()
+        {
+            ProductsPrice = _orderProducts.Sum(x => x.Product.Price * x.Mount);
+        }
+
+        public void CalculateTotalPrice()
         {
             //desconto de acordo com a % do cupom de desconto
 
-            var totalValue = orderProducts.Sum(x => x.Product.Price * x.Mount);
+            var totalPrice = _orderProducts.Sum(x => x.Product.Price * x.Mount);
 
-            if(voucher != null)
-                totalValue -= totalValue - (voucher.DiscountPercentage / 100);
+            if(Voucher != null)
+            {
+                //não existe pedido com o valor negativo
+                var valueWithDiscount = totalPrice - (totalPrice * (Voucher.DiscountPercentage / 100));
+
+                if (valueWithDiscount > 0)
+                    totalPrice = valueWithDiscount;
+            }
+                
             
-            totalValue += freightPrice;
+            totalPrice += FreightPrice;
 
-            return totalValue;
+            TotalPrice = totalPrice;
         }
 
         public void ChangeOrderStatus(Status status) => Status.Add(status);
