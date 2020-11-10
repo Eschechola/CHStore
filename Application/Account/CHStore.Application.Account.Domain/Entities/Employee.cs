@@ -6,7 +6,7 @@ namespace CHStore.Application.Account.Domain.Entities
 {
     public class Employee : Account
     {
-
+        public bool Active { get; private set; }
         public string Username { get; private set; }
         public string CPF { get; private set; }
 
@@ -58,5 +58,9 @@ namespace CHStore.Application.Account.Domain.Entities
             if (permissionExists == null)
                 _employeePermissions.Remove(employeePermission);
         }
+
+        public void ActiveEmployee() => Active = true;
+
+        public void DeactivateEmployee() => Active = false;
     }
 }

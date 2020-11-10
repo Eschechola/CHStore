@@ -1,12 +1,13 @@
-﻿using CHStore.Application.Account.Infra.Context;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Core.Filters;
+using CHStore.Application.Account.Infra.Context;
 using CHStore.Application.Core.Data.Repositories;
 using CHStore.Application.Account.Domain.Entities;
 using CHStore.Application.Account.Infra.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
@@ -55,49 +56,33 @@ namespace CHStore.Application.Account.Infra.Repositories
             return customers.FirstOrDefault();
         }
 
-        public async Task<IList<Customer>> Search(string term)
+        public async Task<IList<Customer>> Search(SearchCustomerFilter searchFilter)
         {
-            var customers = await _context.Customers
-                                          .AsNoTracking()
-                                          .Where(
+            IQueryable<Customer> allCustomers = _context.Customers;
+
+            if (searchFilter.CustomerId != 0)
+                return await allCustomers.Where(x => x.Id == searchFilter.CustomerId)
+                                               .ToListAsync();
+
+            if (searchFilter.OnlyActives)
+                allCustomers = allCustomers.Where(x => x.Active == true);
+
+            if (!string.IsNullOrEmpty(searchFilter.Name))
+                allCustomers = allCustomers.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()));
+
+            if (!string.IsNullOrEmpty(searchFilter.CPFOrCNPJ))
+                allCustomers = allCustomers.Where(
                                                     x =>
-                                                        x.Email.ToLower().Contains(term) ||
-                                                        x.CPF.Contains(term) ||
-                                                        x.CNPJ.Contains(term) ||
-                                                        x.Name.ToLower().Contains(term)
-                                                ).ToListAsync();
+                                                        x.CPF.Contains(searchFilter.CPFOrCNPJ) ||
+                                                        x.CNPJ.Contains(searchFilter.CPFOrCNPJ)
+                                                );
 
-            return customers;
-        }
+            if (!string.IsNullOrEmpty(searchFilter.Email))
+                allCustomers = allCustomers.Where(x => x.Email.ToLower().Contains(searchFilter.Email.ToLower()));
 
-        public async Task<IList<Customer>> SearchByCNPJ(string cnpj)
-        {
-            var customers = await _context.Customers
-                                          .AsNoTracking()
-                                          .Where(x => x.CNPJ.Contains(cnpj))
-                                          .ToListAsync();
-
-            return customers;
-        }
-
-        public async Task<IList<Customer>> SearchByCPF(string cpf)
-        {
-            var customers = await _context.Customers
-                                          .AsNoTracking()
-                                          .Where(x => x.CPF.Contains(cpf))
-                                          .ToListAsync();
-
-            return customers;
-        }
-
-        public async Task<IList<Customer>> SearchByEmail(string email)
-        {
-            var customers = await _context.Customers
-                                          .AsNoTracking()
-                                          .Where(x => x.Email.ToLower().Contains(email))
-                                          .ToListAsync();
-
-            return customers;
+            return await allCustomers
+                            .AsNoTracking()
+                            .ToListAsync();
         }
 
         public void Dispose()

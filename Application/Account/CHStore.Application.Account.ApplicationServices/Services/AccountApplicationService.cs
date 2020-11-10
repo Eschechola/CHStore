@@ -5,6 +5,7 @@ using CHStore.Application.Account.Domain.Entities;
 using CHStore.Application.Account.ApplicationServices.DTO;
 using CHStore.Application.Account.ApplicationServices.Interfaces;
 using CHStore.Application.Account.DomainServices.Interfaces;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.ApplicationServices.Services
 {
@@ -44,9 +45,9 @@ namespace CHStore.Application.Account.ApplicationServices.Services
             return await _accountDomainService.AuthenticateCustomer(login, password);
         }
         
-        public async Task<IList<CustomerDTO>> SearchCustomer(string term)
+        public async Task<IList<CustomerDTO>> SearchCustomer(SearchCustomerFilter searchFilter)
         {
-            var allCustomers = await _accountDomainService.SearchCustomer(term);
+            var allCustomers = await _accountDomainService.SearchCustomer(searchFilter);
 
             return _mapper.Map<IList<CustomerDTO>>(allCustomers);
         }
@@ -97,9 +98,9 @@ namespace CHStore.Application.Account.ApplicationServices.Services
             await _accountDomainService.RemoveEmployeePermission(employeeId, permission);
         }
 
-        public async Task<IList<EmployeeDTO>> SearchEmployee(string term)
+        public async Task<IList<EmployeeDTO>> SearchEmployee(SearchEmployeeFilter searchFilter)
         {
-            var employees = await _accountDomainService.SearchEmployee(term);
+            var employees = await _accountDomainService.SearchEmployee(searchFilter);
 
             return _mapper.Map<IList<EmployeeDTO>>(employees);
         }

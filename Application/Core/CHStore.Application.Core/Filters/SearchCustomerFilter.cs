@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CHStore.Application.Core.Filters
+﻿namespace CHStore.Application.Core.Filters
 {
-    class SearchCustomerFilter
+    public class SearchCustomerFilter
     {
+        public long CustomerId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public bool OnlyActives { get; set; }
+        public string CPFOrCNPJ { get; set; }
     }
 }

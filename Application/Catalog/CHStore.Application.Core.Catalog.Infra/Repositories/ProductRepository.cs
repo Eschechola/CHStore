@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Core.Filters;
 using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Data.Repositories;
 using CHStore.Application.Core.Catalog.Domain.Entities;
@@ -21,53 +22,35 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async Task<IList<Product>> SearchBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
+        public async Task<IList<Product>> SearchProduct(SearchProductFilter searchFilter)
         {
-            return await _context.Products
-                                 .AsNoTracking()
-                                 .Where
-                                 (
-                                    x =>
-                                        x.Price >= minimumPrice &&
-                                        x.Price <= maximumPrice &&
-                                        x.Active == searchActives
-                                 ).ToListAsync();
-        }
+            IQueryable<Product> allProducts = _context.Products;
 
-        public async Task<IList<Product>> SearchByBrand(long brandId, bool searchActives = true)
-        {
-            return await _context.Products
-                                 .AsNoTracking()
-                                 .Where
-                                 (
-                                    x =>
-                                        x.BrandId == brandId &&
-                                        x.Active == searchActives
-                                 ).ToListAsync();
-        }
+            if (searchFilter.ProductId != 0)
+                return await allProducts.Where(x => x.Id == searchFilter.ProductId)
+                                  .ToListAsync();
 
-        public async Task<IList<Product>> SearchByCategory(long categoryId, bool searchActives = true)
-        {
-            return await _context.Products
-                                 .AsNoTracking()
-                                 .Where
-                                 (
-                                    x =>
-                                        x.CategoryId == categoryId &&
-                                        x.Active == searchActives
-                                 ).ToListAsync();
-        }
+            if (searchFilter.OnlyActives)
+                allProducts = allProducts.Where(x => x.Active == true);
 
-        public async Task<IList<Product>> SearchByName(string name, bool searchActives = true)
-        {
-            return await _context.Products
-                                 .AsNoTracking()
-                                 .Where
-                                 (
-                                    x =>
-                                        x.Name.ToLower() == name &&
-                                        x.Active == searchActives
-                                 ).ToListAsync();
+            if (!string.IsNullOrEmpty(searchFilter.Name))
+                allProducts = allProducts.Where(x => x.Name.ToLower() == searchFilter.Name.ToLower());
+
+            if (searchFilter.CategoryId != 0)
+                allProducts = allProducts.Where(x => x.CategoryId == searchFilter.CategoryId);
+
+            if(searchFilter.BrandId != 0)
+                allProducts = allProducts.Where(x => x.BrandId == searchFilter.BrandId);
+
+            if (searchFilter.MinimumPrice <= 0)
+                allProducts.Where(x => x.Price >= searchFilter.MinimumPrice);
+
+            if(searchFilter.MaximumPrice > 0)
+                allProducts.Where(x => x.Price <= searchFilter.MaximumPrice);
+
+            return await allProducts
+                            .AsNoTracking()
+                            .ToListAsync();
         }
 
         public void Dispose()

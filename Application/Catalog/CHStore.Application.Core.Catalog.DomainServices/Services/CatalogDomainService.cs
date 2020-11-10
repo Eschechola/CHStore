@@ -6,6 +6,7 @@ using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
 using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Core.Catalog.DomainServices
 {
@@ -62,27 +63,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
             await _productRepository.UnitOfWork.Commit();
         }
 
-        public async Task<IList<Product>> SearchProductsBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
+        public async Task<IList<Product>> SearchProducts(SearchProductFilter searchFilter)
         {
-            return await _productRepository.SearchBetweenPrices(minimumPrice, maximumPrice, searchActives);
+            return await _productRepository.SearchProduct(searchFilter);
         }
-
-        public async Task<IList<Product>> SearchProductsByBrand(long brandId, bool searchActives = true)
-        {
-            return await _productRepository.SearchByBrand(brandId, searchActives);
-        }
-
-        public async Task<IList<Product>> SearchProductsByCategory(long categoryId, bool searchActives = true)
-        {
-            return await _productRepository.SearchByCategory(categoryId, searchActives);
-        }
-
-        public async Task<IList<Product>> SearchProductsByName(string name, bool searchActives = true)
-        {
-            name.FormatToSearchParammeter();
-            return await _productRepository.SearchByName(name, searchActives);
-        }
-
 
         public async Task<bool> DebitStock(long productId, long mount = 1)
         {

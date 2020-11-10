@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using CHStore.Application.Sales.Domain.Entities;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.DomainServices.Interfaces
 {
@@ -11,18 +12,13 @@ namespace CHStore.Application.Sales.DomainServices.Interfaces
         Task<Order> GetOrder(long orderId);
         Task<IList<Order>> GetAllOrders();
         Task<Order> UpdateOrderStatus(long orderId, Status status);
-        Task<IList<Order>> SearchOrdersByCustomerId(long customerId);
-        Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate);
-        Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice);
-        Task<IList<Order>> SearchOrderByStatus(Status status);
+        Task<IList<Order>> SearchOrders(SearchOrderFilter searchFilter);
 
         Task<Voucher> AddVoucher(Voucher voucher);
         Task<Voucher> UpdateVoucher(Voucher voucher);
         Task<IList<Voucher>> GetVouchers();
         Task<Voucher> GetVoucher(long voucherId);
-        Task<IList<Voucher>> SearchVoucherByCode(string code);
-        Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives);
-        Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate);
+        Task<IList<Voucher>> SearchVoucher(SearchVoucherFilter searchFilter);
         Task ActivateVoucher(Voucher voucher);
         Task DeactivateVoucher(Voucher voucher);
 

@@ -7,6 +7,7 @@ using CHStore.Application.Sales.Infra.Context;
 using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Core.Data.Repositories;
 using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.Infra.Interfaces
 {
@@ -21,76 +22,34 @@ namespace CHStore.Application.Sales.Infra.Interfaces
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async Task<IList<Order>> SearchByStatus(Status status)
+        public async Task<IList<Order>> Search(SearchOrderFilter searchFilter)
         {
-            return await _context.Orders
-                                .AsNoTracking()
-                                .Include(order => order.Status)
-                                .Include(order => order.Voucher)
-                                .Include(order => order.TransportCompany)
-                                .Include(order => order.OrderProducts)
-                                .Where
-                                (
-                                    x =>
-                                        x.Status.Contains(status)
-                                )
-                                .ToListAsync();
-        }
+            IQueryable<Order> allOrders = _context.Orders;
 
-        public async Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate)
-        {
-            return await _context.Orders
-                                .AsNoTracking()
-                                .Include(order => order.Status)
-                                .Include(order => order.Voucher)
-                                .Include(order => order.TransportCompany)
-                                .Include(order => order.OrderProducts)
-                                .Where
-                                (
-                                    x =>
-                                        x.RequestDate >= initialDate &&
-                                        x.FinishDate <= finalDate
-                                )
-                                .ToListAsync();
-        }
+            if (searchFilter.OrderId != 0)
+                return await allOrders.Where(x => x.Id == searchFilter.OrderId).ToListAsync();
 
-        public async Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice)
-        {
-            return await _context.Orders
-                                .AsNoTracking()
-                                .Include(order => order.Status)
-                                .Include(order => order.Voucher)
-                                .Include(order => order.TransportCompany)
-                                .Include(order => order.OrderProducts)
-                                .Where
-                                (
-                                    x =>
-                                        x.ProductsPrice >= initialPrice &&
-                                        x.ProductsPrice <= finalPrice
-                                )
-                                .ToListAsync();
-        }
+            if (searchFilter.InitialPrice >= 0)
+                allOrders = allOrders.Where(x => x.TotalPrice >= searchFilter.InitialPrice);
 
-        public async Task<IList<Order>> SearchOrdersByCustomerId(long customerId)
-        {
-            return await _context.Orders
-                                .AsNoTracking()
-                                .Include(order => order.Status)
-                                .Include(order => order.Voucher)
-                                .Include(order => order.TransportCompany)
-                                .Include(order => order.OrderProducts)
-                                .Include(order => order.Customer)
-                                .Where
-                                (
-                                    x =>
-                                        x.CustomerId == customerId
-                                )
-                                .ToListAsync();
+            if (searchFilter.FinalPrice <= 0)
+                allOrders = allOrders.Where(x => x.TotalPrice <= searchFilter.FinalPrice);
+
+            if (searchFilter.RequestDate != null)
+                allOrders = allOrders.Where(x => x.RequestDate >= searchFilter.RequestDate);
+
+            return await allOrders
+                    .AsNoTracking()
+                    .Include(order => order.Status)
+                    .Include(order => order.Voucher)
+                    .Include(order => order.TransportCompany)
+                    .Include(order => order.OrderProducts)
+                    .ToListAsync();
         }
 
         public void Dispose()
         {
-            _context?.DisposeAsync();
+            _context?.Dispose();
         }
     }
 }

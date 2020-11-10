@@ -5,12 +5,13 @@ using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Sales.DomainServices.Interfaces;
 using CHStore.Application.Sales.Infra.Interfaces;
 using CHStore.Application.Core.Exceptions;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.DomainServices
 {
     public class SalesDomainService : ISalesDomainService, IDisposable
     {
-        private readonly IVoucherRepository _couponRepository;
+        private readonly IVoucherRepository _voucherRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly ITransportCompanyRepository _transportCompanyRepository;
 
@@ -21,7 +22,7 @@ namespace CHStore.Application.Sales.DomainServices
             ITransportCompanyRepository transportCompanyRepository
         )
         {
-            _couponRepository = couponRepository;
+            _voucherRepository = couponRepository;
             _orderRepository = orderRepository;
             _transportCompanyRepository = transportCompanyRepository;
         }
@@ -63,23 +64,9 @@ namespace CHStore.Application.Sales.DomainServices
             return await _orderRepository.Get();
         }
 
-        public async Task<IList<Order>> SearchOrdersByCustomerId(long customerId)
+        public async Task<IList<Order>> SearchOrders(SearchOrderFilter searchFilter)
         {
-            return await _orderRepository.SearchOrdersByCustomerId(customerId);
-        }
-
-        public async Task<IList<Order>> SearchOrderByStatus(Status status)
-        {
-            return await _orderRepository.SearchByStatus(status);
-        }
-
-        public async Task<IList<Order>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate)
-        {
-            return await _orderRepository.SearchOrderBetweenDates(initialDate, finalDate);
-        }
-        public async Task<IList<Order>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice)
-        {
-            return await _orderRepository.SearchOrderBetweenPrices(initialPrice, finalPrice);
+            return await _orderRepository.Search(searchFilter);
         }
 
         #endregion
@@ -88,28 +75,28 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Voucher> AddVoucher(Voucher voucher)
         {
-            await _couponRepository.Add(voucher);
-            await _couponRepository.UnitOfWork.Commit();
+            await _voucherRepository.Add(voucher);
+            await _voucherRepository.UnitOfWork.Commit();
 
             return voucher;
         }
 
         public async Task<Voucher> UpdateVoucher(Voucher voucher)
         {
-            await _couponRepository.Update(voucher);
-            await _couponRepository.UnitOfWork.Commit();
+            await _voucherRepository.Update(voucher);
+            await _voucherRepository.UnitOfWork.Commit();
 
             return voucher;
         }
 
         public async Task<Voucher> GetVoucher(long voucherId)
         {
-            return await _couponRepository.Get(voucherId);
+            return await _voucherRepository.Get(voucherId);
         }
 
         public async Task<IList<Voucher>> GetVouchers()
         {
-            return await _couponRepository.Get();
+            return await _voucherRepository.Get();
         }
 
         public async Task ActivateVoucher(Voucher voucher)
@@ -123,20 +110,10 @@ namespace CHStore.Application.Sales.DomainServices
             voucher.DeactivateVoucher();
             await UpdateVoucher(voucher);
         }
-        
-        public async Task<IList<Voucher>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate)
-        {
-            return await _couponRepository.SearchVoucherBetweenDates(initialDate, finalDate);
-        }
 
-        public async Task<IList<Voucher>> SearchVoucherByCode(string code)
+        public async Task<IList<Voucher>> SearchVoucher(SearchVoucherFilter searchFilter)
         {
-            return await _couponRepository.SearchVoucherByCode(code);
-        }
-
-        public async Task<IList<Voucher>> SearchVoucherByCode(string code, bool searchActives)
-        {
-            return await _couponRepository.SearchVoucherByCode(code, searchActives);
+            return await _voucherRepository.Search(searchFilter);
         }
 
         #endregion
@@ -176,7 +153,7 @@ namespace CHStore.Application.Sales.DomainServices
 
         public void Dispose()
         {
-            _couponRepository?.Dispose();
+            _voucherRepository?.Dispose();
             _transportCompanyRepository?.Dispose();
             _orderRepository?.Dispose();
         }

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using CHStore.Application.Catalog.ApplicationServices.DTO;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Catalog.ApplicationServices.Interfaces
 {
@@ -12,10 +13,7 @@ namespace CHStore.Application.Catalog.ApplicationServices.Interfaces
         Task<ProductDTO> GetProduct(long productId);
         Task<IList<ProductDTO>> GetProducts();
         Task RemoveProduct(long productId);
-        Task<IList<ProductDTO>> SearchProductsByCategory(long categoryId, bool searchActives = true);
-        Task<IList<ProductDTO>> SearchProductsByBrand(long brandId, bool searchActives = true);
-        Task<IList<ProductDTO>> SearchProductsByName(string name, bool searchActives = true);
-        Task<IList<ProductDTO>> SearchProductsBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true);
+        Task<IList<ProductDTO>> SearchProducts(SearchProductFilter searchFilter);
         Task<bool> DebitStock(long productId, long mount = 1);
         Task<bool> IncreaseStock(long productId, long mount = 1);
 

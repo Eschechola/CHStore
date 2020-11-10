@@ -7,6 +7,7 @@ using CHStore.Application.Core.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using CHStore.Application.Core.Data.Interfaces;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
@@ -77,50 +78,32 @@ namespace CHStore.Application.Account.Infra.Repositories
             return permissions;
         }
 
-        public async Task<IList<Employee>> Search(string term)
+        public async Task<IList<Employee>> Search(SearchEmployeeFilter searchFilter)
         {
-            var employees = await _context.Employees
-                                           .AsNoTracking()
-                                           .Where(
-                                                x => 
-                                                    x.CPF.Contains(term) ||
-                                                    x.Username.ToLower().Contains(term) ||
-                                                    x.Email.ToLower().Contains(term) ||
-                                                    x.Name.ToLower().Contains(term)
-                                            )
-                                           .ToListAsync();
+            IQueryable<Employee> allEmployees = _context.Employees;
 
-            return employees;
-        }
+            if (searchFilter.EmployeeId != 0)
+                return await allEmployees.Where(x => x.Id == searchFilter.EmployeeId)
+                                         .ToListAsync();
 
-        public async Task<IList<Employee>> SearchByCPF(string cpf)
-        {
-            var employees = await _context.Employees
-                                           .AsNoTracking()
-                                           .Where(x => x.CPF == cpf)
-                                           .ToListAsync();
+            if (searchFilter.OnlyActives)
+                allEmployees = allEmployees.Where(x => x.Active == true);
 
-            return employees;
-        }
+            if (!string.IsNullOrEmpty(searchFilter.Name))
+                allEmployees = allEmployees.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()));
 
-        public async Task<IList<Employee>> SearchByEmail(string email)
-        {
-            var employees = await _context.Employees
-                                          .AsNoTracking()
-                                          .Where(x => x.Email.ToLower().Contains(email))
-                                          .ToListAsync();
+            if (!string.IsNullOrEmpty(searchFilter.Username))
+                allEmployees = allEmployees.Where(x => x.Username.ToLower().Contains(searchFilter.Username.ToLower()));
 
-            return employees;
-        }
+            if (!string.IsNullOrEmpty(searchFilter.CPF))
+                allEmployees = allEmployees.Where(x => x.CPF.Contains(searchFilter.CPF));
 
-        public async Task<IList<Employee>> SearchByUsername(string username)
-        {
-            var employees = await _context.Employees
-                                          .AsNoTracking()
-                                          .Where(x => x.Username.ToLower().Contains(username))
-                                          .ToListAsync();
+            if (!string.IsNullOrEmpty(searchFilter.Email))
+                allEmployees = allEmployees.Where(x => x.Email.ToLower().Contains(searchFilter.Email.ToLower()));
 
-            return employees;
+            return await allEmployees
+                            .AsNoTracking()
+                            .ToListAsync();
         }
 
         public void Dispose()

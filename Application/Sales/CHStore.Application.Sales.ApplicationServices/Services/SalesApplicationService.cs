@@ -6,6 +6,7 @@ using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Sales.ApplicationServices.DTO;
 using CHStore.Application.Sales.DomainServices.Interfaces;
 using CHStore.Application.Sales.ApplicationServices.Interfaces;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.ApplicationServices.Services
 {
@@ -53,33 +54,11 @@ namespace CHStore.Application.Sales.ApplicationServices.Services
             return _mapper.Map<OrderDTO>(order);
         }
 
-        public async Task<IList<OrderDTO>> SearchOrderByStatus(StatusDTO statusDTO)
+        public async Task<IList<OrderDTO>> SearchOrders(SearchOrderFilter searchFilter)
         {
-            var status = _mapper.Map<Status>(statusDTO);
-            var orders = await _salesDomainService.SearchOrderByStatus(status);
+            var allOrders = await _salesDomainService.SearchOrders(searchFilter);
 
-            return _mapper.Map<IList<OrderDTO>>(orders);
-        }
-
-        public async Task<IList<OrderDTO>> SearchOrderBetweenPrices(decimal initialPrice, decimal finalPrice)
-        {
-            var orders = await _salesDomainService.SearchOrderBetweenPrices(initialPrice, finalPrice);
-
-            return _mapper.Map<IList<OrderDTO>>(orders);
-        }
-
-        public async Task<IList<OrderDTO>> SearchOrdersByCustomerId(long customerId)
-        {
-            var orders = await _salesDomainService.SearchOrdersByCustomerId(customerId);
-
-            return _mapper.Map<IList<OrderDTO>>(orders);
-        }
-
-        public async Task<IList<OrderDTO>> SearchOrderBetweenDates(DateTime initialDate, DateTime finalDate)
-        {
-            var orders = await _salesDomainService.SearchOrderBetweenDates(initialDate, finalDate);
-
-            return _mapper.Map<IList<OrderDTO>>(orders);
+            return _mapper.Map<IList<OrderDTO>>(allOrders);
         }
 
         #endregion
@@ -135,23 +114,9 @@ namespace CHStore.Application.Sales.ApplicationServices.Services
             return _mapper.Map<IList<VoucherDTO>>(allVouchers);
         }
 
-        public async Task<IList<VoucherDTO>> SearchVoucherBetweenDates(DateTime initialDate, DateTime finalDate)
+        public async Task<IList<VoucherDTO>> SearchVoucher(SearchVoucherFilter searchFilter)
         {
-            var allVouchers = await _salesDomainService.SearchOrderBetweenDates(initialDate, finalDate);
-
-            return _mapper.Map<IList<VoucherDTO>>(allVouchers);
-        }
-        
-        public async Task<IList<VoucherDTO>> SearchVoucherByCode(string code)
-        {
-            var allVouchers = await _salesDomainService.SearchVoucherByCode(code);
-
-            return _mapper.Map<IList<VoucherDTO>>(allVouchers);
-        }
-
-        public async Task<IList<VoucherDTO>> SearchVoucherByCode(string code, bool searchActives)
-        {
-            var allVouchers = await _salesDomainService.SearchVoucherByCode(code, searchActives);
+            var allVouchers = await _salesDomainService.SearchVoucher(searchFilter);
 
             return _mapper.Map<IList<VoucherDTO>>(allVouchers);
         }
@@ -192,6 +157,16 @@ namespace CHStore.Application.Sales.ApplicationServices.Services
             transportCompany.DeactivateTransportCompany();
 
             await UpdateTransportCompany(_mapper.Map<TransportCompanyDTO>(transportCompany));
+        }
+
+        public Task<TransportCompanyDTO> GetTransportCompany(long transportCompanyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<TransportCompanyDTO>> SearchTransportCompanyByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

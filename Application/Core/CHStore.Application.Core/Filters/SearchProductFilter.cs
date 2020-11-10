@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CHStore.Application.Core.Filters
+﻿namespace CHStore.Application.Core.Filters
 {
-    class SearchProductFilter
+    public class SearchProductFilter
     {
+        public long ProductId { get; set; }
+        public long CategoryId { get; set; }
+        public long BrandId { get; set; }
+        public string Name { get; set; }
+        public bool OnlyActives { get; set; }
+        public decimal MinimumPrice { get; set; }
+        public decimal MaximumPrice { get; set; }
     }
 }

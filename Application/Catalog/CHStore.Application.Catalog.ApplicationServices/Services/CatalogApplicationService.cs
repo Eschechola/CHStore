@@ -7,6 +7,7 @@ using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Catalog.ApplicationServices.DTO;
 using CHStore.Application.Catalog.ApplicationServices.Interfaces;
 using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Catalog.ApplicationServices
 {
@@ -79,31 +80,9 @@ namespace CHStore.Application.Catalog.ApplicationServices
             return await _catalogDomainService.IncreaseStock(productId, mount);
         }
 
-        public async Task<IList<ProductDTO>> SearchProductsByName(string name, bool searchActives = true)
+        public async Task<IList<ProductDTO>> SearchProducts(SearchProductFilter searchFilter)
         {
-            name = name.FormatToSearchParammeter();
-            var products = await _catalogDomainService.SearchProductsByName(name, searchActives);
-
-            return _mapper.Map<IList<ProductDTO>>(products);
-        }
-
-        public async Task<IList<ProductDTO>> SearchProductsBetweenPrices(decimal minimumPrice, decimal maximumPrice, bool searchActives = true)
-        {
-            var products = await _catalogDomainService.SearchProductsBetweenPrices(minimumPrice, maximumPrice, searchActives);
-
-            return _mapper.Map<IList<ProductDTO>>(products);
-        }
-
-        public async Task<IList<ProductDTO>> SearchProductsByCategory(long categoryId, bool searchActives = true)
-        {
-            var products = await _catalogDomainService.SearchProductsByCategory(categoryId, searchActives);
-
-            return _mapper.Map<IList<ProductDTO>>(products);
-        }
-
-        public async Task<IList<ProductDTO>> SearchProductsByBrand(long brandId, bool searchActives = true)
-        {
-            var products = await _catalogDomainService.SearchProductsByBrand(brandId, searchActives);
+            var products = await _catalogDomainService.SearchProducts(searchFilter);
 
             return _mapper.Map<IList<ProductDTO>>(products);
         }

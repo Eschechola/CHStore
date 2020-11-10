@@ -3,6 +3,7 @@ using CHStore.Application.Account.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.Infra.Interfaces
 {
@@ -11,9 +12,6 @@ namespace CHStore.Application.Account.Infra.Interfaces
         Task<Customer> Get(string term);
         Task<Customer> GetByCPF(string cpf);
         Task<Customer> GetByEmail(string username);
-        Task<IList<Customer>> Search(string term);
-        Task<IList<Customer>> SearchByEmail(string email);
-        Task<IList<Customer>> SearchByCPF(string cpf);
-        Task<IList<Customer>> SearchByCNPJ(string cnpj);
+        Task<IList<Customer>> Search(SearchCustomerFilter searchFilter);
     }
 }
