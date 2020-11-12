@@ -2,6 +2,7 @@
 using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ValueObjects;
+using CHStore.Application.Sales.Domain.Validators;
 
 namespace CHStore.Application.Sales.Domain.Entities
 {
@@ -84,7 +85,19 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public bool Validate()
         {
-            throw new System.NotImplementedException();
+            var entityValidator = new TransportCompanyValidator();
+            var addressValidator = new AddressValidator();
+
+            var entityValidation = entityValidator.Validate(this);
+            var addressValidation = addressValidator.Validate(this.Address);
+
+            if (entityValidation.Errors.Count > 0)
+                throw new DomainException(entityValidation.Errors[0].ErrorMessage);
+
+            if (addressValidation.Errors.Count > 0)
+                throw new DomainException(addressValidation.Errors[0].ErrorMessage);
+
+            return true;
         }
     }
 }

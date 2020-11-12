@@ -1,5 +1,5 @@
-﻿using CHStore.Application.Sales.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Sales.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CHStore.Application.Sales.Infra.Mapping
