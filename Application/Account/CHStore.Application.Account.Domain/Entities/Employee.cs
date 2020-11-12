@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.ValueObjects;
 
 namespace CHStore.Application.Account.Domain.Entities
 {
-    public class Employee : Account
+    public class Employee : Account, IAggregateRoot
     {
         public bool Active { get; private set; }
         public string Username { get; private set; }
@@ -62,5 +63,10 @@ namespace CHStore.Application.Account.Domain.Entities
         public void ActiveEmployee() => Active = true;
 
         public void DeactivateEmployee() => Active = false;
+
+        public bool Validate()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

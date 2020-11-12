@@ -3,10 +3,11 @@ using System.Linq;
 using System.Collections.Generic;
 using CHStore.Application.Core.Data;
 using CHStore.Application.Sales.Domain.Enums;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Sales.Domain.Entities
 {
-    public class Order : Entity
+    public class Order : Entity, IAggregateRoot
     {
         #region Properties
 
@@ -136,6 +137,11 @@ namespace CHStore.Application.Sales.Domain.Entities
         public void ChangeOrderStatus(Status status) => Status.Add(status);
 
         public void ChangeFinishDate(DateTime finishDate) => FinishDate = finishDate;
+
+        public bool Validate()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

@@ -1,10 +1,11 @@
 ﻿using System;
 using CHStore.Application.Core.ValueObjects;
 using CHStore.Application.Accounts.Domain.Enums;
+using CHStore.Application.Core.Data.Interfaces;
 
 namespace CHStore.Application.Account.Domain.Entities
 {
-    public class Customer : Account
+    public class Customer : Account, IAggregateRoot
     {
         public bool Active { get; private set; }
         public string CPF { get; private set; }
@@ -31,5 +32,10 @@ namespace CHStore.Application.Account.Domain.Entities
 
         public void ActiveCustomer() => Active = true;
         public void DeactiveCustomer() => Active = false;
+
+        public bool Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

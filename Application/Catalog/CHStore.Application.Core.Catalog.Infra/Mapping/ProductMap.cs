@@ -53,10 +53,15 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
                 .HasColumnType("DATETIME")
                 .HasColumnName("register_date");
 
-            builder.Property(x => x.Size)
+            builder.Property(x => x.Width)
                 .IsRequired()
-                .HasColumnType("long")
-                .HasColumnName("size");
+                .HasColumnType("DECIMAL")
+                .HasColumnName("width");
+
+            builder.Property(x => x.Length)
+                .IsRequired()
+                .HasColumnType("DECIMAL")
+                .HasColumnName("lenght");
 
             builder.Property(x => x.Stock)
                 .IsRequired()

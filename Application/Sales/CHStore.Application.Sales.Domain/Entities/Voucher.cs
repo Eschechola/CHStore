@@ -1,10 +1,11 @@
 ﻿using System;
 using CHStore.Application.Core.Data;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 
 namespace CHStore.Application.Sales.Domain.Entities
 {
-    public class Voucher : Entity
+    public class Voucher : Entity, IAggregateRoot
     {
         public string Code { get; private set; }
         public decimal DiscountPercentage { get; private set; }
@@ -49,5 +50,10 @@ namespace CHStore.Application.Sales.Domain.Entities
         public void ChangeFinalDate(DateTime finalDate) => FinalDate = finalDate;
         public void ActivateVoucher() => Active = true;
         public void DeactivateVoucher() => Active = false;
+
+        public bool Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

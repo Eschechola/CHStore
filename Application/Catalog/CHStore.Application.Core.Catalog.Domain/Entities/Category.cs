@@ -1,10 +1,11 @@
 ﻿using CHStore.Application.Core.Data;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using System.Collections.Generic;
 
 namespace CHStore.Application.Core.Catalog.Domain.Entities
 {
-    public class Category : Entity
+    public class Category : Entity, IAggregateRoot
     {
         #region Properties
 
@@ -31,6 +32,11 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
                 throw new DomainException("O Nome da categoria não pode ser vazio");
 
             Name = name;
+        }
+
+        public bool Validate()
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

@@ -1,10 +1,11 @@
 ﻿using CHStore.Application.Core.Data;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ValueObjects;
 
 namespace CHStore.Application.Sales.Domain.Entities
 {
-    public class TransportCompany : Entity
+    public class TransportCompany : Entity, IAggregateRoot
     {
         public string Name { get; private set; }
         public string CNPJ { get; private set; }
@@ -80,5 +81,10 @@ namespace CHStore.Application.Sales.Domain.Entities
 
         public void ActivateTransportCompany() => Active = true;
         public void DeactivateTransportCompany() => Active = false;
+
+        public bool Validate()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

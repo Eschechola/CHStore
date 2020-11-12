@@ -1,11 +1,12 @@
 ﻿using System;
+using CHStore.Application.Catalog.Domain.Validators;
 using CHStore.Application.Core.Data;
+using CHStore.Application.Core.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
-using CHStore.Application.Core.Catalog.Domain.Enums;
 
 namespace CHStore.Application.Core.Catalog.Domain.Entities
 {
-    public class Product : Entity
+    public class Product : Entity, IAggregateRoot
     {
         #region Properties
 
@@ -18,11 +19,13 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
         public bool Active { get; private set; }
         public DateTime RegisterDate { get; private set; }
         public string UrlImage { get; private set; }
-        public ProductSize Size { get; private set; }
+        public decimal Length { get; private set; }
+        public decimal Width { get; private set; }
 
         public Category Category { get; private set; }
         public Brand Brand { get; private set; }
 
+        
 
         #endregion
 
@@ -38,9 +41,9 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             decimal price,
             long stock,
             bool active,
-            DateTime registerDate,
             string urlImage,
-            ProductSize size,
+            decimal length,
+            decimal width,
             Category category
         ) : base(id)
         {
@@ -50,9 +53,10 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Price = price;
             Stock = stock;
             Active = active;
-            RegisterDate = registerDate;
+            RegisterDate = DateTime.Now;
             UrlImage = urlImage;
-            Size = size;
+            Length = length;
+            Width = width;
             Category = category;
         }
 
@@ -121,11 +125,32 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             CategoryId = category.Id;
         }
 
-        public void ChangeSize(ProductSize size) => Size = size;
+        public void ChangeSize(decimal lenght, decimal width)
+        {
+            if (lenght <= 0)
+                throw new DomainException("O comprimento do produto não poder menor ou igual a zero.");
 
-        public bool HasStock(long mount)
+            if(width <= 0)
+                throw new DomainException("A altura do produto não poder menor ou igual a zero.");
+
+            Length = lenght;
+            Width = width;
+        }
+
+        public bool HasStock(long mount = 1)
         {
             return Stock >= mount;
+        }
+
+        public bool Validate()
+        {
+            var validator = new ProductValidator();
+            var validation = validator.Validate(this);
+
+            if (validation.Errors.Count > 0)
+                throw new DomainException(validation.Errors[0].ErrorMessage);
+
+            return true;
         }
 
         #endregion
