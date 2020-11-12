@@ -10,7 +10,5 @@ namespace CHStore.Application.Sales.ApplicationServices.DTO
         public bool Active { get; set; }
         public DateTime InitialDate { get; set; }
         public DateTime FinalDate { get; set; }
-
-        public OrderDTO Order { get; set; }
     }
 }

@@ -16,6 +16,5 @@ namespace CHStore.Application.Sales.ApplicationServices.DTO
 
 
         public Address Address { get; set; }
-        public OrderDTO Order { get; set; }
     }
 }

@@ -29,6 +29,9 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasColumnName("username")
                 .HasColumnType("VARCHAR(50)");
 
+            builder.HasIndex(x => x.Username)
+                   .IsUnique();
+
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(300)
@@ -52,6 +55,17 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasMaxLength(200)
                 .HasColumnName("email")
                 .HasColumnType("VARCHAR(200)");
+
+            builder.HasIndex(x => x.Email)
+                   .IsUnique();
+
+            builder.Property(x => x.CPF)
+                .HasMaxLength(11)
+                .HasColumnName("cpf")
+                .HasColumnType("VARCHAR(11)");
+
+            builder.HasIndex(x => x.CPF)
+                   .IsUnique();
 
             builder.Property(x => x.Active)
                 .IsRequired()

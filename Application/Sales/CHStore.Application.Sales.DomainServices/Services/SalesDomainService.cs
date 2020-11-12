@@ -32,7 +32,7 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Order> CreateOrder(Order order)
         {
-            //order.Validate();
+            order.Validate();            
             await _orderRepository.Add(order);
             await _orderRepository.UnitOfWork.Commit();
 
@@ -47,6 +47,8 @@ namespace CHStore.Application.Sales.DomainServices
                 throw new DomainException("O pedido não foi encontrado.");
 
             order.Status.Add(status);
+
+            order.Validate();
 
             await _orderRepository.Update(order);
             await _orderRepository.UnitOfWork.Commit();
@@ -75,6 +77,7 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Voucher> AddVoucher(Voucher voucher)
         {
+            voucher.Validate();
             await _voucherRepository.Add(voucher);
             await _voucherRepository.UnitOfWork.Commit();
 
@@ -83,6 +86,13 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<Voucher> UpdateVoucher(Voucher voucher)
         {
+            voucher.Validate();
+
+            var voucherExists = _voucherRepository.Get(voucher.Id);
+
+            if (voucherExists == null)
+                throw new DomainException("O cupom informado não existe na base de dados.");
+
             await _voucherRepository.Update(voucher);
             await _voucherRepository.UnitOfWork.Commit();
 
@@ -122,6 +132,7 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<TransportCompany> AddTransportCompany(TransportCompany transportCompany)
         {
+            transportCompany.Validate();
             await _transportCompanyRepository.Add(transportCompany);
             await _transportCompanyRepository.UnitOfWork.Commit();
 
@@ -130,6 +141,13 @@ namespace CHStore.Application.Sales.DomainServices
 
         public async Task<TransportCompany> UpdateTransportCompany(TransportCompany transportCompany)
         {
+            transportCompany.Validate();
+
+            var transportCompanyExists = _transportCompanyRepository.Get(transportCompany.Id);
+
+            if (transportCompanyExists == null)
+                throw new DomainException("A empresa de transporte informada não existe na base de dados.");
+
             await _transportCompanyRepository.Update(transportCompany);
             await _transportCompanyRepository.UnitOfWork.Commit();
 

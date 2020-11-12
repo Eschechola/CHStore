@@ -41,6 +41,9 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasColumnName("email")
                 .HasColumnType("VARCHAR(200)");
 
+            builder.HasIndex(x => x.Email)
+                   .IsUnique();
+
             builder.Property(x => x.DocumentType)
                 .IsRequired()
                 .HasConversion<int>()
@@ -48,16 +51,20 @@ namespace CHStore.Application.Account.Infra.Mapping
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.CPF)
-                .IsRequired()
                 .HasMaxLength(11)
                 .HasColumnName("cpf")
                 .HasColumnType("VARCHAR(11)");
 
+            builder.HasIndex(x => x.CPF)
+                   .IsUnique();
+
             builder.Property(x => x.CNPJ)
-                .IsRequired()
                 .HasMaxLength(11)
                 .HasColumnName("cnpj")
                 .HasColumnType("VARCHAR(14)");
+
+            builder.HasIndex(x => x.CNPJ)
+                   .IsUnique();
 
             builder.Property(x => x.Active)
                 .IsRequired()

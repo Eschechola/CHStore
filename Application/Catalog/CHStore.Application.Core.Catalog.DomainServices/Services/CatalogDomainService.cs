@@ -31,7 +31,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Product> AddProduct(Product product)
         {
-            //product.Validate();
+            product.Validate();
             await _productRepository.Add(product);
             await _productRepository.UnitOfWork.Commit();
 
@@ -40,7 +40,13 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Product> UpdateProduct(Product product)
         {
-            //product.Validate();
+            product.Validate();
+
+            var productExists = await _productRepository.Get(product.Id);
+
+            if (productExists == null)
+                throw new DomainException("O produto informado não existe na base de dados.");
+
             await _productRepository.Update(product);
             await _productRepository.UnitOfWork.Commit();
 
@@ -106,8 +112,23 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Category> AddCategory(Category category)
         {
-            //category.Validate();
+            category.Validate();
             await _categoryRepository.Add(category);
+            await _categoryRepository.UnitOfWork.Commit();
+
+            return category;
+        }
+
+        public async Task<Category> UpdateCategory(Category category)
+        {
+            category.Validate();
+
+            var categoryExists = await _categoryRepository.Get(category.Id);
+
+            if (categoryExists == null)
+                throw new DomainException("A categoria informada não existe na base de dados.");
+
+            await _categoryRepository.Update(category);
             await _categoryRepository.UnitOfWork.Commit();
 
             return category;
@@ -123,14 +144,6 @@ namespace CHStore.Application.Core.Catalog.DomainServices
             return await _categoryRepository.Get(categoryId);
         }
 
-        public async Task<Category> UpdateCategory(Category category)
-        {
-            //category.Validate();
-            await _categoryRepository.Update(category);
-            await _categoryRepository.UnitOfWork.Commit();
-
-            return category;
-        }
 
         public async Task<IList<Category>> SearchCategoriesByName(string name)
         {
@@ -145,13 +158,28 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<Brand> AddBrand(Brand brand)
         {
-            //brand.Validate();
+            brand.Validate();
             await _brandRepository.Add(brand);
             await _brandRepository.UnitOfWork.Commit();
 
             return brand;
         }
 
+
+        public async Task<Brand> UpdateBrand(Brand brand)
+        {
+            brand.Validate();
+
+            var brandExists = await _brandRepository.Get(brand.Id);
+
+            if (brandExists == null)
+                throw new DomainException("A marca informada não existe na base de dados.");
+
+            await _brandRepository.Update(brand);
+            await _brandRepository.UnitOfWork.Commit();
+
+            return brand;
+        }
         public async Task<Brand> GetBrand(long brandId)
         {
             return await _brandRepository.Get(brandId);
@@ -160,15 +188,6 @@ namespace CHStore.Application.Core.Catalog.DomainServices
         public async Task<IList<Brand>> GetBrands()
         {
             return await _brandRepository.Get();
-        }
-
-        public async Task<Brand> UpdateBrand(Brand brand)
-        {
-            //brand.Validate();
-            await _brandRepository.Update(brand);
-            await _brandRepository.UnitOfWork.Commit();
-
-            return brand;
         }
 
         public async Task<IList<Brand>> SearchBrandsByName(string name)

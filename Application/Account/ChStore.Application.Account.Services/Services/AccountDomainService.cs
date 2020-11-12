@@ -31,6 +31,23 @@ namespace CHStore.Application.Account.DomainServices
 
         public async Task<Employee> CreateEmployee(Employee employee)
         {
+            employee.Validate();
+
+            var employeeCPFExists = await _employeeRepository.GetByCPF(employee.CPF);
+
+            if (employeeCPFExists != null)
+                throw new DomainException("O CPF informado já está cadastrado na nossa base de dados");
+
+            var employeeUsernameExists = await _employeeRepository.GetByUsername(employee.Username);
+
+            if (employeeUsernameExists != null)
+                throw new DomainException("O usuário informado já está cadastrado na nossa base de dados");
+
+            var employeeEmailExists = await _employeeRepository.GetByEmail(employee.Email);
+            
+            if (employeeEmailExists != null)
+                throw new DomainException("O email informado já está cadastrado na nossa base de dados");
+
             await _employeeRepository.Add(employee);
             await _employeeRepository.UnitOfWork.Commit();
 
@@ -39,6 +56,13 @@ namespace CHStore.Application.Account.DomainServices
 
         public async Task<Employee> UpdateEmployee(Employee employee)
         {
+            employee.Validate();
+
+            var employeeExists = await _employeeRepository.Get(employee.Id);
+
+            if (employeeExists == null)
+                throw new DomainException("O colaborador informado não existe na nossa base de dados");
+
             await _employeeRepository.Update(employee);
             await _employeeRepository.UnitOfWork.Commit();
 
@@ -72,6 +96,7 @@ namespace CHStore.Application.Account.DomainServices
             var employeePermission = new EmployeePermission(employeeId, permission.Id);
             employee.AddPermission(employeePermission);
 
+            employee.Validate();
             await _employeeRepository.Update(employee);
             await _employeeRepository.UnitOfWork.Commit();
         }
@@ -86,6 +111,7 @@ namespace CHStore.Application.Account.DomainServices
             var employeePermission = new EmployeePermission(employeeId, permission.Id);
             employee.RemovePermission(employeePermission);
 
+            employee.Validate();
             await _employeeRepository.Update(employee);
             await _employeeRepository.UnitOfWork.Commit();
         }
@@ -101,6 +127,28 @@ namespace CHStore.Application.Account.DomainServices
 
         public async Task<Customer> CreateCustomer(Customer customer)
         {
+            customer.Validate();
+
+            var customerExists = await _customerRepository.Get(customer.Id);
+
+            if (customerExists != null)
+                throw new DomainException("O colaborador informado já está cadastrado na nossa base de dados");
+
+            var customerCPFExists = await _customerRepository.GetByCPF(customer.CPF);
+
+            if (customerCPFExists != null)
+                throw new DomainException("O CPF informado já está cadastrado na nossa base de dados");
+
+            var customerCNPJExists = await _customerRepository.GetByCNPJ(customer.CNPJ);
+
+            if (customerCNPJExists != null)
+                throw new DomainException("O CNPJ informado já está cadastrado na nossa base de dados");
+
+            var customerEmailExists = await _customerRepository.GetByEmail(customer.Email);
+
+            if (customerEmailExists != null)
+                throw new DomainException("O email informado já está cadastrado na nossa base de dados");
+
             await _customerRepository.Add(customer);
             await _customerRepository.UnitOfWork.Commit();
 
@@ -108,6 +156,13 @@ namespace CHStore.Application.Account.DomainServices
         }
         public async Task<Customer> UpdateCustomer(Customer customer)
         {
+            customer.Validate();
+
+            var customerExists = await _customerRepository.Get(customer.Id);
+
+            if (customerExists == null)
+                throw new DomainException("O cliente informado não existe na nossa base de dados");
+
             await _customerRepository.Update(customer);
             await _customerRepository.UnitOfWork.Commit();
 

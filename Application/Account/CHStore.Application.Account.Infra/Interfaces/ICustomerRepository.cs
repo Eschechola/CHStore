@@ -11,6 +11,7 @@ namespace CHStore.Application.Account.Infra.Interfaces
     {
         Task<Customer> Get(string term);
         Task<Customer> GetByCPF(string cpf);
+        Task<Customer> GetByCNPJ(string cnpj);
         Task<Customer> GetByEmail(string username);
         Task<IList<Customer>> Search(SearchCustomerFilter searchFilter);
     }

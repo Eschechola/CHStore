@@ -46,6 +46,16 @@ namespace CHStore.Application.Account.Infra.Repositories
             return customers.FirstOrDefault();
         }
 
+        public async Task<Customer> GetByCNPJ(string cnpj)
+        {
+            var customers = await _context.Customers
+                                          .AsNoTracking()
+                                          .Where(x => x.CNPJ == cnpj)
+                                          .ToListAsync();
+
+            return customers.FirstOrDefault();
+        }
+
         public async Task<Customer> GetByEmail(string username)
         {
             var customers = await _context.Customers

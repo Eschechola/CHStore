@@ -10,6 +10,5 @@ namespace CHStore.Application.Sales.ApplicationServices.DTO
         public OrderStatus OrderStatus { get; set; }
         public DateTime DateModified { get; set; }
 
-        public OrderDTO Order { get; set; }
     }
 }
