@@ -1,0 +1,93 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Ubuntu';
+}
+
+
+body{
+    width: 100vw;
+    height: auto;
+    position: absolute;
+}
+
+.ch-header{
+    display: flex;
+    top: 0;
+    width: 100vw;
+    height: 80px;
+    position: relative;
+}
+
+.ch-header-logo {
+    height: 100%;
+    flex: 1.5;
+}
+
+.ch-header-menu{
+    flex: 8;
+    display: flex;
+    height: 100%;
+}
+
+.ch-header-menu-item {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.ch-header-menu-item a{
+    cursor: pointer;
+}
+
+.ch-header-icon {
+    flex: .3 !important;
+}
+
+.ch-header-icon i:hover{
+    cursor: pointer;
+}
+
+.ch-header-menu-separator-5{
+    flex: 5;
+}
+
+.ch-header-menu-separator-1-2 {
+    flex: 1.2;
+}
+
+.ch-cart-products-mount{
+    background: red;
+    width: 15px;
+    height: 15px;
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    border-radius: 100%;
+    margin-top: -13px;
+    margin-left: 26px;
+    position: absolute;
+}
+
+.ch-main {
+    background: blue;
+    width: 100vw;
+    min-height: 300px;
+    height: auto;
+    position: relative;
+}
+
+.ch-footer {
+    background: orange;
+    width: 100vw;
+    height: 300px;
+    bottom: 0;
+    position: relative;
+}
