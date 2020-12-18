@@ -3,13 +3,26 @@
     padding: 0;
     border: 0;
     font-family: 'Ubuntu';
+    color: var(--font-color);
 }
 
+:root {
+    --primary-color: #fafafa;
+    --secondary-color: #694873;
+    --font-color: #292929;
+    --third-color: #16302B;
+    --no-content-color: rgba(0,0,0,.3);
+}
+
+html {
+    overflow-x: hidden;
+}
 
 body{
     width: 100vw;
     height: auto;
     position: absolute;
+    background: var(--primary-color) !important;
 }
 
 .ch-header{
@@ -18,6 +31,7 @@ body{
     width: 100vw;
     height: 80px;
     position: relative;
+    background: var(--primary-color);
 }
 
 .ch-header-logo {
@@ -41,7 +55,15 @@ body{
 }
 
 .ch-header-menu-item a{
+    font-size: 1rem;
+    color: var(--font-color) !important;
     cursor: pointer;
+    transition: .5s;
+}
+
+.ch-header-menu-item a:hover {
+    text-decoration: none;
+    opacity: .5;
 }
 
 .ch-header-icon {
@@ -60,8 +82,8 @@ body{
     flex: 1.2;
 }
 
-.ch-cart-products-mount{
-    background: red;
+.ch-cart-products-mount {
+    background: var(--secondary-color);
     width: 15px;
     height: 15px;
     color: white;
@@ -72,14 +94,21 @@ body{
     font-size: 10px;
     border-radius: 100%;
     margin-top: -13px;
-    margin-left: 26px;
+    margin-left: 23px;
     position: absolute;
+    opacity: .8;
 }
 
 .ch-main {
-    background: blue;
+    background: var(--primary-color);
     width: 100vw;
     min-height: 300px;
+    height: auto;
+    position: relative;
+}
+
+.ch-main-content{
+    width: 100vw;
     height: auto;
     position: relative;
 }

@@ -1,0 +1,55 @@
+﻿.ch-home-banner {
+    width: 100vw;
+    height: 550px;
+    background: var(--secondary-color);
+    position: relative;
+}
+
+.ch-secondary-banners-container {
+    width: 75vw;
+    height: 350px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.ch-secondary-banner {
+    flex: 1;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    height: 90%;
+    border-radius: 5px;
+    background: var(--no-content-color);
+}
+
+.ch-secondary-banner:first-child{
+    margin-left: 0;
+}
+
+.ch-secondary-banner:last-child{
+    margin-right: 0;
+}
+
+
+.ch-new-products {
+    width: 75vw;
+    min-height: 700px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.ch-new-products h2{
+    width: auto;
+    text-align: left;
+    margin-top: 50px;
+    opacity: .9;
+}

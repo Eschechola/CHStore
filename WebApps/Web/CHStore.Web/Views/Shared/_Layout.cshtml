@@ -13,8 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <link href="~/css/global.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+    @if (ViewBag.PageCSS != null)
+    {
+        <link href="~/css/@ViewBag.PageCSS" rel="stylesheet" />
+    }
 </head>
 <body>
     <header class="ch-header">
@@ -24,19 +28,19 @@
 
         <div class="ch-header-menu">
             <div class="ch-header-menu-item">
-                <a>HOME</a>
+                <a href="/">HOME</a>
             </div>
 
             <div class="ch-header-menu-item">
-                <a>PRODUCTS</a>
+                <a href="/products">PRODUCTS</a>
             </div>
 
             <div class="ch-header-menu-item">
-                <a>CONTACT</a>
+                <a href="/contact">CONTACT</a>
             </div>
 
             <div class="ch-header-menu-item">
-                <a>ABOUT</a>
+                <a href="/about">ABOUT</a>
             </div>
 
             <div class="ch-header-menu-separator-5"></div>
@@ -51,6 +55,7 @@
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
+                <span class="ch-cart-products-mount">1</span>
                 <i class="fas fa-heart"></i>
             </div>
 
