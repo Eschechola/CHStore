@@ -15,6 +15,39 @@
     </div>
 
     <div class="ch-new-products">
-        <h2 class="title">Veja nossos lançamentos!</h2>
+        <h2 class="ch-title-new-products">Veja nossos lançamentos</h2>
+        <p class="ch-subtitle-new-products">Produtos de ultima linha com qualidade e preço justo!</p>
+
+        <div class="ch-new-products-container">
+
+            @for(int i = 0; i< 16; i++)
+            {
+                <div class="ch-new-products-block">
+                    <div class="ch-new-products-block-container">
+                        <img src="~/images/products/Luvas_da_Hidra_(★)_Aquecimento_de_Aço_FT.jpg" />
+
+                        <p class="name-new-product">Luvas Hidra Aquecimento de Aço - FT</p>
+
+                        <p class="new-product-price">R$655,00</p>
+
+                        <div class="new-product-buttons">
+                            <div class="product-button">
+                                <i class="fas fa-eye" title="Ver o produto."></i>
+                            </div>
+
+                            <div class="product-button" title="Adicionar aos favoritos.">
+                                <i class="fas fa-heart"></i>
+                            </div>
+
+                            <div class="product-button">
+                                <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <a class="button-see-all" href="/products">Ver todos</a>
     </div>
 </section>

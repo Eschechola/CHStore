@@ -9,6 +9,7 @@
 :root {
     --primary-color: #fafafa;
     --secondary-color: #694873;
+    --secondary-color-hover: #3a2740;
     --font-color: #292929;
     --third-color: #16302B;
     --no-content-color: rgba(0,0,0,.3);
