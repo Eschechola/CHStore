@@ -14,19 +14,19 @@
         <div class="ch-secondary-banner">Mini Banner</div>
     </div>
 
-    <div class="ch-new-products">
-        <h2 class="ch-title-new-products">Veja nossos lançamentos</h2>
-        <p class="ch-subtitle-new-products">Produtos de ultima linha com qualidade e preço justo!</p>
+    <div class="ch-products">
+        <h2 class="ch-title-products">Veja nossos lançamentos</h2>
+        <p class="ch-subtitle-products">Produtos de ultima linha com qualidade e preço justo!</p>
 
-        <div class="ch-new-products-container">
+        <div class="ch-products-container">
 
-            @for(int i = 0; i< 16; i++)
+            @for (int i = 0; i < 16; i++)
             {
-                <div class="ch-new-products-block">
-                    <div class="ch-new-products-block-container">
+                <div class="ch-products-block">
+                    <div class="ch-products-block-container">
                         <img src="~/images/products/Luvas_da_Hidra_(★)_Aquecimento_de_Aço_FT.jpg" />
 
-                        <p class="name-new-product">Luvas Hidra Aquecimento de Aço - FT</p>
+                        <p class="name-product">Luvas Hidra Aquecimento de Aço - FT</p>
 
                         <p class="new-product-price">R$655,00</p>
 
@@ -49,5 +49,47 @@
         </div>
 
         <a class="button-see-all" href="/products">Ver todos</a>
+    </div>
+
+
+    <div class="ch-promo-banner">
+        <h2>Promo Banner</h2>
+    </div>
+
+    <div class="ch-most-sell-products">
+        <h2 class="ch-title-products">Veja nossos produtos mais vendidos!</h2>
+
+        <div class="ch-most-sell-products-container">
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class="ch-products-block">
+                    <div class="ch-products-block-container">
+                        <img src="~/images/products/Luvas_da_Hidra_(★)_Aquecimento_de_Aço_FT.jpg" />
+
+                        <p class="name-product">Luvas Hidra Aquecimento de Aço - FT</p>
+
+                        <p class="new-product-price">R$655,00</p>
+
+                        <div class="new-product-buttons">
+                            <div class="product-button">
+                                <i class="fas fa-eye" title="Ver o produto."></i>
+                            </div>
+
+                            <div class="product-button" title="Adicionar aos favoritos.">
+                                <i class="fas fa-heart"></i>
+                            </div>
+
+                            <div class="product-button">
+                                <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="ch-newsletter">
+        <h2>Newsletter</h2>
     </div>
 </section>

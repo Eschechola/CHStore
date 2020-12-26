@@ -65,7 +65,18 @@ namespace CHStore.Application.Catalog.ApplicationServices
             return _mapper.Map<IList<ProductDTO>>(products);
         }
 
+        public async Task<IList<ProductDTO>> GetLastProducts(int mountOfProducts = 0)
+        {
+            var searchFilter = new SearchProductFilter(
+                                    mountOfProducts: mountOfProducts,
+                                    minimumStock: 1);
+            var allProducts = await _catalogDomainService.SearchProducts(searchFilter);
+
+            return _mapper.Map<IList<ProductDTO>>(allProducts);
+        }
+
         public async Task RemoveProduct(long productId)
+
         {
             await _catalogDomainService.RemoveProduct(productId);
         }

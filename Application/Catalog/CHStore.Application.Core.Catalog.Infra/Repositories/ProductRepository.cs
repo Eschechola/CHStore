@@ -48,6 +48,12 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             if(searchFilter.MaximumPrice > 0)
                 allProducts.Where(x => x.Price <= searchFilter.MaximumPrice);
 
+            if (searchFilter.MinimumStock > 0)
+                allProducts.Where(x => x.Stock >= searchFilter.MinimumStock);
+
+            if (searchFilter.MountOfProducts > 0)
+                allProducts.Take(searchFilter.MountOfProducts);
+
             return await allProducts
                             .AsNoTracking()
                             .ToListAsync();

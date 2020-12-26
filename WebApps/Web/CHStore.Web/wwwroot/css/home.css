@@ -37,30 +37,30 @@
 }
 
 
-.ch-new-products {
+.ch-products {
     width: 75vw;
     min-height: 700px;
     margin-left: 50%;
     transform: translateX(-50%);
-    margin-top: 150px;
+    margin-top: 200px;
     margin-bottom: 150px;
 }
 
-.ch-title-new-products {
+.ch-title-products {
     font-size: 2.3rem;
     width: auto;
-    text-align: left;
+    text-align: center;
     opacity: .9;
 }
 
-.ch-subtitle-new-products {
+.ch-subtitle-products {
     font-size: 1.3rem;
     width: auto;
-    text-align: left;
+    text-align: center;
     opacity: .7;
 }
 
-.ch-new-products-container {
+.ch-products-container {
     margin-top: 50px;
     width: 100%;
     display: flex;
@@ -70,7 +70,7 @@
 }
 
 
-.ch-new-products-block {
+.ch-products-block {
     flex: 1;
     min-width: 25%;
     max-width: 25%;
@@ -80,13 +80,14 @@
     align-items: center;
     transition: .5s;
     margin-top: 30px !important;
+    justify-content: center;
 }
 
-.ch-new-products-block:first-child{
+.ch-products-block:first-child{
     margin-left: 0;
 }
 
-.ch-new-products-block-container {
+.ch-products-block-container {
     cursor: pointer;
     flex: .8;
     height: 100%;
@@ -95,18 +96,18 @@
     transition: .5s;
 }
 
-.ch-new-products-block-container:hover{
+.ch-products-block-container:hover{
     box-shadow: 1px 1px 5px 2px lightgray;
     transition: .5s;
 }
 
-.ch-new-products-block-container img{
+.ch-products-block-container img{
     width: 100%;
     border-radius: 3px 3px 0px 0px;
     padding-bottom: 10px;
 }
 
-.name-new-product {
+.name-product {
     opacity: .7;
     text-align: center;
     width: 80%;
@@ -174,4 +175,31 @@
     text-decoration: none;
     background: var(--secondary-color-hover);
     transition: .5s;
+}
+
+.ch-promo-banner{
+    width: 100vw;
+    min-height: 300px;
+    background: var(--secondary-color);
+}
+
+.ch-most-sell-products{
+    width: 75vw;
+    margin-top: 200px;
+    min-height: 300px;
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.ch-most-sell-products-container{
+    margin-top: 80px;
+    display: flex;
+}
+
+.ch-newsletter{
+    width: 100vw;
+    height: 80vh;
+    margin-top: 250px;
+    background: var(--secondary-color);
 }

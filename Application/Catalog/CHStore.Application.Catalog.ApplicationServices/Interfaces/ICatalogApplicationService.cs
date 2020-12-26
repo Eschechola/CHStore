@@ -12,6 +12,7 @@ namespace CHStore.Application.Catalog.ApplicationServices.Interfaces
         Task<ProductDTO> UpdateProduct(ProductDTO productDTO);
         Task<ProductDTO> GetProduct(long productId);
         Task<IList<ProductDTO>> GetProducts();
+        Task<IList<ProductDTO>> GetLastProducts(int mountOfProducts = 0);
         Task RemoveProduct(long productId);
         Task<IList<ProductDTO>> SearchProducts(SearchProductFilter searchFilter);
         Task<bool> DebitStock(long productId, long mount = 1);
