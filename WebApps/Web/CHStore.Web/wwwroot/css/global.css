@@ -1,4 +1,6 @@
-﻿*{
+﻿@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+
+*{
     margin: 0;
     padding: 0;
     border: 0;
@@ -8,9 +10,10 @@
 
 :root {
     --primary-color: #fafafa;
-    --secondary-color: #694873;
+    --secondary-color: #121318;
     --secondary-color-hover: #3a2740;
     --font-color: #292929;
+    --font-color-white: rgba(255,255,255,.8);
     --third-color: #16302B;
     --no-content-color: rgba(0,0,0,.3);
 }
@@ -26,18 +29,82 @@ body{
     background: var(--primary-color) !important;
 }
 
+.flex-10{
+    flex: 1 !important;
+}
+
+.flex-9 {
+    flex: .9 !important;
+}
+
+.flex-8 {
+    flex: .8 !important;
+}
+
+.flex-7 {
+    flex: .7 !important;
+}
+
+.flex-6 {
+    flex: .6 !important;
+}
+
+.flex-5 {
+    flex: .5 !important;
+}
+
+.flex-4 {
+    flex: .4 !important;
+}
+
+.flex-3 {
+    flex: .3 !important;
+}
+
+.flex-2 {
+    flex: .2 !important;
+}
+
+.flex-1 {
+    flex: .1 !important;
+}
+
 .ch-header{
     display: flex;
     top: 0;
     width: 100vw;
     height: 80px;
     position: relative;
-    background: var(--primary-color);
+    background: transparent;
+    position: fixed;
+    z-index: 100;
 }
 
 .ch-header-logo {
     height: 100%;
     flex: 1.5;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ch-header-logo h2{
+    font-family: "Hachi Maru Pop";
+    font-weight: bold;
+    text-align: center;
+    color: var(--font-color-white);
+    transition: .5s;
+}
+
+.ch-header-logo a{
+    transition: .5s;
+}
+
+.ch-header-logo a:hover{
+    opacity: .5;
+    transition: .5s;
+    text-decoration: none !important;
 }
 
 .ch-header-menu{
@@ -57,7 +124,9 @@ body{
 
 .ch-header-menu-item a{
     font-size: 1rem;
-    color: var(--font-color) !important;
+    font-family: "Hachi Maru Pop" !important;
+    font-weight: bold;
+    color: var(--font-color-white) !important;
     cursor: pointer;
     transition: .5s;
 }
@@ -71,23 +140,107 @@ body{
     flex: .3 !important;
 }
 
+.ch-header-icon i{
+    color: var(--font-color-white);
+}
+
 .ch-header-icon i:hover{
     cursor: pointer;
 }
 
-.ch-header-menu-separator-5{
+.ch-header-menu-search-input-container{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
     flex: 5;
+}
+
+.ch-input-search {
+    padding: 5px;
+    padding-left: 10px;
+    border: 1px solid black;
+    flex: 1.1;
+    outline: 0;
+    border-radius: 4px;
+    transition: .5s;
+    transform: rotateX(-90deg);
 }
 
 .ch-header-menu-separator-1-2 {
     flex: 1.2;
 }
 
-.ch-cart-products-mount {
+.ch-cart-dropdown {
+    display: block;
+    min-width: 500px;
+    min-height: 300px;
+    background: white;
+    position: absolute;
+    background: var(--primary-color);
+    margin-top: 350px !important;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 10px 0px dimgray;
+}
+
+.ch-cart-dropdown-header {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.ch-cart-dropdown-header-item{
+    flex: 1;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.ch-cart-dropdown h1{
+    font-size: 1.3rem;
+    font-family: "Hachi Maru Pop" !important;
+    font-weight: bold;
+    color: var(--font-color) !important;
+    margin-top: 5px;
+}
+
+.ch-cart-dropdown p {
+    font-size: 1.3rem;
+    width: 36px;
+    height: 35px;
+    font-family: "Hachi Maru Pop" !important;
     background: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+    border-radius: 100%;
+    float: right;
+    margin-right: 20px;
+    margin-top: 2px;
+}
+
+.ch-cart-dropdown-icon {
+    color: var(--font-color) !important;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+.ch-cart-dropdown-itens {
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 100%;
+    height: 150px;
+    border: 1px solid black;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.ch-cart-products-mount {
+    background: var(--primary-color);
     width: 15px;
     height: 15px;
-    color: white;
+    color: var(--secondary-color);
     display: flex;
     align-content: center;
     justify-content: center;
@@ -97,13 +250,14 @@ body{
     margin-top: -13px;
     margin-left: 23px;
     position: absolute;
-    opacity: .8;
+    opacity: 1;
+    font-weight: bold;
 }
 
 .ch-main {
     background: var(--primary-color);
     width: 100vw;
-    min-height: 300px;
+    min-height: 380px;
     height: auto;
     position: relative;
 }

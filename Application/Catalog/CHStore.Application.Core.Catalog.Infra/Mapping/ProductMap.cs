@@ -31,7 +31,13 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
                 .HasColumnName("name")
                 .HasColumnType("VARCHAR(300)");
 
-            builder.Property(x => x.Active)        
+            builder.Property(x => x.Slug)
+                .IsRequired()
+                .HasMaxLength(200)
+                .HasColumnName("slug")
+                .HasColumnType("VARCHAR(200)");
+
+            builder.Property(x => x.Active)
                 .IsRequired()
                 .HasDefaultValue(false)
                 .HasColumnName("fl_active")
@@ -45,7 +51,7 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
             builder.Property(x => x.Price)
                 .IsRequired()
                 .HasColumnName("price")
-                .HasColumnType("FLOAT");
+                .HasColumnType("DECIMAL");
 
             builder.Property(x => x.RegisterDate)
                 .IsRequired()
@@ -62,6 +68,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Mapping
                 .IsRequired()
                 .HasColumnType("DECIMAL")
                 .HasColumnName("lenght");
+
+            builder.Property(x => x.Depth)
+                .IsRequired()
+                .HasColumnType("DECIMAL")
+                .HasColumnName("depth");
 
             builder.Property(x => x.Stock)
                 .IsRequired()

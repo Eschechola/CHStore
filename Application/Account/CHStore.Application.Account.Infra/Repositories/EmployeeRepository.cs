@@ -7,7 +7,6 @@ using CHStore.Application.Core.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using CHStore.Application.Core.Data.Interfaces;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.Infra.Repositories
 {
@@ -76,34 +75,6 @@ namespace CHStore.Application.Account.Infra.Repositories
                                       .ToListAsync();
 
             return permissions;
-        }
-
-        public async Task<IList<Employee>> Search(SearchEmployeeFilter searchFilter)
-        {
-            IQueryable<Employee> allEmployees = _context.Employees;
-
-            if (searchFilter.EmployeeId != 0)
-                return await allEmployees.Where(x => x.Id == searchFilter.EmployeeId)
-                                         .ToListAsync();
-
-            if (searchFilter.OnlyActives)
-                allEmployees = allEmployees.Where(x => x.Active == true);
-
-            if (!string.IsNullOrEmpty(searchFilter.Name))
-                allEmployees = allEmployees.Where(x => x.Name.ToLower().Contains(searchFilter.Name.ToLower()));
-
-            if (!string.IsNullOrEmpty(searchFilter.Username))
-                allEmployees = allEmployees.Where(x => x.Username.ToLower().Contains(searchFilter.Username.ToLower()));
-
-            if (!string.IsNullOrEmpty(searchFilter.CPF))
-                allEmployees = allEmployees.Where(x => x.CPF.Contains(searchFilter.CPF));
-
-            if (!string.IsNullOrEmpty(searchFilter.Email))
-                allEmployees = allEmployees.Where(x => x.Email.ToLower().Contains(searchFilter.Email.ToLower()));
-
-            return await allEmployees
-                            .AsNoTracking()
-                            .ToListAsync();
         }
 
         public void Dispose()

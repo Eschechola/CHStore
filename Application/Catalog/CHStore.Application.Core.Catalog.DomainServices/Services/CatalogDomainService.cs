@@ -6,7 +6,7 @@ using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
 using CHStore.Application.Core.Catalog.Infra.Data.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
-using CHStore.Application.Core.Filters;
+using System.Linq.Expressions;
 
 namespace CHStore.Application.Core.Catalog.DomainServices
 {
@@ -63,18 +63,21 @@ namespace CHStore.Application.Core.Catalog.DomainServices
             return await _productRepository.Get();
         }
 
+        public async Task<IList<Product>> GetLastProducts(int mountOfProducts = 0, bool onlyActives = false)
+        {
+            Expression<Func<Product, bool>> searchExpression = p =>
+                p.Active == onlyActives;
+
+            return await _productRepository.Search(searchExpression, mountOfProducts);
+        }
+
         public async Task RemoveProduct(long productId)
         {
             await _productRepository.Remove(productId);
             await _productRepository.UnitOfWork.Commit();
         }
 
-        public async Task<IList<Product>> SearchProducts(SearchProductFilter searchFilter)
-        {
-            return await _productRepository.SearchProduct(searchFilter);
-        }
-
-        public async Task<bool> DebitStock(long productId, long mount = 1)
+        public async Task<bool> DebitStock(long productId, int mount = 1)
         {
             if (mount <= 1)
                 throw new DomainException("A Quantidade para ser debitada deve ser maior ou igual a 1.");
@@ -91,7 +94,7 @@ namespace CHStore.Application.Core.Catalog.DomainServices
             return await _productRepository.UnitOfWork.Commit();
         }
 
-        public async Task<bool> IncreaseStock(long productId, long mount = 1)
+        public async Task<bool> IncreaseStock(long productId, int mount = 1)
         {
             if (mount <= 1)
                 throw new DomainException("A Quantidade para ser aumentada deve ser maior ou igual a 1.");
@@ -147,8 +150,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<IList<Category>> SearchCategoriesByName(string name)
         {
-            name.FormatToSearchParammeter();
-            return await _categoryRepository.SearchByName(name);
+            Expression<Func<Category, bool>> searchExpression = p =>
+                p.Name == name.FormatToSearchParammeter();
+
+            return await _categoryRepository.Search(searchExpression);
         }
 
         #endregion
@@ -192,8 +197,10 @@ namespace CHStore.Application.Core.Catalog.DomainServices
 
         public async Task<IList<Brand>> SearchBrandsByName(string name)
         {
-            name.FormatToSearchParammeter();
-            return await _brandRepository.SearchByName(name);
+            Expression<Func<Brand, bool>> searchExpression = p =>
+                p.Name == name.FormatToSearchParammeter();
+
+            return await _brandRepository.Search(searchExpression);
         }
 
         #endregion

@@ -7,7 +7,6 @@ using CHStore.Application.Core.Catalog.Domain.Entities;
 using CHStore.Application.Catalog.ApplicationServices.DTO;
 using CHStore.Application.Catalog.ApplicationServices.Interfaces;
 using CHStore.Application.Core.Catalog.DomainServices.Interfaces;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Catalog.ApplicationServices
 {
@@ -65,14 +64,11 @@ namespace CHStore.Application.Catalog.ApplicationServices
             return _mapper.Map<IList<ProductDTO>>(products);
         }
 
-        public async Task<IList<ProductDTO>> GetLastProducts(int mountOfProducts = 0)
+        public async Task<IList<ProductDTO>> GetLastProducts(int mountOfProducts = 0, bool onlyActives = false)
         {
-            var searchFilter = new SearchProductFilter(
-                                    mountOfProducts: mountOfProducts,
-                                    minimumStock: 1);
-            var allProducts = await _catalogDomainService.SearchProducts(searchFilter);
+            var products = await _catalogDomainService.GetLastProducts(mountOfProducts: mountOfProducts, onlyActives: onlyActives);
 
-            return _mapper.Map<IList<ProductDTO>>(allProducts);
+            return _mapper.Map<IList<ProductDTO>>(products);
         }
 
         public async Task RemoveProduct(long productId)
@@ -81,21 +77,14 @@ namespace CHStore.Application.Catalog.ApplicationServices
             await _catalogDomainService.RemoveProduct(productId);
         }
 
-        public async Task<bool> DebitStock(long productId, long mount = 1)
+        public async Task<bool> DebitStock(long productId, int mount = 1)
         {
             return await _catalogDomainService.DebitStock(productId, mount);
         }
 
-        public async Task<bool> IncreaseStock(long productId, long mount = 1)
+        public async Task<bool> IncreaseStock(long productId, int mount = 1)
         {
             return await _catalogDomainService.IncreaseStock(productId, mount);
-        }
-
-        public async Task<IList<ProductDTO>> SearchProducts(SearchProductFilter searchFilter)
-        {
-            var products = await _catalogDomainService.SearchProducts(searchFilter);
-
-            return _mapper.Map<IList<ProductDTO>>(products);
         }
 
         #endregion

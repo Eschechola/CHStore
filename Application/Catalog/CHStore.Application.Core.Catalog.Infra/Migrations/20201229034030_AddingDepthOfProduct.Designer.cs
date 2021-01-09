@@ -4,14 +4,16 @@ using CHStore.Application.Core.Catalog.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
 {
     [DbContext(typeof(CatalogContext))]
-    partial class CatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20201229034030_AddingDepthOfProduct")]
+    partial class AddingDepthOfProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,23 +97,17 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Migrations
                         .HasColumnType("VARCHAR(300)")
                         .HasColumnName("name");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("DECIMAL")
+                    b.Property<double>("Price")
+                        .HasColumnType("FLOAT")
                         .HasColumnName("price");
 
                     b.Property<DateTime>("RegisterDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2021, 1, 8, 13, 46, 48, 392, DateTimeKind.Local).AddTicks(6251))
+                        .HasDefaultValue(new DateTime(2020, 12, 29, 0, 40, 30, 286, DateTimeKind.Local).AddTicks(8383))
                         .HasColumnName("register_date");
 
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("VARCHAR(200)")
-                        .HasColumnName("slug");
-
-                    b.Property<int>("Stock")
+                    b.Property<long>("Stock")
                         .HasColumnType("long")
                         .HasColumnName("stock");
 

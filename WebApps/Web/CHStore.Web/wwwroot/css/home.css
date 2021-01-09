@@ -1,8 +1,20 @@
 ﻿.ch-home-banner {
     width: 100vw;
-    height: 550px;
+    height: 630px;
     background: var(--secondary-color);
     position: relative;
+    background-image: url('../images/web/main-bg.png');
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ch-home-banner h2{
+    color: var(--font-color-white);
+    text-align: center;
+    font-family: "Hachi Maru Pop";
+    font-weight: bold;
 }
 
 .ch-secondary-banners-container {
@@ -25,15 +37,29 @@
     margin-right: 2.5vw;
     height: 90%;
     border-radius: 5px;
-    background: var(--no-content-color);
 }
 
-.ch-secondary-banner:first-child{
+.ch-secondary-banner-image{
+    width: 25%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    opacity: .8;
+    margin-top: 50px;
+}
+
+.ch-secondary-banner:first-child {
     margin-left: 0;
 }
 
 .ch-secondary-banner:last-child{
     margin-right: 0;
+}
+
+.ch-secondary-banner-text {
+    margin-top: 15px;
+    text-align: center;
+    font-family: "Hachi Maru Pop";
+    font-size: 1.2rem;
 }
 
 
@@ -51,6 +77,8 @@
     width: auto;
     text-align: center;
     opacity: .9;
+    font-family: "Hachi Maru Pop";
+    font-weight: bold;
 }
 
 .ch-subtitle-products {
@@ -69,7 +97,6 @@
     margin-bottom: 100px;
 }
 
-
 .ch-products-block {
     flex: 1;
     min-width: 25%;
@@ -81,6 +108,7 @@
     transition: .5s;
     margin-top: 30px !important;
     justify-content: center;
+    text-decoration: none !important;
 }
 
 .ch-products-block:first-child{
@@ -88,6 +116,7 @@
 }
 
 .ch-products-block-container {
+    position: relative;
     cursor: pointer;
     flex: .8;
     height: 100%;
@@ -102,6 +131,7 @@
 }
 
 .ch-products-block-container img{
+    max-height: 190px;
     width: 100%;
     border-radius: 3px 3px 0px 0px;
     padding-bottom: 10px;
@@ -134,7 +164,9 @@
     transform: translateX(-50%);
     height: 40px;
     display: flex;
-    margin-top: 40px;
+    position: absolute;
+    bottom:0;
+    margin-bottom: 20px !important;
 }
 
 .product-button{
@@ -145,11 +177,18 @@
 }
 
 .product-button i{
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
     padding: 12px;
     border-radius: 100%;
     transition: .5s;
+}
+
+.product-button-clicked i{
+    background: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--secondary-color) !important; 
 }
 
 .product-button i:hover{

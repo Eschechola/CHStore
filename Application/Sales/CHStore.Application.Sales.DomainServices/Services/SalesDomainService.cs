@@ -5,7 +5,6 @@ using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Sales.DomainServices.Interfaces;
 using CHStore.Application.Sales.Infra.Interfaces;
 using CHStore.Application.Core.Exceptions;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.DomainServices
 {
@@ -66,11 +65,6 @@ namespace CHStore.Application.Sales.DomainServices
             return await _orderRepository.Get();
         }
 
-        public async Task<IList<Order>> SearchOrders(SearchOrderFilter searchFilter)
-        {
-            return await _orderRepository.Search(searchFilter);
-        }
-
         #endregion
 
         #region Voucher
@@ -119,11 +113,6 @@ namespace CHStore.Application.Sales.DomainServices
         {
             voucher.DeactivateVoucher();
             await UpdateVoucher(voucher);
-        }
-
-        public async Task<IList<Voucher>> SearchVoucher(SearchVoucherFilter searchFilter)
-        {
-            return await _voucherRepository.Search(searchFilter);
         }
 
         #endregion

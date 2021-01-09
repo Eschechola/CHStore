@@ -5,7 +5,6 @@ using CHStore.Application.Account.DomainServices.Interfaces;
 using CHStore.Application.Account.Infra.Interfaces;
 using CHStore.Application.Core.Exceptions;
 using CHStore.Application.Core.ExtensionMethods;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.DomainServices
 {
@@ -116,11 +115,6 @@ namespace CHStore.Application.Account.DomainServices
             await _employeeRepository.UnitOfWork.Commit();
         }
 
-        public async Task<IList<Employee>> SearchEmployee(SearchEmployeeFilter searchFilter)
-        {
-            return await _employeeRepository.Search(searchFilter);
-        }
-
         #endregion
 
         #region Customer
@@ -167,11 +161,6 @@ namespace CHStore.Application.Account.DomainServices
             await _customerRepository.UnitOfWork.Commit();
 
             return customer;
-        }
-
-        public async Task<IList<Customer>> SearchCustomer(SearchCustomerFilter searchFilter)
-        {
-            return await _customerRepository.Search(searchFilter);
         }
 
         public async Task<bool> AuthenticateCustomer(string login, string password)

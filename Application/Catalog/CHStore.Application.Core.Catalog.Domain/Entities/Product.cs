@@ -15,12 +15,14 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }
-        public long Stock { get; private set; }
+        public int Stock { get; private set; }
         public bool Active { get; private set; }
+        public string Slug { get; private set; }
         public DateTime RegisterDate { get; private set; }
         public string UrlImage { get; private set; }
         public decimal Length { get; private set; }
         public decimal Width { get; private set; }
+        public decimal Depth { get; private set; }
 
         public Category Category { get; private set; }
         public Brand Brand { get; private set; }
@@ -39,13 +41,13 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             string name,
             string description,
             decimal price,
-            long stock,
+            int stock,
             bool active,
+            string slug,
             string urlImage,
             decimal length,
             decimal width,
-            Category category
-        ) : base(id)
+            Category category) : base(id)
         {
             CategoryId = categoryId;
             Name = name;
@@ -58,6 +60,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Length = length;
             Width = width;
             Category = category;
+            Slug = slug;
         }
 
         #endregion
@@ -88,7 +91,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Price = price;
         }
 
-        public void DecreaseStock(long value)
+        public void DecreaseStock(int value)
         {
             if (value <= 0)
                 throw new DomainException("O valor de decremento de Estoque está inválido.");
@@ -96,7 +99,7 @@ namespace CHStore.Application.Core.Catalog.Domain.Entities
             Stock -= value;
         }
 
-        public void IncreaseStock(long value)
+        public void IncreaseStock(int value)
         {
             if (value <= 0)
                 throw new DomainException("O valor de incremento de Estoque está inválido.");

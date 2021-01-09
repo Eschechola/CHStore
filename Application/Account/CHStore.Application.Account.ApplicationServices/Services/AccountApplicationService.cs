@@ -5,7 +5,6 @@ using CHStore.Application.Account.Domain.Entities;
 using CHStore.Application.Account.ApplicationServices.DTO;
 using CHStore.Application.Account.ApplicationServices.Interfaces;
 using CHStore.Application.Account.DomainServices.Interfaces;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Account.ApplicationServices.Services
 {
@@ -43,13 +42,6 @@ namespace CHStore.Application.Account.ApplicationServices.Services
         public async Task<bool> AuthenticateCustomer(string login, string password)
         {
             return await _accountDomainService.AuthenticateCustomer(login, password);
-        }
-        
-        public async Task<IList<CustomerDTO>> SearchCustomer(SearchCustomerFilter searchFilter)
-        {
-            var allCustomers = await _accountDomainService.SearchCustomer(searchFilter);
-
-            return _mapper.Map<IList<CustomerDTO>>(allCustomers);
         }
 
         #endregion
@@ -96,13 +88,6 @@ namespace CHStore.Application.Account.ApplicationServices.Services
         {
             var permission = _mapper.Map<Permission>(permissionDTO);
             await _accountDomainService.RemoveEmployeePermission(employeeId, permission);
-        }
-
-        public async Task<IList<EmployeeDTO>> SearchEmployee(SearchEmployeeFilter searchFilter)
-        {
-            var employees = await _accountDomainService.SearchEmployee(searchFilter);
-
-            return _mapper.Map<IList<EmployeeDTO>>(employees);
         }
 
         #endregion

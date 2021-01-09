@@ -1,17 +1,31 @@
-﻿@{
+﻿@model CHStore.Web.ViewModel.HomeViewModel
+
+@{
     ViewBag.Title = "Home";
     ViewBag.PageCSS = "home.css";
+    ViewBag.PageJS = "home.js";
 }
 
 <section class="ch-main-content">
     <div class="ch-home-banner">
-        <h1>Banner</h1>
+        <h2>A MELHOR LOJA DE SKINS DE<br>CS:GO DO BRASIL!</h2>
     </div>
 
     <div class="ch-secondary-banners-container">
-        <div class="ch-secondary-banner">Mini Banner</div>
-        <div class="ch-secondary-banner">Mini Banner</div>
-        <div class="ch-secondary-banner">Mini Banner</div>
+        <div class="ch-secondary-banner">
+            <img src="~/images/web/quality.png" class="ch-secondary-banner-image" />
+            <p class="ch-secondary-banner-text">Nos esforçamos para poder entregar as skins com melhor qualidade e menor float possível para todos os nosso clientes.</p>
+        </div>
+        
+        <div class="ch-secondary-banner">
+            <img src="~/images/web/speed.png" class="ch-secondary-banner-image" />
+            <p class="ch-secondary-banner-text">Prezamos bastante a rapidez na entrega, sabemos e entendemos a importância de agregar valor aos nossos clientes o mais rápido possível.</p>
+        </div>
+        
+        <div class="ch-secondary-banner">
+            <img src="~/images/web/support.png" class="ch-secondary-banner-image" />
+            <p class="ch-secondary-banner-text">Fornecemos um rápido suporte para caso haja algum problema, provendo um atendimento excepcional e eficiente para todos nossos clientes.</p>
+        </div>
     </div>
 
     <div class="ch-products">
@@ -19,36 +33,38 @@
         <p class="ch-subtitle-products">Produtos de ultima linha com qualidade e preço justo!</p>
 
         <div class="ch-products-container">
-
-            @for (int i = 0; i < 16; i++)
+            @if (Model.LastProducts != null)
             {
-                <div class="ch-products-block">
-                    <div class="ch-products-block-container">
-                        <img src="~/images/products/Luvas_da_Hidra_(★)_Aquecimento_de_Aço_FT.jpg" />
+                foreach (var product in Model.LastProducts)
+                {
+                    <a href="/product/@product.Id/@product.Slug" class="ch-products-block">
+                        <div class="ch-products-block-container">
+                            <img src="@product.UrlImage" />
 
-                        <p class="name-product">Luvas Hidra Aquecimento de Aço - FT</p>
+                            <p class="name-product">@product.Name</p>
 
-                        <p class="new-product-price">R$655,00</p>
+                            <p class="new-product-price">R$ @String.Format("{0:#,##0.00}", product.Price)</p>
 
-                        <div class="new-product-buttons">
-                            <div class="product-button">
-                                <i class="fas fa-eye" title="Ver o produto."></i>
-                            </div>
+                            <div class="new-product-buttons">
+                                <div class="product-button">
+                                    <i class="fas fa-eye" title="Ver o produto."></i>
+                                </div>
 
-                            <div class="product-button" title="Adicionar aos favoritos.">
-                                <i class="fas fa-heart"></i>
-                            </div>
+                                <div class="product-button product-button-clicked" title="Adicionar aos favoritos.">
+                                    <i class="fas fa-heart"></i>
+                                </div>
 
-                            <div class="product-button">
-                                <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                                <div class="product-button">
+                                    <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </a>
+                }
             }
         </div>
 
-        <a class="button-see-all" href="/products">Ver todos</a>
+        <a class="button-see-all" href="/shop">Ver todos</a>
     </div>
 
 
@@ -60,31 +76,34 @@
         <h2 class="ch-title-products">Veja nossos produtos mais vendidos!</h2>
 
         <div class="ch-most-sell-products-container">
-            @for (int i = 0; i < 4; i++)
+            @if (Model.MostSellingProducts != null)
             {
-                <div class="ch-products-block">
-                    <div class="ch-products-block-container">
-                        <img src="~/images/products/Luvas_da_Hidra_(★)_Aquecimento_de_Aço_FT.jpg" />
+                foreach (var product in Model.MostSellingProducts)
+                {
+                    <div class="ch-products-block">
+                        <div class="ch-products-block-container">
+                            <img src="@product.UrlImage" />
 
-                        <p class="name-product">Luvas Hidra Aquecimento de Aço - FT</p>
+                            <p class="name-product">@product.Name</p>
 
-                        <p class="new-product-price">R$655,00</p>
+                            <p class="new-product-price">R$@String.Format("{0:#,##0.00}", product.Price)</p>
 
-                        <div class="new-product-buttons">
-                            <div class="product-button">
-                                <i class="fas fa-eye" title="Ver o produto."></i>
-                            </div>
+                            <div class="new-product-buttons">
+                                <div class="product-button">
+                                    <i class="fas fa-eye" title="Ver o produto."></i>
+                                </div>
 
-                            <div class="product-button" title="Adicionar aos favoritos.">
-                                <i class="fas fa-heart"></i>
-                            </div>
+                                <div class="product-button" title="Adicionar aos favoritos.">
+                                    <i class="fas fa-heart"></i>
+                                </div>
 
-                            <div class="product-button">
-                                <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                                <div class="product-button">
+                                    <i class="fas fa-shopping-cart" title="Adicionar ao carrinho."></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         </div>
     </div>

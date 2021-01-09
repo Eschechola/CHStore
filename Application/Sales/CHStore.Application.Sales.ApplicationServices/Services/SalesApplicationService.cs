@@ -6,7 +6,6 @@ using CHStore.Application.Sales.Domain.Entities;
 using CHStore.Application.Sales.ApplicationServices.DTO;
 using CHStore.Application.Sales.DomainServices.Interfaces;
 using CHStore.Application.Sales.ApplicationServices.Interfaces;
-using CHStore.Application.Core.Filters;
 
 namespace CHStore.Application.Sales.ApplicationServices.Services
 {
@@ -52,13 +51,6 @@ namespace CHStore.Application.Sales.ApplicationServices.Services
             var order = await _salesDomainService.GetOrder(orderId);
 
             return _mapper.Map<OrderDTO>(order);
-        }
-
-        public async Task<IList<OrderDTO>> SearchOrders(SearchOrderFilter searchFilter)
-        {
-            var allOrders = await _salesDomainService.SearchOrders(searchFilter);
-
-            return _mapper.Map<IList<OrderDTO>>(allOrders);
         }
 
         #endregion
@@ -110,13 +102,6 @@ namespace CHStore.Application.Sales.ApplicationServices.Services
         public async Task<IList<VoucherDTO>> GetVouchers()
         {
             var allVouchers = await _salesDomainService.GetVouchers();
-
-            return _mapper.Map<IList<VoucherDTO>>(allVouchers);
-        }
-
-        public async Task<IList<VoucherDTO>> SearchVoucher(SearchVoucherFilter searchFilter)
-        {
-            var allVouchers = await _salesDomainService.SearchVoucher(searchFilter);
 
             return _mapper.Map<IList<VoucherDTO>>(allVouchers);
         }

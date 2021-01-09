@@ -23,7 +23,9 @@
 <body>
     <header class="ch-header">
         <div class="ch-header-logo">
-
+            <a href="/">
+                <h2>Ch Store</h2>
+            </a>
         </div>
 
         <div class="ch-header-menu">
@@ -32,7 +34,7 @@
             </div>
 
             <div class="ch-header-menu-item">
-                <a href="/products">PRODUCTS</a>
+                <a href="/shop">SHOP</a>
             </div>
 
             <div class="ch-header-menu-item">
@@ -43,15 +45,42 @@
                 <a href="/about">ABOUT</a>
             </div>
 
-            <div class="ch-header-menu-separator-5"></div>
+            <div class="ch-header-menu-search-input-container">
+                <input class="ch-input-search" placeholder="Digite o que deseja buscar..."/>
+            </div>
 
             <div class="ch-header-menu-item ch-header-icon">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search" id="ch-search-icon"></i>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
                 <span class="ch-cart-products-mount">1</span>
+                
                 <i class="fas fa-shopping-cart"></i>
+
+                <div class="ch-cart-dropdown">
+                    <div class="ch-cart-dropdown-header">
+                        <div class="ch-cart-dropdown-header-item flex-3">
+                            <i class="fas fa-shopping-cart ch-cart-dropdown-icon"></i>
+                        </div>
+
+                        <div class="ch-cart-dropdown-header-item">
+                            <h1>Carrinho</h1>
+                        </div>
+
+                        <div class="ch-cart-dropdown-header-item">
+                            <p>1</p>
+                        </div>
+                    </div>
+                    
+                    <hr />
+
+                    <div class="ch-cart-dropdown-itens">
+                        <div class="ch-cart-dropdown-iten">
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
@@ -78,6 +107,11 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/global.js"></script>
+    @if (ViewBag.PageJS != null)
+    {
+        <script src="~/js/@ViewBag.PageJS"></script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

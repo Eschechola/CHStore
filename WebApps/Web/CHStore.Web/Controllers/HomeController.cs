@@ -1,7 +1,8 @@
-﻿using CHStore.Application.Catalog.ApplicationServices.Interfaces;
+﻿using System;
 using CHStore.Web.ViewModel;
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using CHStore.Application.Catalog.ApplicationServices.Interfaces;
 
 namespace CHStore.Web.Controllers
 {
@@ -14,16 +15,37 @@ namespace CHStore.Web.Controllers
             _catalogApplicationService = catalogApplicationService;
         }
 
+        [Route("/")]
         public async Task<IActionResult> Index()
         {
-            var productsSearch = await _catalogApplicationService.GetLastProducts(mountOfProducts: 16);
-
-            var viewModel = new HomeViewModel
+            try
             {
-                LastProducts = productsSearch
-            };
+                var viewModel = new HomeViewModel
+                {
+                    LastProducts = await _catalogApplicationService.GetLastProducts(mountOfProducts: 16, onlyActives: true),
+                    MostSellingProducts = await _catalogApplicationService.GetLastProducts(mountOfProducts: 4, onlyActives: true)
+                };
 
-            return View(productsSearch);
+                return View(viewModel);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Route("/shop")]
+        public async Task<IActionResult> Shop()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
