@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CHStore.Application.Core.Data.Repositories
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T: Entity
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T: Entity
     {
         private readonly DbContext _context;
 
@@ -17,7 +17,7 @@ namespace CHStore.Application.Core.Data.Repositories
             _context = context;
         }
 
-        IUnitOfWork IBaseRepository<T>.UnitOfWork => null;
+        public abstract IUnitOfWork UnitOfWork { get; protected set; }
 
         public virtual async Task<T> Get(long id)
         {

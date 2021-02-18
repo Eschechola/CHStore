@@ -81,7 +81,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Bsuiness",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Data", "Application\Payments\CHStore.Payments.Data\CHStore.Payments.Data.csproj", "{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Web", "WebApps\Web\CHStore.Web\CHStore.Web.csproj", "{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Web", "WebApps\Web\CHStore.Web\CHStore.Web.csproj", "{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

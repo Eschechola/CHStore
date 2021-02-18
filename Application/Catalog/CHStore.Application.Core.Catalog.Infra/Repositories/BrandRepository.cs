@@ -19,7 +19,11 @@ namespace CHStore.Application.Core.Catalog.Infra.Data.Repositories
             _context = context;
         }
 
-        public IUnitOfWork UnitOfWork => _context;
+        public override IUnitOfWork UnitOfWork 
+        {
+            get { return _context; }
+            protected set { UnitOfWork = value; }
+        }
 
         public async Task<IList<Brand>> SearchByName(string name)
         {

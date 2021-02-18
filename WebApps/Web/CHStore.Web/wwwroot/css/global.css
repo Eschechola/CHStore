@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
-
-*{
+﻿*{
     margin: 0;
     padding: 0;
     border: 0;
@@ -69,15 +67,37 @@ body{
     flex: .1 !important;
 }
 
+.primary-font-color{
+    color: var(--font-color) !important;
+}
+
+.primary-mount-color {
+    background: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.border-color {
+    border: 1px solid dimgray;
+    color: var(--font-color);
+}
+
 .ch-header{
     display: flex;
     top: 0;
     width: 100vw;
-    height: 80px;
+    height: 90px;
     position: relative;
     background: transparent;
     position: fixed;
     z-index: 100;
+}
+
+.ch-secondary-header{
+    margin-top: -90px;
+    background: var(--primary-color);
+    position: fixed;
+    transition: .5s;
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.3);
 }
 
 .ch-header-logo {
@@ -90,7 +110,7 @@ body{
 }
 
 .ch-header-logo h2{
-    font-family: "Hachi Maru Pop";
+    font-family: "Ubuntu";
     font-weight: bold;
     text-align: center;
     color: var(--font-color-white);
@@ -122,11 +142,11 @@ body{
     align-content: center;
 }
 
-.ch-header-menu-item a{
+.ch-header-menu-item a {
     font-size: 1rem;
-    font-family: "Hachi Maru Pop" !important;
+    font-family: "Ubuntu" !important;
     font-weight: bold;
-    color: var(--font-color-white) !important;
+    color: var(--font-color-white);
     cursor: pointer;
     transition: .5s;
 }
@@ -172,16 +192,19 @@ body{
 }
 
 .ch-cart-dropdown {
-    display: block;
+    display: none;
+    opacity: 0;
     min-width: 500px;
     min-height: 300px;
     background: white;
     position: absolute;
     background: var(--primary-color);
-    margin-top: 350px !important;
-    border-radius: 10px;
+    margin-top: 430px !important;
+    border-radius: 5px;
     border: 1px solid lightgray;
     box-shadow: 1px 1px 10px 0px dimgray;
+    transform: translateX(-70px);
+    transition: .5s;
 }
 
 .ch-cart-dropdown-header {
@@ -198,19 +221,19 @@ body{
     margin-left: 20px;
 }
 
-.ch-cart-dropdown h1{
+.ch-cart-dropdown h1 {
     font-size: 1.3rem;
-    font-family: "Hachi Maru Pop" !important;
+    font-family: "Ubuntu" !important;
     font-weight: bold;
     color: var(--font-color) !important;
     margin-top: 5px;
 }
 
-.ch-cart-dropdown p {
+.ch-cart-dropdown-header-item p {
     font-size: 1.3rem;
     width: 36px;
     height: 35px;
-    font-family: "Hachi Maru Pop" !important;
+    font-family: "Ubuntu" !important;
     background: var(--secondary-color);
     color: var(--primary-color);
     text-align: center;
@@ -230,10 +253,50 @@ body{
     margin-right: 20px;
     margin-left: 20px;
     width: 100%;
-    height: 150px;
-    border: 1px solid black;
+    height: 214px;
     margin-left: 50%;
     transform: translateX(-50%);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ch-cart-dropdown-item {
+    width: 95%;
+    height: 110px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.ch-cart-dropdown-item-title{
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.ch-cart-dropdown-item-image {
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.ch-cart-dropdown-item-image img{
+    width: 100%;
+    border-radius: 3px;
+    padding-top: 10px;
+}
+
+.ch-cart-dropdown-item h3 {
+    font-size: 1.1rem;
+    padding: 10px;
+    font-family: "Ubuntu" !important;
+    font-weight: bold;
+}
+
+.ch-cart-dropdown-item p {
+    font-family: "Ubuntu" !important;
+    padding-left: 10px;
+    color: rgba(0,0,0,0.6);
 }
 
 .ch-cart-products-mount {
@@ -252,6 +315,31 @@ body{
     position: absolute;
     opacity: 1;
     font-weight: bold;
+}
+
+.ch-cart-dropdown-footer{
+    border-top: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+    height: 70px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.ch-cart-dropdown-footer button{
+    border: hidden;
+    padding: 10px;
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    border-radius: 3px;
+    margin-top: 6px;
+    transition: .5s;
+}
+
+.ch-cart-dropdown-footer button:hover{
+    background: var(--secondary-color-hover);
+    transition: .5s;
 }
 
 .ch-main {

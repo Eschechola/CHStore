@@ -1,6 +1,6 @@
 ﻿.ch-home-banner {
     width: 100vw;
-    height: 630px;
+    height: 50vw;
     background: var(--secondary-color);
     position: relative;
     background-image: url('../images/web/main-bg.png');
@@ -13,8 +13,9 @@
 .ch-home-banner h2{
     color: var(--font-color-white);
     text-align: center;
-    font-family: "Hachi Maru Pop";
+    font-family: "Ubuntu";
     font-weight: bold;
+    font-size: 3rem;
 }
 
 .ch-secondary-banners-container {
@@ -58,7 +59,7 @@
 .ch-secondary-banner-text {
     margin-top: 15px;
     text-align: center;
-    font-family: "Hachi Maru Pop";
+    font-family: "Ubuntu";
     font-size: 1.2rem;
 }
 
@@ -77,7 +78,7 @@
     width: auto;
     text-align: center;
     opacity: .9;
-    font-family: "Hachi Maru Pop";
+    font-family: "Ubuntu";
     font-weight: bold;
 }
 
@@ -133,6 +134,7 @@
 .ch-products-block-container img{
     max-height: 190px;
     width: 100%;
+    background-size: 100% 100%;
     border-radius: 3px 3px 0px 0px;
     padding-bottom: 10px;
 }

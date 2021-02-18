@@ -46,7 +46,7 @@
             </div>
 
             <div class="ch-header-menu-search-input-container">
-                <input class="ch-input-search" placeholder="Digite o que deseja buscar..."/>
+                <input class="ch-input-search" placeholder="Digite o que deseja buscar..." id="search-input"/>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
@@ -54,11 +54,11 @@
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
-                <span class="ch-cart-products-mount">1</span>
-                
-                <i class="fas fa-shopping-cart"></i>
+                <span class="ch-cart-products-mount">2</span>
 
-                <div class="ch-cart-dropdown">
+                <i class="fas fa-shopping-cart" onclick="toggleShoppingCart()"></i>
+
+                <div class="ch-cart-dropdown" id="shopping-cart" onmousewheel="HideShoppingCart()">
                     <div class="ch-cart-dropdown-header">
                         <div class="ch-cart-dropdown-header-item flex-3">
                             <i class="fas fa-shopping-cart ch-cart-dropdown-icon"></i>
@@ -69,27 +69,130 @@
                         </div>
 
                         <div class="ch-cart-dropdown-header-item">
-                            <p>1</p>
+                            <p>2</p>
                         </div>
                     </div>
-                    
+
                     <hr />
 
                     <div class="ch-cart-dropdown-itens">
-                        <div class="ch-cart-dropdown-iten">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <div class="ch-cart-dropdown-item">
+                                <div class="ch-cart-dropdown-item-title">
+                                    <h3>Luvas Hidra Aquecimento de Aço - FT</h3>
+                                    <p>x1</p>
+                                </div>
 
-                        </div>
+                                <div class="ch-cart-dropdown-item-image">
+                                    <img src="/images/products/Luvas_da_Hidra_Aquecimento_de_Aço_FT.jpg" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="ch-cart-dropdown-footer">
+                        <button>Finalizar Pedido</button>
                     </div>
                 </div>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
-                <span class="ch-cart-products-mount">1</span>
+                <span class="ch-cart-products-mount">2</span>
                 <i class="fas fa-heart"></i>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
                 <i class="fas fa-user"></i>
+            </div>
+
+            <div class="ch-header-menu-separator-1-2"></div>
+        </div>
+    </header>
+
+    <header class="ch-header ch-secondary-header">
+        <div class="ch-header-logo ch-header-logo-secondary">
+            <a href="/">
+                <h2 class="primary-font-color">Ch Store</h2>
+            </a>
+        </div>
+
+        <div class="ch-header-menu">
+            <div class="ch-header-menu-item ch-header-menu-item-secondary">
+                <a class="primary-font-color" href="/">HOME</a>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-menu-item-secondary">
+                <a class="primary-font-color" href="/shop">SHOP</a>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-menu-item-secondary">
+                <a class="primary-font-color" href="/contact">CONTACT</a>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-menu-item-secondary">
+                <a class="primary-font-color" href="/about">ABOUT</a>
+            </div>
+
+            <div class="ch-header-menu-search-input-container">
+                <input class="ch-input-search ch-search-icon-primary border-color" placeholder="Digite o que deseja buscar..." id="search-input-primary"/>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-icon">
+                <i class="fas fa-search primary-font-color" id="ch-search-icon-primary"></i>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-icon">
+                <span class="ch-cart-products-mount primary-mount-color">2</span>
+
+                <i class="fas fa-shopping-cart primary-font-color" onclick="toggleShoppingCart()"></i>
+
+                <div class="ch-cart-dropdown" id="shopping-cart">
+                    <div class="ch-cart-dropdown-header">
+                        <div class="ch-cart-dropdown-header-item flex-3">
+                            <i class="fas fa-shopping-cart ch-cart-dropdown-icon"></i>
+                        </div>
+
+                        <div class="ch-cart-dropdown-header-item">
+                            <h1>Carrinho</h1>
+                        </div>
+
+                        <div class="ch-cart-dropdown-header-item primary-mount-color">
+                            <p>2</p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="ch-cart-dropdown-itens">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <div class="ch-cart-dropdown-item">
+                                <div class="ch-cart-dropdown-item-title">
+                                    <h3>Luvas Hidra Aquecimento de Aço - FT</h3>
+                                    <p>x1</p>
+                                </div>
+
+                                <div class="ch-cart-dropdown-item-image">
+                                    <img src="/images/products/Luvas_da_Hidra_Aquecimento_de_Aço_FT.jpg" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="ch-cart-dropdown-footer">
+                        <button>Finalizar Pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-icon">
+                <span class="ch-cart-products-mount primary-mount-color">2</span>
+                <i class="fas fa-heart primary-font-color"></i>
+            </div>
+
+            <div class="ch-header-menu-item ch-header-icon">
+                <i class="fas fa-user primary-font-color"></i>
             </div>
 
             <div class="ch-header-menu-separator-1-2"></div>

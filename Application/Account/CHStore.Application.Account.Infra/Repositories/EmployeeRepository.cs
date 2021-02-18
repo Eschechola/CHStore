@@ -19,7 +19,11 @@ namespace CHStore.Application.Account.Infra.Repositories
             _context = context;
         }
 
-        public IUnitOfWork UnitOfWork => _context;
+        public override IUnitOfWork UnitOfWork
+        {
+            get { return _context; }
+            protected set { UnitOfWork = value; }
+        }
 
         public async Task<Employee> Get(string term)
         {
