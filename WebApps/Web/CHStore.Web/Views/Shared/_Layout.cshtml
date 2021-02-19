@@ -76,7 +76,7 @@
                     <hr />
 
                     <div class="ch-cart-dropdown-itens">
-                        @for (int i = 0; i < 5; i++)
+                        @for (int i = 0; i < 2; i++)
                         {
                             <div class="ch-cart-dropdown-item">
                                 <div class="ch-cart-dropdown-item-title">
@@ -92,18 +92,32 @@
                     </div>
 
                     <div class="ch-cart-dropdown-footer">
-                        <button>Finalizar Pedido</button>
+                        <div class="ch-cart-footer-container">
+                            <p>
+                                Total: <b>R$100,00</b>
+                                <br />
+                                Quantidade de itens: <b>5</b>
+                            </p>
+                        </div>
+
+                        <div class="ch-cart-footer-container">
+                            <button>Finalizar Pedido</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
                 <span class="ch-cart-products-mount">2</span>
-                <i class="fas fa-heart"></i>
+                <a href="/account/favorites">
+                    <i class="fas fa-heart"></i>
+                </a>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
-                <i class="fas fa-user"></i>
+                <a href="account">
+                    <i class="fas fa-user"></i>
+                </a>
             </div>
 
             <div class="ch-header-menu-separator-1-2"></div>
@@ -181,29 +195,41 @@
                     </div>
 
                     <div class="ch-cart-dropdown-footer">
-                        <button>Finalizar Pedido</button>
+                        <div class="ch-cart-footer-container">
+                            <p>
+                                Total: <b>R$100,00</b>
+                                <br />
+                                Quantidade de itens: <b>5</b>
+                            </p>
+                        </div>
+
+                        <div class="ch-cart-footer-container">
+                            <button>Finalizar Pedido</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
                 <span class="ch-cart-products-mount primary-mount-color">2</span>
-                <i class="fas fa-heart primary-font-color"></i>
+                <a href="/account/favorites">
+                    <i class="fas fa-heart primary-font-color"></i>
+                </a>
             </div>
 
             <div class="ch-header-menu-item ch-header-icon">
-                <i class="fas fa-user primary-font-color"></i>
+                <a href="/accounts">
+                    <i class="fas fa-user primary-font-color"></i>
+                </a>
             </div>
 
             <div class="ch-header-menu-separator-1-2"></div>
         </div>
     </header>
 
-
     <main class="ch-main">
         @RenderBody()
     </main>
-
 
     <footer class="ch-footer">
     </footer>

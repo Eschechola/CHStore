@@ -199,7 +199,7 @@ body{
     background: white;
     position: absolute;
     background: var(--primary-color);
-    margin-top: 430px !important;
+    margin-top: 480px !important;
     border-radius: 5px;
     border: 1px solid lightgray;
     box-shadow: 1px 1px 10px 0px dimgray;
@@ -327,14 +327,28 @@ body{
     display: flex;
 }
 
-.ch-cart-dropdown-footer button{
+.ch-cart-footer-container{
+    flex: 1;
+}
+
+.ch-cart-footer-container p{
+    padding-left: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    line-height:18px;
+}
+
+.ch-cart-dropdown-footer button {
     border: hidden;
-    padding: 10px;
+    padding: 6px;
     color: var(--primary-color);
     background: var(--secondary-color);
     border-radius: 3px;
-    margin-top: 6px;
+    margin-top: 3px;
     transition: .5s;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width:150px;
 }
 
 .ch-cart-dropdown-footer button:hover{

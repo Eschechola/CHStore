@@ -19,11 +19,21 @@ function showMenuOnScroll() {
 }
 
 function showSearchInput() {
-    document.getElementById('search-input').style.transform = 'none';
+    var input = document.getElementById('search-input'); 
+
+    if (input.style.transform == "rotateX(-90deg)")
+        input.style.transform = 'none';
+    else
+        input.style.transform = "rotateX(-90deg)"
 }
 
 function showSearchInputPrimary() {
-    document.getElementById('search-input-primary').style.transform = 'none';
+    var input = document.getElementById('search-input-primary');
+
+    if (input.style.transform == "rotateX(-90deg)")
+        input.style.transform = 'none';
+    else
+        input.style.transform = "rotateX(-90deg)"
 }
 
 function toggleShoppingCart() {
