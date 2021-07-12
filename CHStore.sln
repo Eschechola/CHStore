@@ -31,23 +31,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Domain", "4.3 - Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.4 - Infra", "4.4 - Infra", "{CEFFF951-E667-4083-9BD1-8127B7E1861B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core", "Application\Core\CHStore.Application.Core\CHStore.Application.Core.csproj", "{EA0344D9-67ED-41CD-9A42-387CC0F33520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Core", "src\Application\Core\CHStore.Application.Core\CHStore.Application.Core.csproj", "{EA0344D9-67ED-41CD-9A42-387CC0F33520}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.DomainServices", "Application\Catalog\CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Catalog.DomainServices.csproj", "{56080D50-4D44-4E92-9ADA-A7974D2DD6AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.DomainServices", "src\Application\Catalog\CHStore.Application.Core.Catalog.DomainServices\CHStore.Application.Catalog.DomainServices.csproj", "{56080D50-4D44-4E92-9ADA-A7974D2DD6AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Domain", "Application\Catalog\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj", "{157A43C7-0BB9-4BCF-9CE8-92B00E39CF43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Domain", "src\Application\Catalog\CHStore.Application.Core.Catalog.Domain\CHStore.Application.Catalog.Domain.csproj", "{157A43C7-0BB9-4BCF-9CE8-92B00E39CF43}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Infra", "Application\Catalog\CHStore.Application.Core.Catalog.Infra\CHStore.Application.Catalog.Infra.csproj", "{8B315A60-4E04-4D94-9AF6-C1D6510F9E50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.Infra", "src\Application\Catalog\CHStore.Application.Core.Catalog.Infra\CHStore.Application.Catalog.Infra.csproj", "{8B315A60-4E04-4D94-9AF6-C1D6510F9E50}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.DomainServices", "Application\Sales\CHStore.Application.Sales.DomainServices\CHStore.Application.Sales.DomainServices.csproj", "{646BF0DE-BB8A-4D96-9BD6-A6FC273E5215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.DomainServices", "src\Application\Sales\CHStore.Application.Sales.DomainServices\CHStore.Application.Sales.DomainServices.csproj", "{646BF0DE-BB8A-4D96-9BD6-A6FC273E5215}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Infra", "Application\Sales\CHStore.Application.Sales.Infra\CHStore.Application.Sales.Infra.csproj", "{60C4899E-4AAC-4B4A-AA3B-21A4CCCF8229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Infra", "src\Application\Sales\CHStore.Application.Sales.Infra\CHStore.Application.Sales.Infra.csproj", "{60C4899E-4AAC-4B4A-AA3B-21A4CCCF8229}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.DomainServices", "Application\Account\ChStore.Application.Account.Services\CHStore.Application.Account.DomainServices.csproj", "{29FEEC93-DFC2-4458-8042-300975385A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.DomainServices", "src\Application\Account\ChStore.Application.Account.Services\CHStore.Application.Account.DomainServices.csproj", "{29FEEC93-DFC2-4458-8042-300975385A9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.Domain", "Application\Account\CHStore.Application.Account.Domain\CHStore.Application.Account.Domain.csproj", "{D5A0DAE3-2ABA-4B35-897E-CD11C0ECE0BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.Domain", "src\Application\Account\CHStore.Application.Account.Domain\CHStore.Application.Account.Domain.csproj", "{D5A0DAE3-2ABA-4B35-897E-CD11C0ECE0BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.Infra", "Application\Account\CHStore.Application.Account.Infra\CHStore.Application.Account.Infra.csproj", "{29086390-1EDF-4264-B755-9B06D2AE8A85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.Infra", "src\Application\Account\CHStore.Application.Account.Infra\CHStore.Application.Account.Infra.csproj", "{29086390-1EDF-4264-B755-9B06D2AE8A85}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Application", "2.1 - Application", "{F34B1884-58E6-49FE-8647-387EF7623FD0}"
 EndProject
@@ -55,13 +55,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Application", "3.1 - 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Application", "4.1 - Application", "{D1863C38-45DF-409C-A0EA-560224B84507}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.ApplicationServices", "Application\Account\CHStore.Application.Account.ApplicationServices\CHStore.Application.Account.ApplicationServices.csproj", "{E043BC5A-0AC0-424B-B3D4-F5F5BA0B6B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Account.ApplicationServices", "src\Application\Account\CHStore.Application.Account.ApplicationServices\CHStore.Application.Account.ApplicationServices.csproj", "{E043BC5A-0AC0-424B-B3D4-F5F5BA0B6B77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.ApplicationServices", "Application\Catalog\CHStore.Application.Catalog.ApplicationServices\CHStore.Application.Catalog.ApplicationServices.csproj", "{77FA9039-28C4-486A-B09A-BF7BBDD0BEDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Catalog.ApplicationServices", "src\Application\Catalog\CHStore.Application.Catalog.ApplicationServices\CHStore.Application.Catalog.ApplicationServices.csproj", "{77FA9039-28C4-486A-B09A-BF7BBDD0BEDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.ApplicationServices", "Application\Sales\CHStore.Application.Sales.ApplicationServices\CHStore.Application.Sales.ApplicationServices.csproj", "{169F9D72-B760-4D51-A8AE-3B540F48D83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.ApplicationServices", "src\Application\Sales\CHStore.Application.Sales.ApplicationServices\CHStore.Application.Sales.ApplicationServices.csproj", "{169F9D72-B760-4D51-A8AE-3B540F48D83B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Domain", "Application\Sales\CHStore.Application.Sales.Domain\CHStore.Application.Sales.Domain.csproj", "{C9D59D2A-FADD-4688-9EEC-A21DEED31419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Application.Sales.Domain", "src\Application\Sales\CHStore.Application.Sales.Domain\CHStore.Application.Sales.Domain.csproj", "{C9D59D2A-FADD-4688-9EEC-A21DEED31419}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{F8719839-C21C-45BB-A138-5C7ACBD17F8D}"
 EndProject
@@ -71,17 +71,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Payments", "6 - Payment
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.1 - AntiCorruption", "6.1 - AntiCorruption", "{07F287FB-7EB2-4E5D-9213-3BA9EDCEEEF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.AntiCorruption", "Application\Payments\CHStore.Payments.AntiCorruption\CHStore.Payments.AntiCorruption.csproj", "{C4AA9527-84B2-477A-AD2A-B47EC624E3D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.AntiCorruption", "src\Application\Payments\CHStore.Payments.AntiCorruption\CHStore.Payments.AntiCorruption.csproj", "{C4AA9527-84B2-477A-AD2A-B47EC624E3D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.2 - Business", "6.2 - Business", "{E96119C8-7E42-4519-BB26-D488EB8EAFBB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.3 - Data", "6.3 - Data", "{8F233A14-9BAE-4F3C-A84D-440B8696B022}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Bsuiness", "Application\Payments\CHStore.Payments.Bsuiness\CHStore.Payments.Bsuiness.csproj", "{A7414EB1-8CAD-495C-9960-616F4DE002AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Bsuiness", "src\Application\Payments\CHStore.Payments.Bsuiness\CHStore.Payments.Bsuiness.csproj", "{A7414EB1-8CAD-495C-9960-616F4DE002AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Data", "Application\Payments\CHStore.Payments.Data\CHStore.Payments.Data.csproj", "{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Payments.Data", "src\Application\Payments\CHStore.Payments.Data\CHStore.Payments.Data.csproj", "{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Web", "WebApps\Web\CHStore.Web\CHStore.Web.csproj", "{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{D3BF2F7F-F16E-435D-91D5-982633FA3B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHStore.Database", "src\Database\CHStore.Database\CHStore.Database.csproj", "{FD95BD0B-BCA5-4914-BC89-259D01D65411}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHStore.Web", "src\WebApps\CHStore.Web\CHStore.Web.csproj", "{A03BCF6F-2A44-4B5C-9897-C956BDD190BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,10 +157,14 @@ Global
 		{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2522D0A-1901-4C8A-90DF-CFCAACEC4543}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9718E2DF-0BDB-40B9-90EB-AF3526833BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD95BD0B-BCA5-4914-BC89-259D01D65411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD95BD0B-BCA5-4914-BC89-259D01D65411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD95BD0B-BCA5-4914-BC89-259D01D65411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD95BD0B-BCA5-4914-BC89-259D01D65411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03BCF6F-2A44-4B5C-9897-C956BDD190BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03BCF6F-2A44-4B5C-9897-C956BDD190BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03BCF6F-2A44-4B5C-9897-C956BDD190BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03BCF6F-2A44-4B5C-9897-C956BDD190BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,7 +207,8 @@ Global
 		{8F233A14-9BAE-4F3C-A84D-440B8696B022} = {04DF2E21-784D-4CBC-9969-680FEB3D1DC3}
 		{A7414EB1-8CAD-495C-9960-616F4DE002AB} = {E96119C8-7E42-4519-BB26-D488EB8EAFBB}
 		{E2522D0A-1901-4C8A-90DF-CFCAACEC4543} = {8F233A14-9BAE-4F3C-A84D-440B8696B022}
-		{9718E2DF-0BDB-40B9-90EB-AF3526833BA1} = {F8719839-C21C-45BB-A138-5C7ACBD17F8D}
+		{FD95BD0B-BCA5-4914-BC89-259D01D65411} = {D3BF2F7F-F16E-435D-91D5-982633FA3B01}
+		{A03BCF6F-2A44-4B5C-9897-C956BDD190BE} = {F8719839-C21C-45BB-A138-5C7ACBD17F8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A53BA1F2-3E20-4CD3-B606-0096DDA6D69B}
