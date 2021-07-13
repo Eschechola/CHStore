@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using CHStore.Application.Sales.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CHStore.Database.Entities;
+using CHStore.Application.Core.Data.Maps;
 
-namespace CHStore.Database.Maps
+namespace CHStore.Application.Sales.Infra.Mapping
 {
     public class StatusMap : BaseMap<Status>
     {

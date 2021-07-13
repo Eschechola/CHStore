@@ -23,7 +23,7 @@ namespace CHStore.Database.Entities
             string password,
             string cpf,
             Address address,
-            List<EmployeePermission> permissions
+            List<EmployeePermission> permissions = null
         ) : base(name, email, password, address)
         {
             Username = username;
