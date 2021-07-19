@@ -88,7 +88,7 @@
 }
 
 .ch-nav-logo-image img{
-    width: 250px;
+    width: 220px;
 }
 
 .ch-nav-logo-menus {
@@ -97,15 +97,113 @@
     float: left;
 }
 
-.ch-nav-logo-menus-itens{
+.ch-nav-logo-menus-itens {
     width: 80%;
     height: 100%;
     float: right;
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ch-nav-logo-menus-item {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.ch-nav-logo-menus-item a{
+    color: var(--blue-font-color);
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: .5s;
+}
+
+.ch-nav-logo-menus-item a:hover{
+    opacity: .5;
+    transition: .6s;
+}
+
+.ch-nav-logo-menus-item a p{
+    margin-top: 20px;
+    margin-left: 5px;
 }
 
 .ch-nav-pages-line {
-    width: 100%;
+    max-width: 100%;
     height: 50%;
-    background: purple;
+    margin-top: 22px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+}
+
+.ch-nav-pages-line-itens {
+    flex: .3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ch-nav-pages-line-item{
+    flex: 1;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.ch-nav-pages-line-item a{
+    color: rgba(0,0,0,0.8);
+    font-weight: 500;
+    text-decoration: none;
+    transition: .5s;
+    font-size: 1.2rem;
+}
+
+.ch-nav-pages-line-item a:hover{
+    color: var(--blue-font-color);
+    opacity: .8;
+    transition: .5s;
+}
+
+.ch-nav-pages-line-search{
+    flex: .7;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ch-nav-pages-line-search-container {
+    flex: .3;
+    height: 60%;
+    display: flex;
+    background: var(--bg-input);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ch-nav-pages-line-search-container input{
+    flex: .9;
+    border-radius: 0%;
+    padding: 9px;
+    font-size: .8rem;
+    width: 90%;
+    margin-left: 5px;
+    background: transparent;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    padding-left: 15px;
+    font-size: .9rem;
+}
+
+.ch-nav-pages-line-search-container i{
+    padding: 10px;
+    padding-left: 7px;
+    background: transparent;
 }
