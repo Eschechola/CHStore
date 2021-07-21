@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/main.css" />
     <link rel="stylesheet" href="~/css/header.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/input.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-    <header class="ch-main-header">
+    <header class="ch-header">
         <div class="ch-header-info-line">
             <div class="ch-header-info-line-items">
                 <div class="ch-header-info-line-itens-box-right">
@@ -34,7 +36,6 @@
                 </div>
             </div>
         </div>
-
         <nav class="ch-nav">
             <div class="ch-nav-logo-line">
                 <div class="ch-nav-logo-image">
@@ -102,13 +103,82 @@
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main class="ch-body">
+        <br />
+        @RenderBody()
+        <br />
+    </main>
 
-    <footer>
+    <footer class="ch-footer">
+        <div class="ch-footer-top">
+            <div class="ch-footer-top-image">
+                <img src="~/images/logo_white_transparent.png" />
+            </div>
+            <div class="ch-footer-top-title">
+                <p>A MELHOR E MAIS BARATA LOJA DO BRASIL!</p>
+            </div>
+        </div>
+        <div class="ch-footer-widget">
+            <div class="ch-footer-widget-itens">
+                <div class="ch-footer-widget-item">
+                    <h3>SERVIÇOS</h3>
+                    <ul>
+                        <li><a href="#">Ajuda online</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="ch-footer-widget-item">
+                    <h3>COMPRAS</h3>
+                    <ul>
+                        <li><a href="#">Categoria 1</a></li>
+                        <li><a href="#">Categoria 2</a></li>
+                        <li><a href="#">Categoria 3</a></li>
+                        <li><a href="#">Categoria 4</a></li>
+                        <li><a href="#">Categoria 5</a></li>
+                    </ul>
+                </div>
+                <div class="ch-footer-widget-item">
+                    <h3>POLÍTICAS</h3>
+                    <ul>
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Política de reembolso</a></li>
+                        <li><a href="#">Sistema de pagamento</a></li>
+                        <li><a href="#">Processo de suporte</a></li>
+                    </ul>
+                </div>
+                <div class="ch-footer-widget-item">
+                    <h3>SOBRE A LOJA</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Localização</a></li>
+                        <li><a href="#">Copyright</a></li>
+                    </ul>
+                </div>
+                <div class="ch-footer-widget-item ch-footer-widget-item-newsletter">
+                    <h3>NEWSLETTER</h3>
+                    <p>Fique por dentro de todas as novidades e promoções da loja!</p>
+                    <div class="ch-input-container">
+                        <input type="email" placeholder="Digite seu email" />
+                        <div class="ch-input-container-icon">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ch-footer-bottom">
+            <div class="ch-footer-bottom-body">
+                <div class="ch-footer-bottom-body-item">
+                    <p class="ch-footer-copy-text">Copyright &copy; @DateTime.Now.Year - CH Labs. Todos os direitos reservados.</p>
+                </div>
+                <div class="ch-footer-bottom-body-item">
+                    <p class="ch-footer-copy-text ch-footer-copy-text-right">Developed by <strong><a href="https://github.com/Eschechola/ChStore">Lucas Eschechola</a></strong></p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,0 +1,33 @@
+﻿.ch-input-container {
+    width: 300px;
+    min-height: 45px;
+    background: var(--bg-input);
+    border-radius: 5px !important;
+}
+
+.ch-input-container input{
+    width: 85%;
+    min-height: 45px;
+    padding: 10px;
+    float: left;
+    background: transparent;
+}
+
+.ch-input-container-icon {
+    float: left;
+    width: 16%;
+    min-height: 45px;
+    cursor: pointer;
+    color: var(--primary-color);
+    background: var(--midnigth-blue);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: -1%;
+}
+
+.ch-input-container i{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
