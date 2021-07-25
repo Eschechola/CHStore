@@ -32,4 +32,7 @@ input:focus {
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
+    width: 80vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }

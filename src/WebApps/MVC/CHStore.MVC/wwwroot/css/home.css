@@ -1,0 +1,14 @@
+﻿.ch-home{
+    width: 100%;
+}
+
+.ch-carousel{
+    background:gray;
+    width: 100%;
+    height: 500px;
+}
+
+.ch-carousel img{
+    width: 100%;
+    height: 500px;
+}
